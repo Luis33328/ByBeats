@@ -1,0 +1,218 @@
+.btn-retornar {
+    color: #1468BD;
+    background-color: transparent;
+}
+
+.title-container-ocean {
+    padding-left: 40px;
+    padding-right: 40px;
+    padding-top: 12px;
+    font-size: 25px;
+    align-items: center;
+    color: #3E3E3E;
+}
+
+.ocean-padding {
+    padding-top: 12px;
+}
+
+.btn-ocean-default {
+    margin-left: 10px;
+    width: 130px;
+    height: 35px;
+    background-color: white;
+    border-color: #BFBFBF;
+    border-radius: 10px;
+    color: #3E3E3E;
+    font-size: 13px;
+    font-weight: 300;
+}
+
+.btn-ocean-primary {
+    margin-left: 10px;
+    width: 130px;
+    height: 35px;
+    background-color: #1468bd;
+    border-radius: 10px;
+    color: white;
+    font-size: 13px;
+    font-weight: 300;
+}
+
+.col-end {
+    text-align: end;
+}
+
+.col-start {
+    text-align: start;
+    font-size: 25px;
+    color: #3E3E3E;
+}
+
+.btn {
+    --bs-btn-padding-x: 0.0rem
+}
+
+.no-gtt {
+    padding: 4px 0;
+    line-height: 1;
+    height: 24px;
+    display: flex;
+    align-items: center;
+}
+
+/**
+    CSS MAT TABLE
+**/
+
+#pag {
+    border-bottom-left-radius: 10px !important;
+    border-bottom-right-radius: 10px !important;
+}
+
+.mat-row .mat-cell {
+    border-bottom: 1px solid transparent;
+    border-top: 1px solid transparent;
+    cursor: pointer;
+}
+
+.mat-row:hover .mat-cell {
+    border-color: currentColor;
+}
+
+.table-ocean {
+    width: 100vw
+}
+
+.mat-elevation-z8 {
+    box-shadow: 0px 0px 0px 0px rgb(0 0 0 / 0%), 0px 8px 0px 0px rgb(0 0 0 / 0%), 0px 0px 0px 0px rgb(0 0 0 / 0%);
+} 
+
+.mat-table {
+    display: block;
+    width: 100%;
+    overflow-x: auto;
+}
+
+.row>* {
+    padding-left: 40px;
+    padding-right: 40px;
+}
+
+/**
+    CSS MAT TABLE CELL
+**/
+
+.mat-column-id {
+    width: 150px;
+    min-width: 150px;
+    max-width: 150px;
+}
+
+.mat-column-login {
+    width: 300px;
+    min-width: 300px;
+    max-width: 300px;
+}
+
+.mat-column-matricula  {
+    width: 150px;
+    min-width: 150px;
+    max-width: 150px;
+}
+
+.mat-column-perfil {
+    width: 150px;
+    min-width: 150px;
+    max-width: 150px;
+}
+
+.mat-column-status {
+    width: 150px;
+    min-width: 150px;
+    max-width: 150px;
+}
+
+.mat-column-pdv {
+    width: 150px;
+    min-width: 150px;
+    max-width: 150px;
+}
+
+.mat-column-inscricaoEstadual {
+    width: 150px;
+    min-width: 150px;
+    max-width: 150px;
+}
+
+.mat-column-tipoInscricao {
+    width: 150px;
+    min-width: 150px;
+    max-width: 150px;
+}
+
+.mat-column-dataNascimento {
+    width: 200px;
+    min-width: 200px;
+    max-width: 200px;
+}
+
+.mat-column-telefone {
+    width: 150px;
+    min-width: 150px;
+    max-width: 150px;
+}
+
+.mat-column-celular {
+    width: 150px;
+    min-width: 150px;
+    max-width: 150px;
+}
+
+.mat-column-email {
+    width: 300px;
+    min-width: 300px;
+    max-width: 300px;
+}
+
+.mat-column-cep {
+    width: 150px;
+    min-width: 150px;
+    max-width: 150px;
+}
+
+.mat-column-endereco {
+    width: 250px;
+    min-width: 250px;
+    max-width: 250px;
+}
+
+.mat-column-complemento {
+    width: 200px;
+    min-width: 200px;
+    max-width: 200px;
+}
+
+.mat-column-bairro {
+    width: 150px;
+    min-width: 150px;
+    max-width: 150px;
+}
+
+.mat-column-cidade {
+    width: 150px;
+    min-width: 150px;
+    max-width: 150px;
+}
+
+.mat-column-numero {
+    width: 100px;
+    min-width: 100px;
+    max-width: 100px;
+}
+
+.mat-column-uf {
+    width: 50px;
+    min-width: 50px;
+    max-width: 50px;
+}

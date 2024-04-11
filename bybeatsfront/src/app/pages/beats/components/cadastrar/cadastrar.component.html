@@ -1,0 +1,119 @@
+<div class="newBeat">
+    <h1>Cadastrar Novo Beat</h1>
+
+
+    <form [formGroup]="form" enctype="multipart/form-data">
+        <span id="genTitle">Informações Gerais</span>
+        <div class="generalInfo">
+            <div class="formInputs">
+                <span class="inputSpan">Título</span>
+                <mat-form-field class="searchInput" style="width: 600px; ">
+                    <mat-label></mat-label>
+                    <input matInput formControlName="titulo" placeholder="Título do Beat" autocomplete="off" />
+                </mat-form-field>
+
+                <span class="inputSpan">Tags</span>
+                <mat-form-field class="searchInput" style="width: 450px; ">
+                    <mat-label></mat-label>
+                    <input matInput formControlName="tags" placeholder="Tags" autocomplete="off" />
+                </mat-form-field>
+
+                <span class="inputSpan">Data de Lançamento</span>
+                <mat-form-field class="searchInput">
+                    <mat-label></mat-label>
+                    <input matInput type="datetime-local" formControlName="dataLancamento" placeholder="start date">
+                </mat-form-field>
+            </div>
+
+            <div class="fileInputs">
+                <span id="audioSpan">Arquivos de Áudio</span>
+                <input type="file" (change)="onFileSelected($event)">
+
+
+                <div class="fileButton">
+                    <label for="untagged" id="lblUntagged"><i class="fa-light fa-file-music"></i>.WAV Sem Tag</label>
+                    <input type="file" name="untagged" id="untagged" accept=".wav" (change)="changeUntag($event)" />
+                    <span class="fileName" id='file-name2'></span>
+                </div>
+
+                <div class="fileButton">
+                    <label for="stems" id="lblStems"><i class="fa-regular fa-sliders-up"></i>Track Stems</label>
+                    <input type="file" name="stems" id="stems" accept=".rar,.zip" (change)="changeStems($event)" />
+                    <span class="fileName" id='file-name3'></span>
+                </div>
+
+                <div class="fileButton">
+                    <label for="tagged" id="lblTagged"><i class="fa-light fa-file-music"></i>.WAV Com Tag</label>
+                    <input type="file" name="tagged" id="tagged" accept=".wav" (change)="changeTagged($event)" />
+                    <span class="fileName" id='file-name4'></span>
+                </div>
+            </div>
+
+            <div class="imageInput">
+                <img id="beatImage" src="../../../../../assets/images/black.png" />
+                <label for="beatImg" id="lblImg">Selecionar Imagem</label>
+                <input type="file" name="beatImg" id="beatImg" accept="image/*" (change)="changeImg($event)" />
+            </div>
+
+        </div>
+
+
+        <span id="detailsTitle">Detalhes da Track</span>
+        <div class="furtherDetails">
+            <div class="formInputs">
+
+                <span id="prices">Preços</span>
+                <span class="inputSpan">Licença Básica</span>
+                <mat-form-field class="searchInput" style="width: 600px; ">
+                    <mat-label></mat-label>
+                    <input matInput mask="separator.2" thousandSeparator="." prefix="R$ "
+                        [dropSpecialCharacters]="false" formControlName="precoBasic" placeholder="R$"
+                        autocomplete="off" />
+                </mat-form-field>
+
+                <span class="inputSpan">Licença Premium</span>
+                <mat-form-field class="searchInput" style="width: 600px; ">
+                    <mat-label></mat-label>
+                    <input matInput mask="separator.2" thousandSeparator="." prefix="R$ "
+                        [dropSpecialCharacters]="false" formControlName="precoPremium" placeholder="R$"
+                        autocomplete="off" />
+                </mat-form-field>
+
+                <span class="inputSpan">Licença Premium</span>
+                <mat-form-field class="searchInput" style="width: 600px; ">
+                    <mat-label></mat-label>
+                    <input matInput mask="separator.2" thousandSeparator="." prefix="R$ "
+                        [dropSpecialCharacters]="false" formControlName="precoUnlimited" placeholder="R$"
+                        autocomplete="off" />
+                </mat-form-field>
+
+
+
+
+
+            </div>
+
+            <div class="formInputs">
+                <span id="prices">Mais Sobre o Beat</span>
+                <span class="inputSpan">BPM</span>
+                <mat-form-field class="searchInput" style="width: 600px; ">
+                    <mat-label></mat-label>
+                    <input matInput formControlName="bpm" placeholder="EX. 150" autocomplete="off" />
+                </mat-form-field>
+
+                <span class="inputSpan">Escala</span>
+                <mat-form-field class="searchInput" style="width: 600px; ">
+                    <mat-label></mat-label>
+                    <input matInput formControlName="nota" placeholder="Ex. C#m" autocomplete="off" />
+                </mat-form-field>
+            </div>
+
+        </div>
+        
+        <div class="publishBtns">
+            <button id="cancelBtn" type="button" (click)="cancel()">Cancelar</button>
+            <button id="saveBtn" type="button" (click)="save()">Salvar</button>
+        </div>
+
+    </form>
+</div>

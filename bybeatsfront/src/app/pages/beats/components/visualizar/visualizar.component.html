@@ -1,0 +1,76 @@
+<div class="beat">
+    <div class="beatsLeft">
+        <img src="../../../../../assets/uploads/{{beat.imagem}}" width="240" height="240"/>
+        <span id="beatTitle">{{beat.titulo}}</span>
+
+
+        <a href="../../../../../assets/uploads/{{beat.wavTagged}}" download ><i class="fa-regular fa-arrow-down-to-line"></i>Download</a>
+
+        <div class="beatDetails">
+            <span id="inf">INFORMAÇÕES</span>
+            <span class="furtherDet">BPM</span><span class="rightInf">{{beat.bpm}}</span>
+            <span class="furtherDet">Tom</span><span class="rightInf">{{beat.nota}}</span>
+            <span class="furtherDet">Duração</span><span class="rightInf">3:26</span>
+        </div>
+    </div>
+
+    <div class="beatsRight">
+        <div class="player">
+            <span id="playView"><i class="fa-solid fa-circle-play"></i></span>
+            
+        </div>
+
+        <div class="licenses">
+            <div class="licenseContent">
+                <div class="licenseTop">
+                    <span id="licTitle">Licenças</span>
+
+                    <div class="topRight">
+                        <div class="total">
+                            <span id="totalSpan">TOTAL:</span>
+                            <span id="finalPrice">${{license}},00</span>
+                        </div>
+
+                        <button (click)="addToCart(beat.guidBeat)"><i class="fa-solid fa-cart-shopping" ></i>Adicionar</button>
+                    </div>
+                </div>
+
+                <div class="licenseBottom">
+                    <div class="license" [ngStyle]="{'border': border == '0'  ? '1px solid rgb(204, 5, 5)': '' }" (click)="selectLicense(0)">
+                        <div class="licenseDetails">
+                            <span id="licenseType">Licença Básica</span>
+                            <span id="licPrice">${{beat.precoBasic}},00</span>
+                            <span id="fileType">MP3 + WAV</span>
+                        </div>
+
+                        <span id="onCart" *ngIf="onCart && precoBeat == beat.precoBasic">No carrinho</span>
+                        
+                    </div>
+
+                    <div class="license" [ngStyle]="{'border': border == '1'  ? '1px solid rgb(204, 5, 5)': '' }" (click)="selectLicense(1)">
+                        <div class="licenseDetails">
+                            <span id="licenseType">Licença Premium</span>
+                            <span id="licPrice">${{beat.precoPremium}},00</span>
+                            <span id="fileType">MP3 + WAV + Track Stems</span>
+                        </div>
+
+                        <span id="onCart" *ngIf="onCart && precoBeat == beat.precoPremium">No carrinho</span>
+                    </div>
+
+                    <div class="license" [ngStyle]="{'border': border == '2'  ? '1px solid rgb(204, 5, 5)': '' }" (click)="selectLicense(2)">
+                        <div class="licenseDetails">
+                            <span id="licenseType">Licença Ilimitada</span>
+                            <span id="licPrice">${{beat.precoUnlimited}},00</span>
+                            <span id="fileType">MP3 + WAV + Track Stems</span>
+                        </div>
+
+                        <span id="onCart" *ngIf="onCart && precoBeat == beat.precoUnlimited">No carrinho</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+    </div>
+
+</div>
+

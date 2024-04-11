@@ -1,0 +1,108 @@
+
+
+.login{
+    margin: auto;
+    margin-top: 150px;
+    width: 460px;
+    min-height: 680px;
+    background-color: #1A1A1A;
+    border: 1px solid #323232;
+    border-radius: 14px;
+}
+
+.login span{
+    display: block;
+    color: #D8D8D8;
+}
+
+#loginTitle{
+    font-size: 35px;
+    font-weight: 700;
+}
+
+.formLogin{
+    margin-top: 50px;
+    margin-left: 62px
+
+}
+
+.formInputs{
+    margin-top: 50px;
+}
+
+.inputSpan{
+    font-size: 14px;
+    margin-top: 10px;
+}
+
+
+
+input{
+
+    width: 600px;
+    height: 42px;
+    background-color: #262626;
+    border: 1px solid #404040;
+    text-indent: 10px;
+    color: #a3a3a3;
+    border-radius: 6px;
+    caret-color: #a3a3a3;
+    transition: .3s;
+}
+
+input:focus{
+    border: 1px solid #810A0A;
+}
+
+::placeholder{
+    color: #7D7D7D;
+    font-size: 14px;
+}
+
+::ng-deep .mat-form-field.mat-focused .mat-form-field-underline {
+    display: none;
+  }
+
+::ng-deep .mat-form-field-underline {
+    display: none;
+}
+
+
+button{
+    width: 330px;
+    height: 40px;
+    background-color: #7D1515;
+    border-radius: 6px;
+    border: 0;
+    color: #D8D8D8;
+    margin-top: 20px;
+    transition: .3s;
+    font-size: 15px;;
+
+}
+
+button:hover{
+    background-color: #6d1212;
+    color: #c9c9c9;
+}
+
+.loginBottom{
+    font-size: 12px;
+    font-weight: 600;
+    float: right;
+    position: relative;
+    left: -70px;
+    margin-bottom: 20px;
+}
+
+.loginBottom a {
+    text-decoration: none;
+    color: rgb(173, 41, 41);
+    margin-top: 5px;
+    float: right;
+    transition: .3s;
+}
+
+.loginBottom a:hover {
+    color: rgb(199, 52, 52);
+}

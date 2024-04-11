@@ -1,0 +1,108 @@
+<div class="container" style="margin-top: 20px; margin-bottom: 20px;">
+    <!-- HEADER -->
+    <div class="row space-top-header">
+        <div class="col" style="padding-left: 20px;">
+            <button type="button" class="btn-retornar"><i class="fa-solid fa-angle-left" (click)="cancelar()"
+                    style="color: #1468BD;"></i>&nbsp;&nbsp;&nbsp;&nbsp;Retornar</button>
+        </div>
+        <div class="col text-cpf">
+            Nova Pessoa Autorizada
+        </div>
+        <div class="col"></div>
+    </div>
+    <div class="row space-top-header-two">
+        <div class="col">
+            <span class="span-title">Cliente</span>
+        </div>
+        <div class="col"></div>
+        <div class="col"></div>
+    </div>
+    <!-- FORMULARIO DE CADASTRO -->
+    <form class="example-form form-ocean" [formGroup]="form">
+        <div class="row">
+            <div class="col">
+                <span class="label-ocean">Motorista</span>
+                <mat-form-field class="example-full-width fill-textfield" appearance="outline">
+                    <mat-label></mat-label>
+                    <input matInput formControlName="motorista" placeholder="Nº de identificação do motorista" />
+                    <mat-error>
+                        Campo obrigatório
+                    </mat-error>
+                </mat-form-field>
+            </div>
+            <div class="col">
+                <span class="label-ocean">Nome</span>
+                <mat-form-field class="example-full-width fill-textfield" appearance="outline">
+                    <mat-label></mat-label>
+                    <input matInput formControlName="nome" placeholder="Ex. João Carlos" />
+                    <mat-error>
+                        Campo obrigatório
+                    </mat-error>
+                </mat-form-field>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col">
+                <span class="label-ocean">CPF/CNPJ</span>
+                <mat-form-field class="example-full-width fill-textfield" appearance="outline">
+                    <mat-label></mat-label>
+                <input matInput ng-model="cpfCnpj" mask="{{mask}}" [dropSpecialCharacters]="false" (input)="changeMask()" formControlName="cpf"   placeholder="Ex. 000.000.000-00  |  XX.XXX.XXX/0001-XX" />
+                    <mat-error>
+                        Campo obrigatório
+                    </mat-error>
+                </mat-form-field>
+            </div>
+            <div class="col">
+                <span class="label-ocean">CNH</span>
+                <mat-form-field class="example-full-width fill-textfield" appearance="outline">
+                    <mat-label></mat-label>
+                <input matInput mask="0000000000" [dropSpecialCharacters]="false" formControlName="cnh" placeholder="Ex. 0000000000" />
+                    <mat-error>
+                        Campo obrigatório
+                    </mat-error>
+                </mat-form-field>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col">
+                <span class="label-ocean">Data de vencimento</span>
+                <mat-form-field class="example-full-width fill-textfield"
+                    appearance="outline">
+                    <mat-label></mat-label>
+                    <input matInput mask="00/00/0000" [dropSpecialCharacters]="false" formControlName="dataVencimento"
+                        placeholder="Ex. DD/MM/AAAA">
+                    <mat-error>
+                        Campo obrigatório
+                    </mat-error>
+                </mat-form-field>
+            </div>
+
+            <div class="col">
+                <span class="label-ocean">Inativo</span>
+                <mat-form-field class="example-full-width fill-textfield"
+                    appearance="outline">
+                    <mat-label></mat-label>
+                    <mat-select  formControlName="inativo">
+                        <mat-option value="Sim">Sim</mat-option>
+                        <mat-option value="Nao">Não</mat-option>
+                   </mat-select>
+                    <mat-error>
+                        Campo obrigatório
+                    </mat-error>
+                </mat-form-field>
+            </div>
+        </div>
+
+    
+        
+    </form>
+
+    <!-- FOOTER BOTOES CADASTRAR E CANCELAR -->
+    <div class="d-grid gap-2 d-md-flex justify-content-md-end footer-ocean ">
+        <button style="color: #1468BD; background-color: white; border-color: #1468BD;" (click)="cancelar()"
+            class="btn btn-secondary me-md-2" type="button">Cancelar</button>
+        <button style="color: white; background-color: #1468BD; border-color: #1468BD;" class="btn btn-primary"
+            (click)="salvar()" type="Cadastrar">Cadastrar</button>
+    </div>
+    <div style="padding-bottom: 1px;"></div>
+</div>

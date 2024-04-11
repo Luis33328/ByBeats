@@ -1,0 +1,93 @@
+  
+
+<div class="carousel">
+    <input type="radio" name="slider" id="item-1" checked>
+    <input type="radio" name="slider" id="item-2">
+    <input type="radio" name="slider" id="item-3">
+    <div class="cards" >
+
+        <label class="card" for="item-1" id="song-1">
+            <div class="cardDiv" id="song-1-div">
+                <div class="highLeft">
+                    <img src="../../../../assets/uploads/{{beats[3].imagem}}" alt="song">
+                    <span id="playHigh"><i class="fa-regular fa-circle-play"></i></span>
+                </div>
+
+                <div class="highRight" id="song-1-details">
+                    <a (click)="getId(beats[3])" id="highTitle">{{beats[3].titulo}}</a>
+                    <span id="highFurther">{{beats[3].nota}} | {{beats[3].bpm}}BPM</span>
+                </div>
+            </div>
+        </label>
+        <label class="card" for="item-2" id="song-2">
+            <div class="cardDiv" id="song-2-div">
+                <div class="highLeft">
+                    <img src="../../../../assets/uploads/{{beats[5].imagem}}" alt="song">
+                    <span id="playHigh"><i class="fa-regular fa-circle-play"></i></span>
+                </div>
+
+                <div class="highRight" id="song-2-details">
+                    <a (click)="getId(beats[5])" id="highTitle">{{beats[5].titulo}}</a>
+                    <span id="highFurther">{{beats[5].nota}} | {{beats[5].bpm}}BPM</span>
+                </div>
+            </div>
+        </label>
+        <label class="card" for="item-3" id="song-3">
+            <div class="cardDiv" id="song-3-div">
+
+                <div class="highLeft">
+                    <img src="../../../../assets/uploads/{{beats[0].imagem}}" alt="song">
+                    <span id="playHigh"><i class="fa-regular fa-circle-play"></i></span>
+                </div>
+
+                <div class="highRight" id="song-3-details">
+                    <a (click)="getId(beats[0])" id="highTitle">{{beats[0].titulo}}</a>
+                    <span id="highFurther">{{beats[0].nota}} | {{beats[0].bpm}}BPM</span>
+                </div>
+            </div>
+        </label>
+    </div>
+</div>
+
+<div class="mostLiked">
+    <h1>Mais Curtidos</h1>
+
+
+    <ngx-tiny-slider #ngxSlider [config]="tinySliderConfig">
+        <ng-container class="items">
+            <div class="item" #slideList *ngFor="let beatDesc of beatsDesc">
+                <div  class="slideImg img-1">
+                    <img (click)="getId(beatDesc)" src="../../../../assets/uploads/{{beatDesc.imagem}}">
+                    <span id="playRegular"><i class="fa-regular fa-circle-play"></i></span>
+                </div>
+                <div class="likedFurther">
+                    <a (click)="getId(beatDesc)" id="likedTitle">{{beatDesc.titulo}}</a>
+                    <span id="likedFurther">{{beatDesc.nota}} | {{beatDesc.bpm}}BPM</span>
+                </div>
+            </div>
+        </ng-container>
+
+    </ngx-tiny-slider>
+
+
+
+</div>
+
+
+<div class="homeAbout1">
+    <span id="aboutTitle1">Quer elevar o nível do seu som?</span>
+    <span id="aboutFurther1">Deixar uma música soando profissional não
+        é uma tarefa facil e por isso oferecemos aqui
+        serviços de Mixagem e Masterização para deixar
+        sua música batendo igual as referências! </span>
+    <a href="">Mais Informações</a>
+</div>
+
+
+<div class="homeAbout2">
+    <span id="aboutTitle2">“Não sei qual licença comprar, e agora?”</span>
+    <span id="aboutFurther2">Os direitos sobre um beat podem ser confusos às vezes, mas não se 
+        preocupe! Temos uma página com todas as explicações, detalhes e 
+                                    preços a respeito de todas as licenças de nossos beats.</span>
+    <a href="">Licenças</a>
+</div>

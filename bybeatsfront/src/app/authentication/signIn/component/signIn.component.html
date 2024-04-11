@@ -1,0 +1,59 @@
+<!doctype html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8" />
+        <title>Login</title>
+       
+        <script src="https://kit.fontawesome.com/50d53b2eac.js" crossorigin="anonymous"></script>
+
+    </head>
+
+    <body>
+        <div class="container-fluid">
+            <div class="login">
+
+                <div class="formLogin">
+                    <form [formGroup]="form">
+                        <span id="loginTitle">Cadastrar-se</span>
+
+                        <div class="formInputs">
+                            <span class="inputSpan">Nome de usuário</span>
+                            <mat-form-field class="searchInput" style="width: 330px; ">
+                                <mat-label></mat-label>
+                                <input matInput formControlName="login" placeholder="Usuário" autocomplete="off"/>
+                            </mat-form-field> 
+
+                            <span class="inputSpan">E-mail</span>
+                            <mat-form-field class="searchInput" style="width: 330px; ">
+                                <mat-label></mat-label>
+                                <input matInput formControlName="email" placeholder="email" autocomplete="off"/>
+                            </mat-form-field> 
+
+                            <span class="inputSpan">Senha</span>
+                            <mat-form-field class="searchInput" style="width: 330px; ">
+                                <mat-label></mat-label>
+                                <input type="password" matInput formControlName="senha" placeholder="Senha" autocomplete="off"/>
+                            </mat-form-field> 
+                        </div>
+
+                    </form>
+
+                    <div class="loginBottom">
+                        <span>Já possui uma conta?</span>
+                        <a href="login">Fazer Login</a>
+                    </div>
+
+                    <button (click)="save()">Continuar</button>
+                </div>
+                        
+            </div>
+
+            <ngx-loading
+                [show]="loading"
+                [config]="{ backdropBorderRadius: '3px' }"
+                [template]="customLoadingTemplate">
+            </ngx-loading>
+        </div>
+    </body>
+</html>
+

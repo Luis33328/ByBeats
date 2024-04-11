@@ -1,0 +1,93 @@
+.btn-retornar {
+    color: #1468BD;
+    background-color: transparent;
+    font-weight: bold;
+    font-size: 13px;
+    border-color: transparent;
+}
+
+.title-container-ocean {
+    padding-left: 40px;
+    padding-right: 40px;
+    padding-top: 12px;
+    font-size: 25px;
+    align-items: center;
+    color: #3E3E3E;
+}
+
+.ocean-padding {
+    padding-top: 12px;
+}
+
+.btn-ocean-default {
+    margin-left: 10px;
+    width: 130px;
+    height: 35px;
+    background-color: white;
+    border-color: #BFBFBF;
+    border-radius: 10px;
+    color: #3E3E3E;
+    font-size: 13px;
+    font-weight: 300;
+}
+
+.btn-ocean-primary {
+    margin-left: 10px;
+    width: 130px;
+    height: 35px;
+    background-color: #1468bd;
+    border-radius: 10px;
+    color: white;
+    font-size: 13px;
+    font-weight: 300;
+}
+
+.row>* {
+    padding-left: 40px;
+    padding-right: 40px;
+}
+
+.col-end {
+    text-align: end;
+}
+
+.col-start {
+    text-align: start;
+    font-size: 25px;
+    color: #3E3E3E;
+}
+
+.btn {
+    --bs-btn-padding-x: 0.0rem
+}
+
+.mat-row .mat-cell {
+    border-bottom: 1px solid transparent;
+    border-top: 1px solid transparent;
+    cursor: pointer;
+}
+
+.mat-row:hover .mat-cell {
+    border-color: currentColor;
+}
+
+.table-ocean {
+    width: 100%;
+}
+
+.mat-elevation-z8 {
+    box-shadow: 0px 0px 0px 0px rgb(0 0 0 / 0%), 0px 8px 0px 0px rgb(0 0 0 / 0%), 0px 0px 0px 0px rgb(0 0 0 / 0%);
+}
+
+.no-gtt {
+    padding: 4px 0;
+    line-height: 1;
+    height: 24px;
+    display: flex;
+    align-items: center;
+}
+
+#pag {
+    border-bottom-left-radius: 10px !important;
+    border-bottom-right-radius: 10px !important;
+}

@@ -1,0 +1,55 @@
+<!doctype html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8" />
+        <title>Login</title>
+       
+        <script src="https://kit.fontawesome.com/50d53b2eac.js" crossorigin="anonymous"></script>
+
+    </head>
+
+    <body>
+        <div class="container-fluid">
+            <div class="login">
+
+                <div class="formLogin">
+                    <form [formGroup]="form">
+                        <span id="loginTitle">Fazer Login</span>
+
+                        <div class="formInputs">
+                            <span class="inputSpan">E-mail ou nome de usuário</span>
+                            <mat-form-field class="searchInput" style="width: 330px; ">
+                                <mat-label></mat-label>
+                                <input matInput formControlName="login" name="login" placeholder="Usuário" autocomplete="off"/>
+                            </mat-form-field> 
+
+                            <span class="inputSpan">Senha</span>
+                            <mat-form-field class="searchInput" style="width: 330px; ">
+                                <mat-label></mat-label>
+                                <input type="password" matInput formControlName="senha" name="senha" placeholder="Senha" autocomplete="off"/>
+                            </mat-form-field> 
+                        </div>
+
+                    </form>
+
+                    <div class="loginBottom">
+                        <span>Nâo possui uma conta?</span>
+                        <a href="cadastro">Cadastre-se</a>
+                    </div>
+
+                    <button (click)="logar()">Continuar</button>
+
+                    
+                </div>
+                        
+            </div>
+
+            <ngx-loading
+                [show]="loading"
+                [config]="{ backdropBorderRadius: '3px' }"
+                [template]="customLoadingTemplate">
+            </ngx-loading>
+        </div>
+    </body>
+</html>
+

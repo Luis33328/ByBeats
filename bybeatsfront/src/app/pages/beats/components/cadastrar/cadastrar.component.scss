@@ -1,0 +1,256 @@
+
+.newBeat{
+    margin-left: 10%;
+    margin-top: 60px;
+    color: #D8D8D8;
+}
+
+.newBeat h1{
+    font-size: 40px;
+    margin-bottom: 60px;
+}
+
+#genTitle{
+    display: inline-block;
+    font-size: 25px;
+    margin-bottom: 15px;
+}
+
+
+.generalInfo{
+    display: flex;
+    width: 1500px;
+    height: 550px;
+    background-color: rgb(34, 34, 34);
+}
+    
+
+.formInputs{
+    padding-top: 20px;
+    margin-left: 40px;
+}
+
+.inputSpan{
+    display: block;
+    font-size: 14px;
+    font-weight: 600;
+    margin-top: 30px;
+}
+
+
+
+input{
+
+    width: 800px;
+    height: 50px;
+    background-color: #2c2c2c;
+    text-indent: 10px;
+    color: #a3a3a3;
+    border-radius: 4px;
+    caret-color: #a3a3a3;
+    transition: .3s;
+}
+
+
+::placeholder{
+    color: #7D7D7D;
+    font-size: 14px;
+}
+
+::ng-deep .mat-form-field.mat-focused .mat-form-field-underline {
+    display: none;
+  }
+
+::ng-deep .mat-form-field-underline {
+    display: none;
+}
+
+
+button{
+    width: 175px;
+    height: 40px;
+    background-color: #7D1515;
+    border-radius: 6px;
+    border: 0;
+    color: #D8D8D8;
+    margin-top: 20px;
+    transition: .3s;
+    font-size: 15px;;
+
+}
+
+button:hover{
+    background-color: #6d1212;
+    color: #c9c9c9;
+}
+
+
+.loginBottom{
+    font-size: 12px;
+    font-weight: 600;
+    float: right;
+    position: relative;
+    left: -70px;
+    margin-bottom: 20px;
+}
+
+.loginBottom a {
+    text-decoration: none;
+    color: rgb(173, 41, 41);
+    margin-top: 5px;
+    float: right;
+    transition: .3s;
+}
+
+.loginBottom a:hover {
+    color: rgb(199, 52, 52);
+}
+
+::ng-deep e-input-group-icon.e-date-icon{
+    font-size: 50px;
+}
+
+
+.fileInputs{
+    margin-left: 70px;
+    margin-top: 50px;
+}
+
+#audioSpan{
+    display: inline-block;
+    font-weight: 600;
+    margin-bottom: 12px;
+    margin-left: 75px;
+}
+
+.fileInputs input[type='file'] {
+    display: none;
+}
+  
+.fileInputs label {
+    width: 300px;
+    height: 70px;
+    display: block;
+    background-color: #2c2c2c;
+    border-radius: 8px;
+    color: #D8D8D8;
+    padding-left: 20px;
+    padding-top: 5px;
+    font-size: 18px;
+    transition: .3s;
+}
+
+label i{
+    font-size: 32px;
+    margin-right: 50px;
+    position: relative;
+    top: 10px;
+}
+  
+.fileInputs label:hover {
+    background-color: #911e1a;
+    cursor: pointer;
+}
+
+
+.fileName{
+    display: inline-block;
+    margin-top: -25px;
+    margin-left: 120px;
+    position: absolute;
+    font-size: 12px;
+    color: #8d8d8d;
+    font-weight: 600;
+}
+
+
+.fileButton{
+    margin-bottom: 30px;
+}
+
+
+
+.imageInput{
+    margin-left: 8.5%;
+    margin-top: 80px;
+}
+
+.imageInput input[type='file'] {
+    display: none;
+}
+  
+.imageInput label {
+    width: 200px;
+    height: 45px;
+    display: block;
+    background-color: #911e1a;
+    border-radius: 8px;
+    color: #D8D8D8;
+    padding-left: 20px;
+    padding-top: 8px;
+    font-size: 18px;
+    transition: .3s;
+    margin-top: 70px;
+    margin-left: 19px;
+}
+  
+.imageInput label:hover {
+    background-color: #a32b27;
+    cursor: pointer;
+}
+
+#beatImage {
+    width: 240px;
+    height: 240px;
+    text-decoration: none;
+    border-radius: 8px;
+    border: solid 3px #3b3b3b;
+    
+}
+
+
+//pt2
+
+#detailsTitle{
+    display: inline-block;
+    font-size: 25px;
+    margin-bottom: 15px;
+    margin-top: 20px;
+}
+
+
+.furtherDetails{
+    display: flex;
+    width: 1500px;
+    height: 550px;
+    background-color: rgb(34, 34, 34);
+}
+
+
+#prices{
+    display: block;
+    font-size: 20px;
+    font-weight: 600;
+    margin-top: 15px;
+}
+
+.publishBtns{
+    margin-top: 20px;
+    margin-bottom: 80px;
+    float: right;
+    position: relative;
+    left: -214px;
+}
+
+#cancelBtn{
+    width: 160px;
+    height: 40px;
+    background-color: #202020;
+    border-radius: 4px;
+    font-size: 15px;
+    margin-right: 15px;
+}
+
+#cancelBtn:hover{
+    background-color: #1b1b1b;
+}

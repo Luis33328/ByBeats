@@ -1,0 +1,82 @@
+.container {
+    background-color: white;
+    border-radius: 10px;
+    width: 70%;
+}
+
+.fill-textfield {
+    width: 100%
+}
+
+.space-top-header {
+    padding-top: 40px;
+}
+
+.space-top-header-two {
+    padding-top: 50px;
+}
+
+.space-top-header-three {
+    padding-top: 20px;
+}
+
+.text-cpf {
+    text-align: center;
+    font-size: 16px;
+    color: #3E3E3E;
+    font-weight: 800;
+}
+
+.form-ocean {
+    padding-top: 25px;
+    padding-left: 20px;
+    padding-right: 20px;
+}
+
+.form-ocean-x2 {
+    padding-top: 25px;
+}
+
+.label-ocean {
+    color: #3E3E3E;
+    font-size: 13px;
+    font-weight: 400;
+    padding-left: 5px;
+}
+
+.btn-retornar {
+    color: #1468BD;
+    background-color: transparent;
+    font-weight: bold;
+    font-size: 13px;
+    border-color: transparent;
+}
+
+.span-title {
+    padding-left: 20px;
+    color: #3E3E3E;
+}
+
+.span-title-two {
+    color: #3E3E3E;
+}
+
+.btn {
+    --bs-btn-padding-x: 5rem;
+    font-size: 14px;
+    --bs-btn-border-color: #1468bd;
+    --bs-btn-color: #1468bd;
+}
+
+.justify-content-md-end {
+    background-color: #dedede;
+}
+
+.footer-ocean {
+    margin-bottom: 15px;
+    margin-top: 30px;
+    padding-top: 10px;
+    padding-bottom: 10px;
+    border-radius: 10px;
+    padding-right: 30px;
+}
