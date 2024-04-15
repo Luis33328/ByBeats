@@ -38,8 +38,12 @@
                     </div>
 
                     <button (click)="logar()">Continuar</button>
-
-                    
+                    <div *ngIf="form.controls.login.invalid" class="warning">
+                        Login está errado, favor verificar suas credenciais.
+                    </div>
+                    <div *ngIf="(form.controls.login.dirty || form.controls.login.touched)" class="warning">
+                        Login está vazio, favor inserir credenciais.
+                    </div>
                 </div>
                         
             </div>
@@ -52,4 +56,3 @@
         </div>
     </body>
 </html>
-
