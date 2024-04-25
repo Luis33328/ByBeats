@@ -30,6 +30,11 @@ public class UsuarioServico {
         Optional<Usuario> usuarioSearch = this.usuarioRepositorio.findByLogin(username);
         return usuarioSearch.orElseThrow(() -> new BusinessException(BusinessExceptionCode.USUARIO_NAO_ENCONTRADO));
     }
+    
+    public Usuario buscarPorEmail(String email) throws BusinessException {
+        Optional<Usuario> usuarioSearch = this.usuarioRepositorio.findByEmail(email);
+        return usuarioSearch.orElseThrow(() -> new BusinessException(BusinessExceptionCode.USUARIO_NAO_ENCONTRADO));
+    }
 
     public Page<Usuario> listarPage(Pageable pageable) throws Exception {
         return this.usuarioRepositorio.findAll(pageable);

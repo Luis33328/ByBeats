@@ -5,6 +5,7 @@ import { AuthGuard } from '../authentication/guard/auth.guard';
 import { LayoutComponent } from '../layout/layout.component';
 import { LoginComponent } from '../authentication/login/login.component';
 import { EsqueciSenhaComponent } from '../authentication/esquecisenha/esquecisenha.component';
+import { ForgotComponent } from '../authentication/forgot/forgot.component';
 
 
 import { PesquisarPAutorizadaComponent } from '../pages/autorizados/components/pesquisar/pesquisar.component';
@@ -23,7 +24,7 @@ import { VisualizarBeatComponent } from '../pages/beats/components/visualizar/vi
 const routes: Routes = [
   { path: 'login', component: LoginComponent },
   { path: 'cadastro', component: SignInComponent },
-  { path: 'forgotPassword', component: EsqueciSenhaComponent },
+  { path: 'forgotPassword', component: ForgotComponent },
   
   
   {
