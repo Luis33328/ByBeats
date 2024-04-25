@@ -19,6 +19,7 @@ import { AdminGuard } from '../authentication/guard/admin.guard';
 import { CadastrarBeatComponent } from '../pages/beats/components/cadastrar/cadastrar.component';
 import { PesquisarBeatComponent } from '../pages/beats/components/pesquisar/pesquisar.component';
 import { VisualizarBeatComponent } from '../pages/beats/components/visualizar/visualizar.component';
+import { MeusBeatsComponent } from '../pages/beats/components/cadastrados/meus-beats.component';
 
 
 const routes: Routes = [
@@ -33,7 +34,8 @@ const routes: Routes = [
     children: [
       { path: '', component: HomeComponent },
       { path: 'beats/catalog', component: PesquisarBeatComponent },
-      { path: 'beat/:id', component: VisualizarBeatComponent }
+      { path: 'beat/:id', component: VisualizarBeatComponent },
+      { path: 'beats/my-tracks', component: MeusBeatsComponent },
     ]
   },
   /*{
@@ -48,7 +50,7 @@ const routes: Routes = [
     component: LayoutComponent,
     canActivate: [AdminGuard],
     children: [
-      { path: 'beats/register', component: CadastrarBeatComponent },
+      { path: 'beats/register/:id', component: CadastrarBeatComponent },
       
     ]
   }
