@@ -1,10 +1,11 @@
-package com.luiggibeats.email.servico;
+package com.luiggibeats.seguranca.servico;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.mail.SimpleMailMessage;
 import org.springframework.stereotype.Service;
 import org.springframework.mail.javamail.JavaMailSender;
 
+@Service
 public class EmailServico {
     @Autowired
     private JavaMailSender mailSender;
