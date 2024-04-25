@@ -4,8 +4,7 @@ import { AuthGuard } from '../authentication/guard/auth.guard';
 
 import { LayoutComponent } from '../layout/layout.component';
 import { LoginComponent } from '../authentication/login/login.component';
-import { EsqueciSenhaComponent } from '../authentication/esquecisenha/esquecisenha.component';
-import { ForgotComponent } from '../authentication/forgot/forgot.component';
+import { ForgotComponent } from '../authentication/forgot/component/forgot.component';
 
 
 import { PesquisarPAutorizadaComponent } from '../pages/autorizados/components/pesquisar/pesquisar.component';
