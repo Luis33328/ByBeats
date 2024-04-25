@@ -4,7 +4,7 @@
     margin: auto;
     margin-top: 200px;
     width: 460px;
-    height: 570px;
+    height: 370px;
     background-color: #1A1A1A;
     border: 1px solid #323232;
     border-radius: 14px;
@@ -111,6 +111,13 @@ button:hover{
 #loginError{
     display: block;
     color: rgb(230, 0, 0);
+    font-size: 13px;
+    margin-top: -12px;
+}
+
+#loginSuccess{
+    display: block;
+    color: rgb(0, 230, 12);
     font-size: 13px;
     margin-top: -12px;
 }

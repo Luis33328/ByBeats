@@ -42,6 +42,12 @@ public class UsuarioRecurso extends BaseController {
     public Usuario buscarPorUsername(Principal principal) throws BusinessException {
         return this.usuarioServico.buscarPorUsername(principal.getName());
     }
+    
+    @Operation(description = "Endpoint para buscar usuario por email")
+    @GetMapping(value = "/buscarPorEmail/{email}", produces = "application/json")
+    public Usuario buscarPorEmail(@PathVariable(name = "email")String email) throws BusinessException {
+        return this.usuarioServico.buscarPorEmail(email);
+    }
 
     @Operation(description = "Endpoint para listar todos usuarios")
     @GetMapping(value = "/listar", produces = "application/json")

@@ -55,6 +55,16 @@ export class SignInService {
         data => data
       )
     );
+    
+  }
+
+  public getByEmail(email): Observable<any> {
+    return this.http.get(environment.baseUrl + '/private/luiggibeats/usuario/buscarPorEmail/' + email, { headers: this.HEADERS }).pipe(
+      map(
+        data => data
+      )
+    );
+    
   }
 
 

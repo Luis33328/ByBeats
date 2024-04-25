@@ -2,19 +2,24 @@ import { Component } from '@angular/core';
 import { Router } from '@angular/router';
 import { Autenticacao } from '../model/autenticacao.model';
 import { AutenticacaoService } from '../service/autenticacao.service';
+import { SignInService } from '../signIn/service/signIn.service';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
 
 @Component({
-    templateUrl: 'login.component.html',
-    styleUrls: ['login.component.scss'],
+    templateUrl: 'forgot.component.html',
+    styleUrls: ['forgot.component.scss'],
 })
-export class LoginComponent {
+export class ForgotComponent {
 
     
     public loading = false;
     public errorMessage = false;
+    public successMessage = false;
 
-    constructor(private router: Router, private autenticacaoService: AutenticacaoService) { }
+    constructor(
+      private router: Router, 
+      private autenticacaoService: AutenticacaoService,
+      private signInService: SignInService) { }
 
     public form: FormGroup = new FormGroup({});
 
@@ -24,32 +29,31 @@ export class LoginComponent {
 
     public initializeForms() {
         this.form = new FormGroup({
-          login: new FormControl(''),
-          senha: new FormControl('')
+          email: new FormControl('')
     
         });
       }
 
-    logar() {
+    recuperar() {
 
         //console.log(this.login);
         this.loading = true;
         //await this.delay(1000);
-        let autenticacao = new Autenticacao();
-        
-        autenticacao.login = this.form.get('login').value;
-        autenticacao.password = this.form.get('senha').value;
-        console.log(autenticacao);
+        var email = this.form.get('email').value;
+        console.log(email);
 
-       this.autenticacaoService.login(autenticacao).subscribe(ret => {
+       this.signInService.getByEmail(email).subscribe(ret => {
         
-        localStorage.setItem('currentToken',ret.access_token);
+        console.log(ret)
         this.loading = false;
+        this.errorMessage = false;
+        this.successMessage = true;
 
-        this.router.navigate(['']);
+        //this.router.navigate(['']);
 ;      }, error => {
         console.log(error);
         this.loading = false;
+        this.successMessage = false;
         this.errorMessage = true;
         this.error();
       });

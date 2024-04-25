@@ -32,18 +32,24 @@
 
                     </form>
 
+                    <div class="error" *ngIf="errorMessage == true">
+                        <span id="loginError">Credenciais incorretas.</span>
+                    </div>
+
                     <div class="loginBottom">
                         <span>Nâo possui uma conta?</span>
                         <a href="cadastro">Cadastre-se</a>
                     </div>
 
                     <button (click)="logar()">Continuar</button>
-                    <div *ngIf="form.controls.login.invalid" class="warning">
+
+                    <a href="forgotPassword" id="loginForgot">Esqueci minha senha</a>
+                    <!--<div *ngIf="form.controls.login.invalid" style="color:white;" class="warning">
                         Login está errado, favor verificar suas credenciais.
                     </div>
-                    <div *ngIf="(form.controls.login.dirty || form.controls.login.touched)" class="warning">
+                    <div *ngIf="(form.controls.login.dirty && form.controls.login.touched)" style="color:white;" class="warning">
                         Login está vazio, favor inserir credenciais.
-                    </div>
+                    </div>-->
                 </div>
                         
             </div>
