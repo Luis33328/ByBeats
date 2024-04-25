@@ -1,9 +1,11 @@
 import { Component } from '@angular/core';
 import { Router } from '@angular/router';
-import { Autenticacao } from '../model/autenticacao.model';
-import { AutenticacaoService } from '../service/autenticacao.service';
-import { SignInService } from '../signIn/service/signIn.service';
+import { Autenticacao } from '../../model/autenticacao.model';
+import { AutenticacaoService } from '../../service/autenticacao.service';
+import { SignInService } from '../../signIn/service/signIn.service';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
+import { send } from 'process';
+import { ForgotService } from '../service/forgot.service';
 
 @Component({
     templateUrl: 'forgot.component.html',
@@ -19,7 +21,8 @@ export class ForgotComponent {
     constructor(
       private router: Router, 
       private autenticacaoService: AutenticacaoService,
-      private signInService: SignInService) { }
+      private signInService: SignInService,
+      private ForgotService: ForgotService) { }
 
     public form: FormGroup = new FormGroup({});
 
@@ -34,8 +37,7 @@ export class ForgotComponent {
         });
       }
 
-    recuperar() {
-
+    enviarEmail() {
         //console.log(this.login);
         this.loading = true;
         //await this.delay(1000);
@@ -43,7 +45,7 @@ export class ForgotComponent {
         console.log(email);
 
        this.signInService.getByEmail(email).subscribe(ret => {
-        
+        this.ForgotService.sendOTP(ret);
         console.log(ret)
         this.loading = false;
         this.errorMessage = false;
@@ -59,9 +61,15 @@ export class ForgotComponent {
       });
     }
 
+    recuperarSenha(){
+      
+    }
+
     error(){
         console.log("erro");
         return;
     }
 
 }
+
+

@@ -3,8 +3,9 @@
 .login{
     margin: auto;
     margin-top: 200px;
+    padding-bottom: 50px;
     width: 460px;
-    height: 370px;
+    
     background-color: #1A1A1A;
     border: 1px solid #323232;
     border-radius: 14px;
@@ -48,6 +49,7 @@ input{
     border-radius: 6px;
     caret-color: #a3a3a3;
     transition: .3s;
+
 }
 
 input:focus{

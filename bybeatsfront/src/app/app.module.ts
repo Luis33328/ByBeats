@@ -6,14 +6,12 @@ import { AppComponent } from './app.component';
 import { LayoutComponent } from './layout/layout.component';
 import { LoginComponent } from './authentication/login/login.component';
 import { SignInComponent } from './authentication/signIn/component/signIn.component';
-import { ForgotComponent } from './authentication/forgot/forgot.component';
+import { ForgotComponent } from './authentication/forgot/component/forgot.component';
 import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
 import { AuthGuard } from './authentication/guard/auth.guard';
 import { AdminGuard } from './authentication/guard/admin.guard';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { AuthInterceptor } from './authentication/interceptor/auth.interceptor';
-
-import { EsqueciSenhaComponent } from './authentication/esquecisenha/esquecisenha.component';
 
 import { NavbarComponent } from './navigation/navbar/navbar.component';
 import { NoopAnimationsModule } from '@angular/platform-browser/animations';
@@ -42,7 +40,6 @@ import { VisualizarBeatComponent } from './pages/beats/components/visualizar/vis
     LoginComponent,
     SignInComponent,
     ForgotComponent,
-    EsqueciSenhaComponent,
 
     NavbarComponent,
     

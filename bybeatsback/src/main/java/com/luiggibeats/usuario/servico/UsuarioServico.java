@@ -126,7 +126,7 @@ public class UsuarioServico {
                         "</html>";
         EmailServico emailServico = new EmailServico();
         emailServico.sendEmail(usuario.getEmail(), "Recuperação de senha",body);
-        return usuario;
+        return this.usuarioRepositorio.save(usuario);
     }
 
 }
