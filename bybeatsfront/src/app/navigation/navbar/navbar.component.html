@@ -51,7 +51,7 @@
                                 <div class="menuOptions">
                                         <span><i class="fa-regular fa-heart"></i>Favoritos</span>
                                         <span><i class="fa-solid fa-clock-rotate-left"></i>Histórico</span>
-                                        <span><i class="fa-light fa-speakers"></i>Meus Beats</span>
+                                        <span (click)="myTracks()"><i class="fa-light fa-speakers"></i>Meus Beats</span>
                                         <span><i class="fa-regular fa-bag-shopping"></i>Histórico de Compras</span>
                                         <span><i class="fa-sharp fa-regular fa-user"></i>Minha Conta</span>
                                         <span (click)="disconnect()"><i class="fa-solid fa-arrow-right-from-bracket"></i>Sair</span>
@@ -96,5 +96,5 @@
 </nav>
 
 <div class="beatHeader" *ngIf="role == 'admin'">
-        <a id="beatHome" href="beats/register">Cadastrar Beats <i class="fa-solid fa-plus"></i></a>
+        <a id="beatHome" (click)="cadastrar('novo')">Cadastrar Beats <i class="fa-solid fa-plus"></i></a>
 </div> 
