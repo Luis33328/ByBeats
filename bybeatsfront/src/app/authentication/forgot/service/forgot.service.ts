@@ -20,7 +20,7 @@ export class ForgotService {
   public sendOTP(usuario: SignIn): Observable<any> {
     return this.http.put(environment.baseUrl + '/private/luiggibeats/usuario/atualizarOTP', usuario, { headers: this.HEADERS }).pipe(
       map(
-        data => data
+        data => data,
       )
     );
   }

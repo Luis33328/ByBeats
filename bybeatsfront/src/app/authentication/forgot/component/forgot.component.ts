@@ -44,14 +44,15 @@ export class ForgotComponent {
         var email = this.form.get('email').value;
         console.log(email);
 
+
        this.signInService.getByEmail(email).subscribe(ret => {
-        this.ForgotService.sendOTP(ret);
         console.log(ret)
         this.loading = false;
         this.errorMessage = false;
         this.successMessage = true;
+        this.ForgotService.sendOTP(ret).subscribe(ret => {
+          console.log(ret)});
 
-        //this.router.navigate(['']);
 ;      }, error => {
         console.log(error);
         this.loading = false;

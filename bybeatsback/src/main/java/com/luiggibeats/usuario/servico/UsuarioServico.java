@@ -24,6 +24,9 @@ public class UsuarioServico {
     @Autowired
     private UsuarioRepositorio usuarioRepositorio;
 
+    @Autowired
+    private EmailServico emailServico;
+
     public List<Usuario> listar() throws BusinessException {
         return this.usuarioRepositorio.findAll();
     }
@@ -124,8 +127,8 @@ public class UsuarioServico {
                         "    </div>\n" +
                         "</body>\n" +
                         "</html>";
-        EmailServico emailServico = new EmailServico();
-        emailServico.sendEmail(usuario.getEmail(), "Recuperação de senha",body);
+        String retorno = emailServico.sendEmail(usuario.getEmail(), "Recuperação de senha",body);
+        System.out.println(retorno);
         return this.usuarioRepositorio.save(usuario);
     }
 
