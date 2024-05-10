@@ -11,29 +11,37 @@
     <body>
         <div class="container-fluid">
             <div class="login">
-
+                <div class="returnToLogin" style="margin-left:3%;margin-top:2%;">
+                    <a href="/login" style="color:#901D1D">
+                        <i class="fas fa-arrow-left"> Voltar</i>
+                    </a>
+                </div>
                 <div class="formLogin">
                     <form [formGroup]="form">
                         <span id="loginTitle">Recuperar Senha</span>
 
                         <div class="formInputs">
                             <span class="inputSpan">E-mail de recuperação</span>
-                            <mat-form-field class="searchInput" style="width: 330px; ">
+                            <mat-form-field class="searchInput" style="width: 330px;">
                                 <mat-label></mat-label>
-                                <input matInput formControlName="email" name="email" placeholder="E-mail" autocomplete="off" style="border-bottom-right-radius: 0; border-top-right-radius: 0;"/>
-                                <mat-icon matSuffix (click)="enviarEmail()" style="font-size: 225%; color: #D8D8D8; background-color: #6d1212; height: 1.15em; cursor: pointer; border-radius: 6px; border-bottom-left-radius: 0; border-top-left-radius: 0;">send</mat-icon> 
-                            </mat-form-field> 
-                            <div class="error" *ngIf="errorMessage == true">
+                                <input matInput formControlName="email" name="email" placeholder="E-mail" autocomplete="off" style="border-bottom-right-radius: 0; border-top-right-radius: 0;" />
+                                <!--<mat-icon matSuffix (click)="enviarEmail()" style="font-size: 225%; color: #D8D8D8; background-color: #6d1212; height: 1.15em; cursor: pointer; border-radius: 6px; border-bottom-left-radius: 0; border-top-left-radius: 0;">send</mat-icon> -->
+                            </mat-form-field>
+
+                            <button (click)="enviarEmail()" style="margin-top: -5%; margin-bottom:4%;">Enviar Código de Recuperação</button>
+
+                            <div class="error" *ngIf="errorMessage">
                                 <span id="loginError">Email não cadastrado.</span>
                             </div>
-                            <div class="success" *ngIf="successMessage == true">
+                            <div class="success" *ngIf="successMessage">
                                 <span id="loginSuccess">Um email com instruções foi enviado.</span>
                             </div>
+
                             <span class="inputSpan">Código de uso único</span>
-                            <mat-form-field class="searchInput" style="width: 330px; ">
+                            <mat-form-field class="searchInput" style="width: 330px;">
                                 <mat-label></mat-label>
-                                <input matInput formControlName="codigoOTP" name="codigoOTP" placeholder="Código" autocomplete="off"/>
-                            </mat-form-field> 
+                                <input matInput formControlName="codigoOTP" name="codigoOTP" placeholder="Insira o código que você recebeu em seu e-mail" autocomplete="off" />
+                            </mat-form-field>
                         </div>
 
                     </form>
