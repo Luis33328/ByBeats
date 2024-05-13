@@ -32,10 +32,9 @@ public class Usuario {
     
     @Column(name = "IMAGEM")
     private String imagem;
-
-	@Column(name = "OTP")
-	private int otp;
-
+    
+    
+    
     public String getImagem() {
 		return imagem;
 	}
@@ -47,10 +46,6 @@ public class Usuario {
 	@Column(name = "CARRINHO")
     private Beat[] carrinho;
     
-
-	public Integer getOtp() {return otp;}
-
-	public void setOtp(Integer otp) {this.otp = otp;}
 
 	public String getRole() {
 		return role;

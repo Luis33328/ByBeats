@@ -21,6 +21,8 @@ import org.springframework.web.servlet.support.ServletUriComponentsBuilder;
 
 import com.luiggibeats.beat.modelo.Beat;
 import com.luiggibeats.beat.repositorio.BeatRepositorio;
+import com.luiggibeats.carrinho.modelo.Carrinho;
+import com.luiggibeats.usuario.modelo.Usuario;
 import com.luiggibeats.util.excecao.BusinessException;
 import com.luiggibeats.util.excecao.BusinessExceptionCode;
 
@@ -31,6 +33,10 @@ public class BeatServico {
     private BeatRepositorio beatRepositorio;
     
     public final String storageDirectoryPath = "C:\\Users\\luigg\\Desktop\\html\\luiggibeats\\luiggibeats\\luiggibeatsfront\\src\\assets\\uploads";
+    
+    public List<Beat> getMeusBeats(Usuario user){
+		return beatRepositorio.findByUsuario(user);
+	}
 
     public List<Beat> listar() throws BusinessException {
         return this.beatRepositorio.findAll();
@@ -68,7 +74,8 @@ public class BeatServico {
             if (StringUtils.isEmpty(beat.getWavUntagged())) {
                 throw new BusinessException(BusinessExceptionCode.WAV_UNTAGGED_OBRIGATORIO);
             }*/
-
+    	//Usuario user = beat.getUsuario();
+    	System.out.println(beat.getUsuario());
 
 
 

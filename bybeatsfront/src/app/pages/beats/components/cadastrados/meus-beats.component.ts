@@ -5,6 +5,8 @@ import { ActivatedRoute, Router } from '@angular/router';
 import { ConverterUtils } from 'src/app/common/converter.utils';
 import {NgxTinySliderSettingsInterface, NgxTinySliderComponent} from 'ngx-tiny-slider';
 import { BeatService } from '../../service/beat.service';
+import { SignIn } from 'src/app/authentication/signIn/model/signIn.model';
+import { SignInService } from '../../../../authentication/signIn/service/signIn.service';
 
 @Component({
   selector: 'app-meus-beats',
@@ -17,26 +19,41 @@ export class MeusBeatsComponent implements OnInit {
 
   public beats = [];
 
+  userModel:SignIn;
 
   constructor(
     private router: Router,
     private activeRoute: ActivatedRoute,
     private beatService: BeatService,
+    private usuarioService: SignInService,
     private snackBar: MatSnackBar) { }
 
   public ngOnInit() {
-    this.getBeats()
+    this.getLogged()
+    
   }
 
   private getBeats(){
-    this.beatService.listWithoutPaginator().subscribe(data => {
+    
+    this.beatService.getMeusBeats(this.userModel).subscribe(data => {
       this.beats = data;
       console.log(data);
     }, err => {
+      console.log(err)
       console.log("List Error.")
     });
   }
 
+  private getLogged() {
+    this.usuarioService.getByUsername().subscribe(data => {
+      this.userModel = data;
+      console.log(this.userModel)
+      this.getBeats()
+
+    }, err => {
+      console.log("eero");
+    });
+  }
 
   public view(event) {
     this.router.navigate(['/beat/' + event]);

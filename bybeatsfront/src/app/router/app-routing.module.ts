@@ -35,6 +35,7 @@ const routes: Routes = [
       { path: 'beats/catalog', component: PesquisarBeatComponent },
       { path: 'beat/:id', component: VisualizarBeatComponent },
       { path: 'beats/my-tracks', component: MeusBeatsComponent },
+      { path: 'beats/register/:id', component: CadastrarBeatComponent },
     ]
   },
   /*{
@@ -49,7 +50,7 @@ const routes: Routes = [
     component: LayoutComponent,
     canActivate: [AdminGuard],
     children: [
-      { path: 'beats/register/:id', component: CadastrarBeatComponent },
+      
       
     ]
   }
