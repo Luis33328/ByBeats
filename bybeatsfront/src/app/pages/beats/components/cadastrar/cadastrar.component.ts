@@ -7,6 +7,8 @@ import {NgxTinySliderSettingsInterface, NgxTinySliderComponent} from 'ngx-tiny-s
 import { SignInService } from '../../../../authentication/signIn/service/signIn.service';
 import { Beat } from '../../model/beat.model';
 import { BeatService } from '../../service/beat.service';
+import { SignIn } from 'src/app/authentication/signIn/model/signIn.model';
+import { NavbarComponent } from 'src/app/navigation/navbar/navbar.component';
 
 @Component({
   selector: 'app-cadastrar-beat',
@@ -21,6 +23,8 @@ export class CadastrarBeatComponent implements OnInit {
   stems: File = null;
   wavTagged: File = null;
   image: File = null;
+
+  user:SignIn;
 
   public guidBeat = '';
 
@@ -39,6 +43,7 @@ export class CadastrarBeatComponent implements OnInit {
     this.getUserRole();
     this.initializeForms()
     this.get();
+    //this.getLogged();
   }
 
   public get() {
@@ -48,8 +53,10 @@ export class CadastrarBeatComponent implements OnInit {
     if (this.guidBeat !== 'novo') {
       this.beatService.get(this.guidBeat).subscribe(data => {
         this.fillForms(data);
+        
       });
     }
+    this.getLogged();
   }
 
   public fillForms(beat: Beat) {
@@ -58,17 +65,16 @@ export class CadastrarBeatComponent implements OnInit {
     img.src = '../../../../../assets/uploads/' + beat.imagem;
 
     let untagged = document.getElementById('file-name2');
-    untagged.textContent = beat.wavUntagged;
-    this.wavTagged.src =
+    ////untagged.textContent = beat.wavUntagged;
     //this.wavUntagged = fetch('../../../../../assets/uploads/' + beat.wavUntagged); 
     //console.log(this.wavUntagged.name);
 
-    let stems = document.getElementById('file-name3');
-    stems.textContent = beat.stems;
+    //let stems = document.getElementById('file-name3');
+    ////stems.textContent = beat.stems;
   //  this.stems = fetch('../../../../../assets/uploads/' + beat.stems); 
 
-    let tagged = document.getElementById('file-name4');
-    tagged.textContent = beat.wavTagged;
+    //let tagged = document.getElementById('file-name4');
+    ////tagged.textContent = beat.wavTagged;
     //this.wavTagged = fetch('../../../../../assets/uploads/' + beat.wavTagged); 
 
     this.form.patchValue({
@@ -97,6 +103,17 @@ export class CadastrarBeatComponent implements OnInit {
 
     });
 }
+
+  private getLogged() {
+    this.usuarioService.getByUsername().subscribe(data => {
+      this.user = data;
+      console.log(this.user)
+
+    }, err => {
+      console.log("eero");
+    });
+  }
+
   
   getWavUntagged(event){
     this.wavUntagged = <File>event.target.files[0];
@@ -224,6 +241,7 @@ export class CadastrarBeatComponent implements OnInit {
         beat.precoUnlimited = this.form.get('precoUnlimited').value;
         beat.bpm = this.form.get('bpm').value;
         beat.nota = this.form.get('nota').value;
+        beat.usuario = this.user;
         
         this.beatService.save(beat).subscribe(
           (resp) => {

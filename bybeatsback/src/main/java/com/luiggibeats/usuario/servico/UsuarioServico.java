@@ -5,7 +5,6 @@ import java.util.List;
 import java.util.Optional;
 import java.util.Random;
 
-import com.luiggibeats.seguranca.servico.EmailServico;
 import org.apache.commons.lang3.StringUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
@@ -13,6 +12,7 @@ import org.springframework.data.domain.Pageable;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Service;
 
+import com.luiggibeats.seguranca.servico.EmailServico;
 import com.luiggibeats.usuario.modelo.Usuario;
 import com.luiggibeats.usuario.repositorio.UsuarioRepositorio;
 import com.luiggibeats.util.excecao.BusinessException;
@@ -58,26 +58,7 @@ public class UsuarioServico {
     public void deletar(Integer id) throws BusinessException {
         this.usuarioRepositorio.deleteById(id);
     }
-
-    public Usuario salvar(Usuario usuario) throws BusinessException {
-    	
-    	
-    	if (StringUtils.isEmpty(usuario.getLogin())) {
-            throw new BusinessException(BusinessExceptionCode.LOGIN_OBRIGATORIO);
-        }
-        if (StringUtils.isEmpty(usuario.getSenha())) {
-            throw new BusinessException(BusinessExceptionCode.SENHA_OBRIGATORIO);
-        }
-        if (StringUtils.isEmpty(usuario.getEmail())) {
-            throw new BusinessException(BusinessExceptionCode.EMAIL_OBRIGATORIO);
-        }
-        //usuario.setEmail(usuario.getLogin());
-        usuario.setSenha(new BCryptPasswordEncoder().encode(usuario.getSenha()));
-        usuario.setRole("user");
-        
-        return this.usuarioRepositorio.save(usuario);
-    }
-
+    
     public Usuario envioEmailOTP(Usuario usuario) throws BusinessException {
         Random rand = new Random();
         int num = rand.nextInt(90000) + 10000;
@@ -129,6 +110,25 @@ public class UsuarioServico {
                         "</html>";
         String retorno = emailServico.sendEmail(usuario.getEmail(), "Recuperação de senha",body);
         System.out.println(retorno);
+        return this.usuarioRepositorio.save(usuario);
+    }
+
+    public Usuario salvar(Usuario usuario) throws BusinessException {
+    	
+    	
+    	if (StringUtils.isEmpty(usuario.getLogin())) {
+            throw new BusinessException(BusinessExceptionCode.LOGIN_OBRIGATORIO);
+        }
+        if (StringUtils.isEmpty(usuario.getSenha())) {
+            throw new BusinessException(BusinessExceptionCode.SENHA_OBRIGATORIO);
+        }
+        if (StringUtils.isEmpty(usuario.getEmail())) {
+            throw new BusinessException(BusinessExceptionCode.EMAIL_OBRIGATORIO);
+        }
+        //usuario.setEmail(usuario.getLogin());
+        usuario.setSenha(new BCryptPasswordEncoder().encode(usuario.getSenha()));
+        usuario.setRole("user");
+        
         return this.usuarioRepositorio.save(usuario);
     }
 

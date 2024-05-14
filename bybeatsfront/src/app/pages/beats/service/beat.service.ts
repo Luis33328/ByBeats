@@ -50,6 +50,14 @@ export class BeatService {
     );
   }
 
+  public getMeusBeats(user:SignIn): Observable<any> {
+    return this.http.post(environment.baseUrl + '/private/luiggibeats/beat/getMeusBeats/', user, { headers: this.HEADERS }).pipe(
+      map(
+        data => data
+      )
+    );
+  }
+
   public list(filter: GenericFilter): Observable<any> {
     return this.http.post(environment.baseUrl + '/private/luiggibeats/beat/listar/page', filter, { headers: this.HEADERS }).pipe(
       map(

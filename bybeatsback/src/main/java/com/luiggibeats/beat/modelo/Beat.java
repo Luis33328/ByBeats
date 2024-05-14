@@ -1,6 +1,9 @@
 package com.luiggibeats.beat.modelo;
 
 import javax.persistence.*;
+
+import com.luiggibeats.usuario.modelo.Usuario;
+
 import java.util.Date;
 
 @Entity
@@ -51,8 +54,19 @@ public class Beat {
     @Column(name = "SELECTED")
     private Integer selected;
     
-    
-    public Integer getSelected() {
+    @OneToOne
+    //@Column(name = "USUARIO")
+    private Usuario usuario;
+
+	public Usuario getUsuario() {
+		return usuario;
+	}
+
+	public void setUsuario(Usuario usuario) {
+		this.usuario = usuario;
+	}
+
+	public Integer getSelected() {
 		return selected;
 	}
 
