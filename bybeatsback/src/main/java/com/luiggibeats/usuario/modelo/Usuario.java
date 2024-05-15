@@ -34,7 +34,7 @@ public class Usuario {
     private String imagem;
     
     @Column(name = "OTP")
-	private int otp;
+	private Integer otp;
     
     
     
