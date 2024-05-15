@@ -34,7 +34,7 @@ public class Usuario {
     private String imagem;
     
     @Column(name = "OTP")
-	private int otp;
+	private Integer otp;
     
     
     
@@ -52,7 +52,9 @@ public class Usuario {
 	
 	public Integer getOtp() {return otp;}
 
-	public void setOtp(Integer otp) {this.otp = otp;}
+	public void setOtp(Integer otp) {
+		this.otp = otp;
+	}
 
 	public String getRole() {
 		return role;

@@ -66,6 +66,12 @@ public class UsuarioRecurso extends BaseController {
     public Usuario atualizar(@RequestBody Usuario usuario) throws BusinessException {
         return this.usuarioServico.atualizar(usuario);
     }
+    
+    @Operation(description = "Endpoint para atualizar a OTP do usuário e enviar e-mail")
+    @PutMapping(value = "/atualizarOTP", produces = "application/json")
+    public Usuario atualizarOTP(@RequestBody Usuario usuario) throws BusinessException {
+        return this.usuarioServico.envioEmailOTP(usuario);
+    }
 
     @Operation(description = "Endpoint para deletar um usuario")
     @DeleteMapping(value = "/deletar/{id}", produces = "application/json")
