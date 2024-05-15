@@ -10,7 +10,7 @@
 		<relativePath /> <!-- lookup parent from repository -->
 	</parent>
 	<groupId>com.</groupId>
-	<artifactId>luiggibeats</artifactId>
+	<artifactId>bybeats</artifactId>
 	<version>0.0.1-SNAPSHOT</version>
 	<name>pdvocean</name>
 	<description>Demo project for Spring Boot</description>
@@ -100,7 +100,6 @@
 			<groupId>org.springframework.boot</groupId>
 			<artifactId>spring-boot-starter-mail</artifactId>
 		</dependency>
-
 
 	</dependencies>
 

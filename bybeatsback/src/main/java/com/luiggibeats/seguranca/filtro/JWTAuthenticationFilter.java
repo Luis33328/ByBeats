@@ -36,7 +36,6 @@ public class JWTAuthenticationFilter extends /*GenericFilterBean*/ OncePerReques
 	    String path = request.getRequestURI();
 	    String listar = "/listar";
 	    String buscar = "PorId";
-
 	    return path.contains(listar) || path.contains(buscar);
 	}
 
