@@ -1,0 +1,192 @@
+.catalog{
+    display: flex;
+    margin-top: 65px;
+    color: #D8D8D8;
+}
+
+h1{
+    font-size: 35px;
+}
+
+
+a{
+    text-decoration: none;
+    transition: .3s;
+}
+
+.beatsLeft{
+    width: 360px;
+    height: 700px;
+    background-color: #1D1D1D;
+    border-radius: 16px;
+    margin-left: 2%;
+
+}
+
+.beatsRight{
+    margin-left: 5%;
+    margin-top: 15px;
+}
+
+
+.details{
+    color: #8F8F8F;
+    font-size: 12px;
+    font-weight: 600;
+    margin-left: 155px;
+    margin-bottom: 10px;
+    margin-top: 45px;
+}
+
+#detTime{
+    margin-left: 508px;
+}
+
+#detBPM{
+    margin-left: 82px;
+}
+
+#detTags{
+    margin-left: 100px;
+}
+
+.beats{
+    margin-left: 20px;
+}
+
+.beatRow{
+    display: flex;
+    width: 1400px;
+    height: 65px;
+    margin-bottom: 20px;
+    background-color: #1B1B1B;
+    transition: .2s;
+}
+
+.beatRow img{
+    border-radius: 4px;
+    margin-left: 28px;
+    transition: .2s;
+}
+
+#guid{
+    display: inline-block;
+    color: #979797;
+    font-size: 18px;
+    margin-top: 20px;
+    margin-left: 30px;
+}
+
+#title{
+    color: #D8D8D8;
+    width: 530px;
+    font-size: 18px;
+    margin-top: 20px;
+    margin-left: 25px;
+   // background-color: #901D1D;
+
+}
+
+#title:hover{
+    color: #e0e0e0;
+    cursor: pointer;
+}
+
+.rowDet{
+    color: #949494;
+    margin-top: 21px;
+    font-size: 17px;
+
+}
+
+#time{
+    width: 142px;
+    //background-color: #901D1D;
+}
+
+#bpm{
+width: 130px;
+}
+
+
+#tag1{
+    display: inline-block;
+    white-space: nowrap; 
+    overflow: hidden;
+    text-overflow: ellipsis; 
+    width: 70px;
+    //background-color: red;
+    margin-right: 8px;
+}
+
+#tag2{
+    display: inline-block;
+    white-space: nowrap; 
+    overflow: hidden;
+    text-overflow: ellipsis; 
+    width: 65px;
+    //background-color: red;
+    margin-right: 8px;
+}
+
+
+.beatIcons{
+    font-size: 26px;
+    margin-top: 13px;
+    margin-left: 23px;
+    
+}
+
+.beatIcons a {
+    display: inline-block;
+    color: #9F9F9F;
+    margin-right: 30px;
+    transition: .3s;
+}
+
+.beatIcons a:hover {
+    color: #b9b9b9;
+}
+
+#buyButton{
+    display: inline-block;
+    width: 120px;
+    height: 40px;
+    background-color: #901D1D;
+    transition: .3s;
+    font-weight: 400;
+    font-size: 17px;
+    color: #D8D8D8;
+    border-radius: 8px;
+    text-align: center;
+    padding-top: 5px;
+    margin-top:10px;
+}
+
+#buyButton:hover{
+    background-color: #a12525;
+    cursor: pointer;
+}
+
+#buyButton i {
+    margin-right: 5px;
+}
+
+#playCatalog{
+    font-size: 25px;
+    position: absolute;
+    margin-left: -46px;
+    margin-top: 15px;
+    cursor: pointer;
+    color: #00000000;
+    transition: .3s;
+    
+}
+
+.beatImage:hover img{
+    opacity: .9;
+}
+
+.beatImage:hover #playCatalog{
+    color: #D8D8D8;
+}

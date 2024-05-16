@@ -116,6 +116,14 @@ export class NavbarComponent implements OnInit  {
     this.router.navigate(["/beats/my-tracks"])
   }
 
+  public profile(){
+    this.router.navigate(["/user/profile"])
+  }
+
+  public favorites(){
+    this.router.navigate(["/beats/favoritos"])
+  }
+
   private getLogged() {
     this.usuarioService.getByUsername().subscribe(data => {
       this.user = data.login;

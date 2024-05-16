@@ -32,6 +32,10 @@ import { PesquisarBeatComponent } from './pages/beats/components/pesquisar/pesqu
 import { VisualizarBeatComponent } from './pages/beats/components/visualizar/visualizar.component';
 import { MeusBeatsComponent } from './pages/beats/components/cadastrados/meus-beats.component';
 
+import { PerfilComponent } from './pages/usuario/components/pesquisar/perfil.component';
+
+import { FavoritosComponent } from './pages/beats/components/favoritos/favoritos.component';
+
 
 @NgModule({
   declarations: [
@@ -49,7 +53,9 @@ import { MeusBeatsComponent } from './pages/beats/components/cadastrados/meus-be
     CadastrarBeatComponent,
     PesquisarBeatComponent,
     VisualizarBeatComponent,
-    MeusBeatsComponent
+    MeusBeatsComponent,
+    PerfilComponent,
+    FavoritosComponent
 
   ],
   entryComponents: [

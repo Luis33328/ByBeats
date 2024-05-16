@@ -1,0 +1,44 @@
+<div class="catalog">
+    <div class="beatsLeft">
+        <div class="profDetails">
+            <img id="profileImg" src="../../../../../assets/images/default.png" />
+            <span id="profUser">{{user}}</span>
+
+            <span id="editProfile"><i class="fa-solid fa-pen"></i>Editar perfil</span>
+
+            <div class="profDown">
+                <div class="profStatus">
+                    <span class="profDetSpan">STATUS</span>
+
+                    <div class="profFurther">
+                        <span class="profFurtherSpan">Seguidores</span>
+                        <span class="profFurtherSpan">Plays</span>
+                        <span class="profFurtherSpan">Tracks</span>
+                    </div>
+                </div>
+
+                <div class="profAbout">
+                    <span class="profDetSpan">SOBRE</span>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="beatsRight">
+        <h1>Tracks</h1>
+        <div class="profileTracks">
+            
+                <div class="item" *ngFor="let beat of beats">
+                    <div  class="slideImg img-1">
+                        <img (click)="getId(beat)"  src="../../../../assets/uploads/{{beat.imagem}}">
+                        <span id="playRegular"><i class="fa-regular fa-circle-play"></i></span>
+                    </div>
+                    <div class="likedFurther">
+                        <a (click)="getId(beat)"  id="likedTitle">{{beat.titulo}}</a>
+                        <span id="likedFurther">{{beat.nota}} | {{beat.bpm}}BPM</span>
+                    </div>
+                </div>
+                
+
+        </div>
+    </div>
+</div>

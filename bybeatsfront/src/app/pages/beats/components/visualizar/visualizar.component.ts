@@ -15,6 +15,7 @@ import { Usuario } from 'src/app/pages/usuario/model/usuario.model';
 import { SignIn } from 'src/app/authentication/signIn/model/signIn.model';
 import { Carrinho } from '../../model/Carrinho.model';
 import { NavbarComponent } from 'src/app/navigation/navbar/navbar.component';
+import { Favorito } from '../../model/Favorito.model';
 
 @Component({
   selector: 'app-visualizar-beat',
@@ -44,7 +45,9 @@ export class VisualizarBeatComponent implements OnInit {
 
   public onCart = false;
 
+  public onFavorites = false;
 
+  public favorites = []
 
   productOrders: ProductOrder[] = [];
   beats: Beat[] = [];
@@ -65,6 +68,7 @@ export class VisualizarBeatComponent implements OnInit {
     this.getParam();
     
     this.getLogged();
+    
   }
 
 
@@ -134,6 +138,7 @@ export class VisualizarBeatComponent implements OnInit {
       this.userLogged = data
       console.log(data);
       this.getBeat();
+      this.getFavorite();
       
 
     }, err => {
@@ -157,6 +162,63 @@ export class VisualizarBeatComponent implements OnInit {
         console.log(err);
       }
     );
+  }
+
+  public getFavorite(){
+    let favorite = new Favorito();
+    favorite.usuario = this.userLogged;
+    this.beatService.checkFavorito(this.guidBeat, favorite).subscribe(
+      data =>{
+        console.log(data);
+        if(data != null){
+          this.onFavorites = true;
+        }
+      },
+      err =>{
+        console.log(err);
+      }
+    );
+  }
+
+  public addToFavorites(guidBeat){
+    //console.log(guidBeat)
+    let favorite = new Favorito();
+    favorite.usuario = this.userLogged;
+
+    this.beatService.addAosFavoritos(guidBeat, favorite).subscribe(
+      data => {
+        //alert("adicionou");
+        location.reload();
+        console.log(data);
+      }, err => {
+        console.log(err);
+      }
+    );
+  }
+
+  public deleteFavorite(guidBeat){
+    //console.log(guidBeat)
+    let favorite = new Favorito();
+    favorite.usuario = this.userLogged;
+
+    this.beatService.deleteFavorito(guidBeat, favorite).subscribe(
+      data => {
+        //alert("adicionou");
+        location.reload();
+        console.log(data);
+      }, err => {
+        console.log(err);
+      }
+    );
+  }
+
+  public changeFavorite(){
+    if(this.onFavorites == false){
+      this.addToFavorites(this.guidBeat);
+    }
+    else{
+      this.deleteFavorite(this.guidBeat);
+    }
   }
 
   public getBeatPrice(guidBeat){

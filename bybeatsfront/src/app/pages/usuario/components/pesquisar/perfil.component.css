@@ -1,0 +1,175 @@
+.catalog{
+    display: flex;
+    margin-top: 65px;
+    color: #D8D8D8;
+}
+
+h1{
+    font-size: 30px;
+}
+
+
+a{
+    text-decoration: none;
+    transition: .3s;
+}
+
+.beatsLeft{
+    width: 360px;
+    height: 700px;
+    background-color: #1D1D1D;
+    border-radius: 16px;
+    margin-left: 10%;
+
+}
+
+.beatsRight{
+    margin-left: 45px;
+    margin-top: 15px;
+}
+
+.profDetails{
+    margin-top: 30px;
+}
+
+#profileImg{
+    border-radius: 50%;
+    width: 120px;
+    height: auto;
+    margin-left: 120px;
+}
+
+#profUser{
+    display: block;
+    color: #D8D8D8;
+    font-size: 22px;
+    text-align: center;
+    margin-top: 15px;
+}
+
+#editProfile{
+    display: block;
+    width: 300px;
+    height: 38px;
+    background-color: #901D1D;
+    border-radius: 5px;
+    text-align: center;
+    font-size: 18px;
+    padding-top: 5px;
+    transition: .3s;
+    margin-top: 35px;
+    margin-left: 30px;
+}
+
+#editProfile i{
+    margin-right: 8px;
+    
+}
+
+#editProfile:hover{
+    cursor: pointer;
+    background-color: #a52828;
+}
+
+.profDown{
+    margin-top: 50px;
+    margin-left: 30px;
+}
+
+.profStatus{
+    border-bottom: rgb(100, 100, 100) 1px solid;
+    width: 300px;
+}
+
+.profDetSpan{
+    display: block;
+    font-size: 13px;
+    color:rgb(100, 100, 100);
+    font-weight: 700;
+}
+
+.profFurther{
+    display: block;
+    margin-top: 15px;
+    margin-bottom: 20px;
+
+}
+
+.profFurtherSpan{
+    display: block;
+    font-size: 16px;
+    margin-top: 10px;
+    color: rgb(167, 167, 167);
+}
+
+.profAbout{
+    margin-top: 30px;
+}
+
+
+/*Tracks*/
+
+.profileTracks{
+    margin-top: 35px;
+    display: flex;
+    flex-wrap: wrap;
+    width: 1050px;
+}
+
+.item{
+    margin-right: 130px;
+    margin-bottom: 50px;
+}
+
+
+#likedTitle{
+    display: inline-block;
+    font-size: 20px;
+    color: #D8D8D8;
+    transition: .3s;
+}
+
+#likedTitle:hover{
+    color: #e4e4e4;
+}
+
+#likedFurther{
+    display: block;
+    font-size: 12px;
+    color: #ACACAC;
+    margin-top: 5px;
+    margin-left: 2px;
+}
+
+
+
+.slideImg:hover{
+    cursor: pointer;
+}
+
+.slideImg:hover img{
+    opacity: .7;
+}
+
+.slideImg:hover #playRegular{
+    color: rgb(228, 228, 228);
+}
+
+#playRegular{
+    display: inline-block;
+    font-size: 35px;
+    color: #00000000;
+    margin-left: -130px;
+    position: relative;
+    top: 15px;
+    transition: .2s;
+}
+
+
+.slideImg img{
+    width: 220px;
+    height: 220px;
+    border-radius: 4px;
+}
+
+
