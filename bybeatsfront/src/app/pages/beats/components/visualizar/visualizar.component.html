@@ -3,8 +3,15 @@
         <img src="../../../../../assets/uploads/{{beat.imagem}}" width="240" height="240"/>
         <span id="beatTitle">{{beat.titulo}}</span>
 
+        <a href="" id="beatAuthor">{{beat.usuario.login}}</a>
 
-        <a href="../../../../../assets/uploads/{{beat.wavTagged}}" download ><i class="fa-regular fa-arrow-down-to-line"></i>Download</a>
+        <div class="beatActions">
+            <span (click)="changeFavorite()" *ngIf="onFavorites == false" id="like"><i class="fa-regular fa-heart"></i></span>
+            <span (click)="changeFavorite()" *ngIf="onFavorites == true" id="liked"><i class="fa-solid fa-heart"></i></span>
+        </div>
+
+
+        <a id="downloadBtn" href="../../../../../assets/uploads/{{beat.wavTagged}}" download ><i class="fa-regular fa-arrow-down-to-line"></i>Download</a>
 
         <div class="beatDetails">
             <span id="inf">INFORMAÇÕES</span>

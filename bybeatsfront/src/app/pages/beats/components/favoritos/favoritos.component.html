@@ -1,0 +1,38 @@
+<div class="catalog">
+
+    <div class="beatsRight">
+        <h1>Favoritos</h1>
+        <div class="beats">
+            <div class="details">
+                <span id="detTitle">TITULO</span>
+                <span id="detTime">DURAÇÃO</span>
+                <span id="detBPM">BPM</span>
+                <span id="detTags">TAGS</span>
+            </div>
+            <div class="beatRow" *ngFor="let fav of beats">
+                <span id="guid">{{fav.beat.guidBeat + 1}}</span>
+                <div class="beatImage">
+                    <img src="../../../../../assets/uploads/{{fav.beat.imagem}}" width="65" height="65" />
+                    <span id="playCatalog"><i class="fa-regular fa-circle-play"></i></span>
+                </div>
+                
+                <a (click)="getId(fav.beat)" id="title">{{fav.beat.titulo}}</a>
+
+                <span class="rowDet" id="time">3:28</span>
+
+                <span class="rowDet" id="bpm">{{fav.beat.bpm}}</span>
+
+                <span class="rowDet" id="tags"><span id="tag1">#lil peep</span><span id="tag2">#hip hop</span></span>
+
+
+                <div class="beatIcons">
+                    <a href=""><i class="fa-regular fa-share-nodes"></i></a>
+                    <a href=""><i class="fa-regular fa-arrow-down-to-line"></i></a>
+                </div>
+
+                <a href="" id="buyButton">$ {{fav.beat.precoBasic}},00</a>
+
+            </div>
+        </div>
+    </div>
+</div>

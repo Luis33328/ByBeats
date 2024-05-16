@@ -8,6 +8,7 @@ import { Beat } from '../model/beat.model';
 import { Usuario } from '../../usuario/model/usuario.model';
 import { SignIn } from 'src/app/authentication/signIn/model/signIn.model';
 import { Carrinho } from '../model/Carrinho.model';
+import { Favorito } from '../model/Favorito.model';
 
 @Injectable({
   providedIn: 'root'
@@ -21,6 +22,45 @@ export class BeatService {
 
   constructor(private http: HttpClient) { }
 
+  public addAosFavoritos(guidBeat, favorito:Favorito): Observable<any> {
+
+
+    return this.http.post(environment.baseUrl + '/private/luiggibeats/favoritos/addFavorito/' + guidBeat, favorito, { headers: this.HEADERS }).pipe(
+      map(
+        data => data
+      )
+    );
+  }
+
+  public checkFavorito(guidBeat, favorito:Favorito): Observable<any> {
+
+
+    return this.http.post(environment.baseUrl + '/private/luiggibeats/favoritos/checkFavorito/' + guidBeat, favorito, { headers: this.HEADERS }).pipe(
+      map(
+        data => data
+      )
+    );
+  }
+
+  public deleteFavorito(guidBeat, favorito:Favorito): Observable<any> {
+
+
+    return this.http.post(environment.baseUrl + '/private/luiggibeats/favoritos/deletarFavorito/' + guidBeat, favorito, { headers: this.HEADERS }).pipe(
+      map(
+        data => data
+      )
+    );
+  }
+
+  public getFavoritos(user:SignIn): Observable<any> {
+    return this.http.post(environment.baseUrl + '/private/luiggibeats/favoritos/getFavoritos/', user, { headers: this.HEADERS }).pipe(
+      map(
+        data => data
+      )
+    );
+  }
+
+
   public getBeatPrice(guidBeat, cart:Carrinho): Observable<any> {
 
 
@@ -30,7 +70,6 @@ export class BeatService {
       )
     );
   }
-
 
   public addAoCarrinho(guidBeat, cart:Carrinho): Observable<any> {
 

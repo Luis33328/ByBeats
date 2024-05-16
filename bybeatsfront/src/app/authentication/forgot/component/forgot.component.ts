@@ -32,7 +32,8 @@ export class ForgotComponent {
 
     public initializeForms() {
         this.form = new FormGroup({
-          email: new FormControl('')
+          email: new FormControl(''),
+          codigoOTP: new FormControl(''),
     
         });
       }

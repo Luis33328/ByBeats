@@ -39,7 +39,7 @@ a{
     margin-top: 25px;
 }
 
-.beatsLeft a{
+#downloadBtn{
  display: block;
  width: 290px;
  height: 35px;
@@ -54,8 +54,7 @@ a{
  padding-top: 4px;
 
 }
-
-.beatsLeft a:hover{
+#downloadBtn:hover{
     background-color: #333333;
     color: #dddddd;
 }
@@ -254,4 +253,43 @@ a i {
     background-color: #901D1D;
     margin-top: 45px;
     margin-left: 175px;
+}
+
+#beatAuthor{
+    display: block;
+    text-align: center;
+    width: 100%;
+    color: #8F8F8F;
+    margin-top: 5px;
+    transition: .3s;
+}
+
+#beatAuthor:hover{
+    text-decoration: underline;
+}
+
+.beatActions{
+    margin-top: 25px;
+    font-size: 22px;
+}
+
+#like{
+    display: block;
+    text-align: center;
+    transition: .3s;
+}
+
+#like:hover{
+    cursor: pointer;
+}
+
+#liked{
+    display: block;
+    text-align: center;
+    transition: .3s;
+    color: #bd2323;
+}
+
+#liked:hover{
+    cursor: pointer;
 }
