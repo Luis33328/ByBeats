@@ -54,6 +54,10 @@ public class UsuarioServico {
         usuario.setSenha(new BCryptPasswordEncoder().encode(usuario.getSenha()));
         return this.usuarioRepositorio.save(usuario);
     }
+    
+    public Usuario editar(Usuario usuario) throws BusinessException {
+        return this.usuarioRepositorio.save(usuario);
+    }
 
     public void deletar(Integer id) throws BusinessException {
         this.usuarioRepositorio.deleteById(id);

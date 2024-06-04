@@ -11,7 +11,7 @@ import { PesquisarPAutorizadaComponent } from '../pages/autorizados/components/p
 import { CadastrarPAutorizadaComponent } from '../pages/autorizados/components/cadastrar/cadastrar.component';
 
 import { CadastrarUsuarioComponent } from '../pages/usuario/components/cadastrar/cadastrar.component';
-import { PerfilComponent } from '../pages/usuario/components/pesquisar/perfil.component';
+import { PerfilComponent } from '../pages/usuario/components/perfil/perfil.component';
 import { HomeComponent } from '../pages/home/components/home.component';
 import { SignInComponent } from '../authentication/signIn/component/signIn.component';
 import { AdminGuard } from '../authentication/guard/admin.guard';
@@ -20,6 +20,7 @@ import { PesquisarBeatComponent } from '../pages/beats/components/pesquisar/pesq
 import { VisualizarBeatComponent } from '../pages/beats/components/visualizar/visualizar.component';
 import { MeusBeatsComponent } from '../pages/beats/components/cadastrados/meus-beats.component';
 import { FavoritosComponent } from '../pages/beats/components/favoritos/favoritos.component';
+import { EditarPerfilComponent } from '../pages/usuario/components/editar-perfil/editar-perfil.component';
 
 
 const routes: Routes = [
@@ -45,6 +46,7 @@ const routes: Routes = [
       { path: 'beats/my-tracks', component: MeusBeatsComponent },
       { path: 'beats/register/:id', component: CadastrarBeatComponent },
       { path: 'user/profile', component: PerfilComponent },
+      { path: 'user/edit-profile', component: EditarPerfilComponent },
       { path: 'beats/favoritos', component: FavoritosComponent },
     ]
   },

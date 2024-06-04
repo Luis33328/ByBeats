@@ -7,4 +7,11 @@ export class SignIn {
     public senha: String;
     public email: String;
 
+    public nome: String;
+    public sobrenome: String;
+    public cpf: String;
+    public sobre: String;
+
+    public imagem: String;
+q
 }

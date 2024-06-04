@@ -32,7 +32,9 @@ import { PesquisarBeatComponent } from './pages/beats/components/pesquisar/pesqu
 import { VisualizarBeatComponent } from './pages/beats/components/visualizar/visualizar.component';
 import { MeusBeatsComponent } from './pages/beats/components/cadastrados/meus-beats.component';
 
-import { PerfilComponent } from './pages/usuario/components/pesquisar/perfil.component';
+import { PerfilComponent } from './pages/usuario/components/perfil/perfil.component';
+
+import { EditarPerfilComponent } from './pages/usuario/components/editar-perfil/editar-perfil.component';
 
 import { FavoritosComponent } from './pages/beats/components/favoritos/favoritos.component';
 
@@ -55,7 +57,8 @@ import { FavoritosComponent } from './pages/beats/components/favoritos/favoritos
     VisualizarBeatComponent,
     MeusBeatsComponent,
     PerfilComponent,
-    FavoritosComponent
+    FavoritosComponent,
+    EditarPerfilComponent
 
   ],
   entryComponents: [

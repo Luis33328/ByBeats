@@ -41,6 +41,14 @@ export class SignInService {
     );
   }
 
+  public edit(usuario: SignIn): Observable<any> {
+    return this.http.post(environment.baseUrl + '/private/luiggibeats/usuario/editar', usuario, { headers: this.HEADERS }).pipe(
+      map(
+        data => data
+      )
+    );
+  }
+
   public get(id): Observable<any> {
     return this.http.get(environment.baseUrl + '/private/luiggibeats/usuario/buscarPorId/' + id, { headers: this.HEADERS }).pipe(
       map(
