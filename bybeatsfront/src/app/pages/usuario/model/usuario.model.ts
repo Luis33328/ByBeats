@@ -9,4 +9,6 @@ export class Usuario {
     public perfil: String;
     public status: String;
 
+    
+
 }

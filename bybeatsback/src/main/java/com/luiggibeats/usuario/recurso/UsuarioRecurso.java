@@ -60,6 +60,12 @@ public class UsuarioRecurso extends BaseController {
     public Usuario salvar(@RequestBody Usuario usuario) throws BusinessException {
         return this.usuarioServico.salvar(usuario);
     }
+    
+    @Operation(description = "Endpoint para editar um usuario")
+    @PostMapping(value = "/editar", produces = "application/json")
+    public Usuario editar(@RequestBody Usuario usuario) throws BusinessException {
+        return this.usuarioServico.editar(usuario);
+    }
 
     @Operation(description = "Endpoint para atualizar um usuario")
     @PutMapping(value = "/atualizar", produces = "application/json")

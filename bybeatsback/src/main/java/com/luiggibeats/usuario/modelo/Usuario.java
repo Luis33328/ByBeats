@@ -38,8 +38,60 @@ public class Usuario {
 	private Integer otp;
     
     
+    @Column(name = "NOME")
+    private String nome;
+
+    @Column(name = "SOBRENOME")
+    private String sobrenome;
     
-    public String getImagem() {
+    @Column(name = "CPF")
+    private String cpf;
+    
+    @Column(name = "SOBRE")
+    private String sobre;
+    
+    
+    public String getNome() {
+		return nome;
+	}
+
+	public void setNome(String nome) {
+		this.nome = nome;
+	}
+
+	public String getSobrenome() {
+		return sobrenome;
+	}
+
+	public void setSobrenome(String sobrenome) {
+		this.sobrenome = sobrenome;
+	}
+
+	public String getCpf() {
+		return cpf;
+	}
+
+	public void setCpf(String cpf) {
+		this.cpf = cpf;
+	}
+
+	public String getSobre() {
+		return sobre;
+	}
+
+	public void setSobre(String sobre) {
+		this.sobre = sobre;
+	}
+
+	public Beat[] getCarrinho() {
+		return carrinho;
+	}
+
+	public void setCarrinho(Beat[] carrinho) {
+		this.carrinho = carrinho;
+	}
+
+	public String getImagem() {
 		return imagem;
 	}
 

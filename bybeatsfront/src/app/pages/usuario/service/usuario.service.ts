@@ -42,6 +42,14 @@ export class UsuarioService {
     );
   }
 
+  public edit(usuario: Usuario): Observable<any> {
+    return this.http.post(environment.baseUrl + '/private/pdvocean/usuario/editar', usuario, { headers: this.HEADERS }).pipe(
+      map(
+        data => data
+      )
+    );
+  }
+
   public get(id): Observable<any> {
     return this.http.get(environment.baseUrl + '/private/pdvocean/usuario/buscarPorId/' + id, { headers: this.HEADERS }).pipe(
       map(

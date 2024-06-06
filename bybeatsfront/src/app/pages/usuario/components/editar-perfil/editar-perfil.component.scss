@@ -1,0 +1,228 @@
+
+.newBeat{
+    margin-left: 10%;
+    margin-top: 60px;
+    color: #D8D8D8;
+}
+
+.newBeat h1{
+    font-size: 40px;
+    margin-bottom: 60px;
+}
+
+#genTitle{
+    display: inline-block;
+    font-size: 25px;
+    margin-bottom: 15px;
+}
+
+
+.profileForms{
+    display: flex;
+    flex-wrap: wrap;
+    width: 940px;
+    margin-left: 18%;
+    //background-color: rgb(34, 34, 34);
+}
+    
+
+.formInputs{
+    display: flex;
+    flex-wrap: wrap;
+    width: 940px;
+    padding-top: 20px;
+
+}
+
+.inputSpan{
+    display: block;
+    font-size: 14px;
+    font-weight: 600;
+    margin-top: 30px;
+}
+
+.field{
+    display: block;
+    margin-right: 50px;
+}
+
+
+
+input{
+
+    width: 800px;
+    height: 45px;
+    background-color: #252525;
+    text-indent: 10px;
+    color: #a3a3a3;
+    border-radius: 6px;
+    caret-color: #a3a3a3;
+    transition: .3s;
+    
+}
+
+
+::placeholder{
+    color: #7D7D7D;
+    font-size: 14px;
+}
+
+textarea{
+    resize: none;
+    height: 100px;
+    background-color: #252525;
+    text-indent: 10px;
+    color: #a3a3a3;
+    border-radius: 6px;
+    caret-color: #a3a3a3;
+    transition: .3s;
+}
+
+
+::ng-deep .mat-form-field.mat-focused .mat-form-field-underline {
+    display: none;
+  }
+
+::ng-deep .mat-form-field-underline {
+    display: none;
+}
+
+
+button{
+    width: 175px;
+    height: 40px;
+    background-color: #7D1515;
+    border-radius: 6px;
+    border: 0;
+    color: #D8D8D8;
+    margin-top: 20px;
+    transition: .3s;
+    font-size: 15px;;
+
+}
+
+button:hover{
+    background-color: #6d1212;
+    color: #c9c9c9;
+}
+
+
+.loginBottom{
+    font-size: 12px;
+    font-weight: 600;
+
+    position: relative;
+    left: -70px;
+    margin-bottom: 20px;
+}
+
+.loginBottom a {
+    text-decoration: none;
+    color: rgb(173, 41, 41);
+    margin-top: 5px;
+    float: right;
+    transition: .3s;
+}
+
+.loginBottom a:hover {
+    color: rgb(199, 52, 52);
+}
+
+::ng-deep e-input-group-icon.e-date-icon{
+    font-size: 50px;
+}
+
+
+.fileInputs{
+    margin-left: 70px;
+    margin-top: 50px;
+}
+
+
+
+
+
+.imageInput{
+    margin-left: 355px;
+    margin-bottom: 30px;
+}
+
+.imageInput input[type='file'] {
+    display: none;
+}
+  
+.imageInput label {
+    width: 150px;
+    height: 38px;
+    display: block;
+    background-color: #911e1a;
+    border-radius: 8px;
+    color: #D8D8D8;
+    text-align: center;
+    padding-top: 8px;
+    font-size: 15px;
+    transition: .3s;
+    margin-top: 30px;
+    margin-left: -5px;
+}
+  
+.imageInput label:hover {
+    background-color: #a32b27;
+    cursor: pointer;
+}
+
+#profImage {
+    width: 140px;
+    height: 140px;
+    text-decoration: none;
+    border-radius: 50%;
+    border: solid 3px #3b3b3b;
+    
+}
+
+
+//pt2
+
+#detailsTitle{
+    display: inline-block;
+    font-size: 25px;
+    margin-bottom: 15px;
+    margin-top: 20px;
+}
+
+
+.furtherDetails{
+    display: flex;
+    width: 1500px;
+    height: 550px;
+    background-color: rgb(34, 34, 34);
+}
+
+
+#prices{
+    display: block;
+    font-size: 20px;
+    font-weight: 600;
+    margin-top: 15px;
+}
+
+.publishBtns{
+    margin-top: 20px;
+    margin-bottom: 80px;
+
+    position: relative;
+
+}
+
+#cancelBtn{
+    width: 160px;
+    height: 40px;
+    background-color: #202020;
+    border-radius: 4px;
+    font-size: 15px;
+    margin-right: 15px;
+}
+
+#cancelBtn:hover{
+    background-color: #1b1b1b;
+}

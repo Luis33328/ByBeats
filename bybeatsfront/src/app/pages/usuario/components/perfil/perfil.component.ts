@@ -76,4 +76,8 @@ export class PerfilComponent implements OnInit {
     this.view(row.guidBeat);
   }
 
+  public editProfile(){
+    this.router.navigate(["/user/edit-profile"])
+  }
+
 }
