@@ -24,9 +24,13 @@ a{
     
 }
 
-.logo a{
+.logo span{
     font-size: 25px;
     color: #901D1D;
+}
+
+.logo span:hover{
+    cursor: pointer;
 }
 
 .navItems{
@@ -34,7 +38,7 @@ a{
     margin-top: 7px;
 }
 
-.navItems a{
+.navItems span{
     color: #D8D8D8;
     font-weight: 600;
     margin-left: 60px;
@@ -42,9 +46,10 @@ a{
     transition: .3s;
 }
 
-.navItems a:hover{
+.navItems span:hover{
     color: #e9e9e9;
     transform: scale(1.05);
+    cursor: pointer;
 }
 
 

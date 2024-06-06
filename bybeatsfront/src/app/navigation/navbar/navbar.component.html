@@ -2,14 +2,14 @@
 
         <div class="header">
                 <div class="logo">
-                        <a href="">luiggibeats</a>
+                        <span (click)="home()">luiggibeats</span>
                 </div>
 
                 <div class="navItems">
-                        <a href="beats/catalog">Beats</a>
-                        <a href="">Licenciamento</a>
-                        <a href="">Sobre</a>
-                        <a href="">Mix</a>
+                        <span (click)="beatsNav()">Beats</span>
+                        <span >Licenciamento</span>
+                        <span >Sobre</span>
+                        <span >Mix</span>
                 </div>
 
                 <div class="searchHeader">
@@ -52,7 +52,7 @@
 
                                 <div class="menuOptions">
                                         <span (click)="favorites()"><i class="fa-regular fa-heart"></i>Favoritos</span>
-                                        <span><i class="fa-solid fa-clock-rotate-left"></i>Histórico</span>
+                                        <span (click)="plusClick()"><i class="fa-solid fa-clock-rotate-left"></i>Histórico</span>
                                         <span (click)="myTracks()"><i class="fa-light fa-speakers"></i>Meus Beats</span>
                                         <span><i class="fa-regular fa-bag-shopping"></i>Histórico de Compras</span>
                                         <span><i class="fa-sharp fa-regular fa-user"></i>Minha Conta</span>

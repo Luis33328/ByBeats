@@ -25,6 +25,7 @@
     "bcrypt": "^5.0.1",
     "bootstrap": "^5.2.0",
     "bootstrap-icons": "^1.9.1",
+    "moment": "^2.30.1",
     "ng-mat-search-bar": "^12.0.1",
     "ng-material-multilevel-menu": "^5.5.3",
     "ngx-loading": "^8.0.0",

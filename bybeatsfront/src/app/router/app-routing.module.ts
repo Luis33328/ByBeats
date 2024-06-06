@@ -21,12 +21,14 @@ import { VisualizarBeatComponent } from '../pages/beats/components/visualizar/vi
 import { MeusBeatsComponent } from '../pages/beats/components/cadastrados/meus-beats.component';
 import { FavoritosComponent } from '../pages/beats/components/favoritos/favoritos.component';
 import { EditarPerfilComponent } from '../pages/usuario/components/editar-perfil/editar-perfil.component';
+import { PlayerComponent } from '../player/player.component';
 
 
 const routes: Routes = [
   { path: 'login', component: LoginComponent },
   { path: 'cadastro', component: SignInComponent },
   { path: 'forgotPassword', component: ForgotComponent },
+  { path: 'player', component: PlayerComponent },
   
   
   {

@@ -21,6 +21,14 @@ import { SignIn } from 'src/app/authentication/signIn/model/signIn.model';
 export class NavbarComponent implements OnInit  {
 
 
+  @Output() onPlusClick = new EventEmitter<boolean>();
+
+  public plusClick() {
+    
+    this.onPlusClick.emit(true);
+    console.log("true");
+  }
+
   @Output() public sidebarToggle = new EventEmitter();
 
   public search: FormGroup = new FormGroup({});
@@ -122,6 +130,14 @@ export class NavbarComponent implements OnInit  {
 
   public favorites(){
     this.router.navigate(["/beats/favoritos"])
+  }
+
+  public home(){
+    this.router.navigate(["/"])
+  }
+
+  public beatsNav(){
+    this.router.navigate(["/beats/catalog"])
   }
 
   private getLogged() {
