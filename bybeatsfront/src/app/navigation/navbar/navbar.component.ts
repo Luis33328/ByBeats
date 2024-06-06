@@ -100,12 +100,20 @@ export class NavbarComponent implements OnInit  {
     });
   }
 
+  public cadastrar(event) {
+    this.router.navigate(['/beats/register/' + event]);
+  }
+
   public disconnect(){
     localStorage.clear();
     this.router.navigate(['/'])
     .then(() => {
       window.location.reload();
     });
+  }
+
+  public myTracks(){
+    this.router.navigate(["/beats/my-tracks"])
   }
 
   private getLogged() {

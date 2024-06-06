@@ -1,3 +1,5 @@
+import { SignIn } from "src/app/authentication/signIn/model/signIn.model";
+
 export class Beat {
 
     constructor() { }
@@ -17,5 +19,5 @@ export class Beat {
     public wavUntagged: String;
     public stems: String;
     public selected: number;
-
+    public usuario: SignIn;
 }

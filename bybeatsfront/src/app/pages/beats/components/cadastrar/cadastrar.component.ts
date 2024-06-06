@@ -7,6 +7,8 @@ import {NgxTinySliderSettingsInterface, NgxTinySliderComponent} from 'ngx-tiny-s
 import { SignInService } from '../../../../authentication/signIn/service/signIn.service';
 import { Beat } from '../../model/beat.model';
 import { BeatService } from '../../service/beat.service';
+import { SignIn } from 'src/app/authentication/signIn/model/signIn.model';
+import { NavbarComponent } from 'src/app/navigation/navbar/navbar.component';
 
 @Component({
   selector: 'app-cadastrar-beat',
@@ -22,6 +24,10 @@ export class CadastrarBeatComponent implements OnInit {
   wavTagged: File = null;
   image: File = null;
 
+  user:SignIn;
+
+  public guidBeat = '';
+
   public form: FormGroup = new FormGroup({});
 
 
@@ -36,7 +42,53 @@ export class CadastrarBeatComponent implements OnInit {
 
     this.getUserRole();
     this.initializeForms()
+    this.get();
+    //this.getLogged();
   }
+
+  public get() {
+    this.activeRoute.paramMap.subscribe(param => {
+      this.guidBeat = param.get('id');
+    });
+    if (this.guidBeat !== 'novo') {
+      this.beatService.get(this.guidBeat).subscribe(data => {
+        this.fillForms(data);
+        
+      });
+    }
+    this.getLogged();
+  }
+
+  public fillForms(beat: Beat) {
+
+    let img    = <HTMLInputElement>document.getElementById('beatImage');  
+    img.src = '../../../../../assets/uploads/' + beat.imagem;
+
+    let untagged = document.getElementById('file-name2');
+    ////untagged.textContent = beat.wavUntagged;
+    //this.wavUntagged = fetch('../../../../../assets/uploads/' + beat.wavUntagged); 
+    //console.log(this.wavUntagged.name);
+
+    //let stems = document.getElementById('file-name3');
+    ////stems.textContent = beat.stems;
+  //  this.stems = fetch('../../../../../assets/uploads/' + beat.stems); 
+
+    //let tagged = document.getElementById('file-name4');
+    ////tagged.textContent = beat.wavTagged;
+    //this.wavTagged = fetch('../../../../../assets/uploads/' + beat.wavTagged); 
+
+    this.form.patchValue({
+      titulo: beat.titulo,
+      dataLancamento: ConverterUtils.convertDateBackendToFrontend(beat.dataLancamento),
+
+      precoBasic: beat.precoBasic,
+      precoPremium: beat.precoPremium,
+      precoUnlimited: beat.precoUnlimited,
+      bpm: beat.bpm,
+      nota: beat.nota,
+    });
+  }
+
 
   public initializeForms() {
     this.form = new FormGroup({
@@ -51,6 +103,17 @@ export class CadastrarBeatComponent implements OnInit {
 
     });
 }
+
+  private getLogged() {
+    this.usuarioService.getByUsername().subscribe(data => {
+      this.user = data;
+      console.log(this.user)
+
+    }, err => {
+      console.log("eero");
+    });
+  }
+
   
   getWavUntagged(event){
     this.wavUntagged = <File>event.target.files[0];
@@ -146,24 +209,39 @@ export class CadastrarBeatComponent implements OnInit {
       });
   }
 
+
   public save() {   
     if (this.form.valid) {
-      if(this.wavUntagged != null && this.stems != null && this.wavTagged != null && this.image != null){
-        this.onUpload()
+      if(this.wavUntagged != null && this.stems != null && this.wavTagged != null && this.image != null || this.guidBeat != 'novo'){
+        if(this.guidBeat == 'novo'){
+          this.onUpload()
+        }
+          
 
         let beat = new Beat();
         beat.titulo = this.form.get('titulo').value;
         //beat.tags = this.form.get('tags').value;
         beat.dataLancamento = this.form.get('dataLancamento').value;
-        beat.wavUntagged = this.wavUntagged.name;
-        beat.stems = this.stems.name;
-        beat.wavTagged = this.wavTagged.name;
-        beat.imagem = this.image.name;
+        if(this.guidBeat == 'novo'){
+          beat.wavUntagged = this.wavUntagged.name;
+          beat.stems = this.stems.name;
+          beat.wavTagged = this.wavTagged.name;
+          beat.imagem = this.image.name;
+        }
+        else{
+          beat.wavUntagged = this.wavUntagged.name;
+          beat.stems = this.stems.name;
+          beat.wavTagged = this.wavTagged.name;
+          beat.imagem = this.image.name;
+        
+        }
+        
         beat.precoBasic = this.form.get('precoBasic').value;
         beat.precoPremium = this.form.get('precoPremium').value;
         beat.precoUnlimited = this.form.get('precoUnlimited').value;
         beat.bpm = this.form.get('bpm').value;
         beat.nota = this.form.get('nota').value;
+        beat.usuario = this.user;
         
         this.beatService.save(beat).subscribe(
           (resp) => {

@@ -30,6 +30,7 @@ import { HomeComponent } from './pages/home/components/home.component';
 import { CadastrarBeatComponent } from './pages/beats/components/cadastrar/cadastrar.component';
 import { PesquisarBeatComponent } from './pages/beats/components/pesquisar/pesquisar.component';
 import { VisualizarBeatComponent } from './pages/beats/components/visualizar/visualizar.component';
+import { MeusBeatsComponent } from './pages/beats/components/cadastrados/meus-beats.component';
 
 
 @NgModule({
@@ -47,7 +48,8 @@ import { VisualizarBeatComponent } from './pages/beats/components/visualizar/vis
 
     CadastrarBeatComponent,
     PesquisarBeatComponent,
-    VisualizarBeatComponent
+    VisualizarBeatComponent,
+    MeusBeatsComponent
 
   ],
   entryComponents: [

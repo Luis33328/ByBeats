@@ -24,6 +24,8 @@ import org.springframework.web.multipart.MultipartFile;
 
 import com.luiggibeats.beat.modelo.Beat;
 import com.luiggibeats.beat.servico.BeatServico;
+import com.luiggibeats.carrinho.modelo.Carrinho;
+import com.luiggibeats.usuario.modelo.Usuario;
 import com.luiggibeats.util.base.BaseController;
 import com.luiggibeats.util.excecao.BusinessException;
 import com.luiggibeats.util.filtro.FiltroGenerico;
@@ -39,6 +41,12 @@ public class BeatRecurso extends BaseController {
 
     @Autowired
     private BeatServico beatServico;
+    
+    @PostMapping(value = "/getMeusBeats")
+    public List<Beat> getMeusBeats(@RequestBody Usuario user) {
+    	System.out.println(user);
+    	return beatServico.getMeusBeats(user);
+    }
 
     @Operation(description = "Endpoint para buscar beat por ID")
     @GetMapping(value = "/buscarPorId/{id}", produces = "application/json")
