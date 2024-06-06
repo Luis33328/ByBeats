@@ -1,0 +1,43 @@
+<footer class="nav" style="overflow: hidden">
+
+        <mat-toolbar class="player">
+
+                <img src="../../assets/uploads/{{beat.imagem}}" />
+
+                <span id="title">{{beat.titulo}}</span>
+
+                <button mat-icon-button (click)="prev()">
+                        <mat-icon>skip_previous</mat-icon>
+                </button>
+                <button id="play" mat-icon-button (click)="play(beat.wavTagged)">
+                        <mat-icon>{{ audio.paused ? 'play_arrow' : 'pause' }}</mat-icon>
+                </button>
+                <button mat-icon-button (click)="next()">
+                        <mat-icon>skip_next</mat-icon>
+                </button>
+                <button mat-icon-button>
+                        <mat-icon>volume_up</mat-icon>
+                </button>
+                <mat-slider (input)="volumeSlider($event)"  value="16" step="1" min="0" max="16">
+                </mat-slider>
+
+                <mat-toolbar class="time">
+                        <span id="timeSp">{{ currentTime }}&nbsp;/&nbsp;{{ musicLength }}</span>
+                        <mat-slider
+                          (input)="durationSlider($event)"
+                          class="slider-full"
+                        
+                          value="{{ audio.readyState === 0 ? 0 : audio.currentTime }}"
+                          min="0" max="{{ duration }}">
+                        </mat-slider>
+                </mat-toolbar>
+        </mat-toolbar>
+        
+        
+
+
+
+
+</footer>
+
+<!--<div class="beatHeader" *ngIf="role == 'admin'">-->

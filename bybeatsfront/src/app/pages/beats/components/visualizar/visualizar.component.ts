@@ -1,4 +1,4 @@
-import { Component, OnInit, ViewChildren, QueryList, ViewChild, ElementRef, AfterViewInit } from '@angular/core';
+import { Component, OnInit, ViewChildren, QueryList, ViewChild, ElementRef, AfterViewInit, Output, EventEmitter } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { MatSnackBar } from '@angular/material';
 import { ActivatedRoute, Router } from '@angular/router';
@@ -16,6 +16,8 @@ import { SignIn } from 'src/app/authentication/signIn/model/signIn.model';
 import { Carrinho } from '../../model/Carrinho.model';
 import { NavbarComponent } from 'src/app/navigation/navbar/navbar.component';
 import { Favorito } from '../../model/Favorito.model';
+import { AppComponent } from 'src/app/app.component';
+import { SharedService } from 'src/app/common/shared.service';
 
 @Component({
   selector: 'app-visualizar-beat',
@@ -23,6 +25,17 @@ import { Favorito } from '../../model/Favorito.model';
   styleUrls: ['./visualizar.component.scss']
 })
 export class VisualizarBeatComponent implements OnInit {
+
+  /*@Output() onPlusClick = new EventEmitter<boolean>();
+
+  plusClick() {
+    
+    this.onPlusClick.emit(true);
+    console.log("true");
+  }*/
+  
+
+  
 
   public form: FormGroup = new FormGroup({});
 
@@ -56,13 +69,17 @@ export class VisualizarBeatComponent implements OnInit {
   //sub: Subscription;
   productSelected: boolean = false;
 
+  
   constructor(
     private router: Router,
     private activeRoute: ActivatedRoute,
     private beatService: BeatService,
     private usuarioService: SignInService,
     private orderService: OrderService,
-    private snackBar: MatSnackBar) { }
+    private sharedService: SharedService,
+    private snackBar: MatSnackBar) {
+
+  }
 
   public ngOnInit() {
     this.getParam();
@@ -71,6 +88,11 @@ export class VisualizarBeatComponent implements OnInit {
     
   }
 
+  public showPlayer(){
+    this.sharedService.beat = this.beat;
+    this.sharedService.showPlayer = true;
+
+  }
 
   public getParam() {
     this.activeRoute.paramMap.subscribe(param => {

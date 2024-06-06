@@ -15,7 +15,7 @@ import { AuthInterceptor } from './authentication/interceptor/auth.interceptor';
 
 import { NavbarComponent } from './navigation/navbar/navbar.component';
 import { NoopAnimationsModule } from '@angular/platform-browser/animations';
-import { MatAutocompleteModule, MatDialogModule, MatFormFieldModule, MatIconModule, MatInputModule, MatListModule, MatPaginatorModule, MatSelectModule, MatSidenavModule, MatSnackBarModule, MatSortModule, MatTableModule, MatToolbarModule, MatMenuModule } from '@angular/material';
+import { MatAutocompleteModule, MatDialogModule, MatFormFieldModule, MatIconModule, MatInputModule, MatListModule, MatPaginatorModule, MatSelectModule, MatSidenavModule, MatSnackBarModule, MatSortModule, MatTableModule, MatToolbarModule, MatMenuModule, MatButtonModule, MatSliderModule } from '@angular/material';
 import { NgMaterialMultilevelMenuModule } from 'ng-material-multilevel-menu';
 import { NgMatSearchBarModule } from 'ng-mat-search-bar';
 
@@ -38,6 +38,8 @@ import { EditarPerfilComponent } from './pages/usuario/components/editar-perfil/
 
 import { FavoritosComponent } from './pages/beats/components/favoritos/favoritos.component';
 
+import { PlayerComponent } from './player/player.component';
+
 
 @NgModule({
   declarations: [
@@ -58,7 +60,8 @@ import { FavoritosComponent } from './pages/beats/components/favoritos/favoritos
     MeusBeatsComponent,
     PerfilComponent,
     FavoritosComponent,
-    EditarPerfilComponent
+    EditarPerfilComponent,
+    PlayerComponent
 
   ],
   entryComponents: [
@@ -78,6 +81,8 @@ import { FavoritosComponent } from './pages/beats/components/favoritos/favoritos
     NgMaterialMultilevelMenuModule,
     MatToolbarModule,
     MatTableModule,
+    MatButtonModule,
+    MatSliderModule,
     MatPaginatorModule,
     MatSnackBarModule,
     ReactiveFormsModule,
