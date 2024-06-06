@@ -38,22 +38,24 @@ export class EditarPerfilComponent implements OnInit {
   public ngOnInit() {
 
     this.getUserRole();
-    this.initializeForms()
     this.get();
+    this.initializeForms();
+    
     //this.getLogged();
   }
 
   public get() {
 
     this.getLogged();
+    
   }
 
   public fillForms(user: SignIn) {
 
-    if(user.imagem != null){
+    /*if(user.imagem != null){
       let img    = <HTMLInputElement>document.getElementById('profImage');  
       img.src = '../../../../../assets/uploads/' + user.imagem;
-    }
+    }*/
 
 
     this.form.patchValue({
@@ -81,6 +83,8 @@ export class EditarPerfilComponent implements OnInit {
     this.usuarioService.getByUsername().subscribe(data => {
       this.user = data;
       this.fillForms(data);
+      this.guidUsuario = data.guidUsuario;
+      console.log(this.guidUsuario)
       console.log(this.user)
 
     }, err => {
@@ -139,11 +143,14 @@ export class EditarPerfilComponent implements OnInit {
 
   public save() {   
     if (this.form.valid) {
-        this.onUpload()
+        if(this.image != null){
+          this.onUpload()
+        }
 
           
 
         let user = new SignIn();
+        user.guidUsuario = Number.parseInt(this.guidUsuario);
         user.nome = this.form.get('nome').value;
         user.sobrenome = this.form.get('sobrenome').value;
         user.login = this.form.get('usuario').value;
@@ -152,10 +159,10 @@ export class EditarPerfilComponent implements OnInit {
         user.senha = this.user.senha;
         user.email = this.user.email;
 
-        user.imagem = this.image.name;
+        user.imagem = this.image === null ? this.user.imagem : this.image.name;
 
         
-        this.usuarioService.save(user).subscribe(
+        this.usuarioService.edit(user).subscribe(
           (resp) => {
             console.log(resp);
             this.router.navigate(['/user/profile']);

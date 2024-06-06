@@ -8,7 +8,7 @@
 
             <div class="imageInput">
                 <img *ngIf="user.imagem == null" id="profImage" src="../../../../../assets/images/default.png" />
-                <img *ngIf="user.imagem != null" id="profImage" src="../../../../../assets/images/{{user.imagem}}" />
+                <img *ngIf="user.imagem != null" id="profImage" src="../../../../../assets/uploads/{{user.imagem}}" />
                 <label for="profImg" id="lblImg">Selecionar Imagem</label>
                 <input type="file" name="profImg" id="profImg" accept="image/*" (change)="changeImg($event)" />
             </div>
@@ -42,7 +42,7 @@
                     <span class="inputSpan">CPF</span>
                     <mat-form-field class="searchInput" style="width: 290px; ">
                         <mat-label></mat-label>
-                        <input matInput formControlName="cpf" placeholder="CPF" autocomplete="off" />
+                        <input matInput mask="000.000.000-00" formControlName="cpf" placeholder="CPF" autocomplete="off" />
                     </mat-form-field>
                 </div>
 

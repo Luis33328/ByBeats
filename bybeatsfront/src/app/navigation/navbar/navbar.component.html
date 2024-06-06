@@ -29,7 +29,8 @@
 
                 
                 <div class="headerProf" [matMenuTriggerFor]="menu" *ngIf="role != ''">
-                        <img src="../../../assets/images/default.png" width="35" height="35" />
+                        <img *ngIf="userModel.imagem == null" src="../../../assets/images/default.png" width="35" height="35" />
+                        <img *ngIf="userModel.imagem != null" src="../../../../../assets/uploads/{{userModel.imagem}}" width="35" height="35" />
                         <i id="profArrow" class="fa-solid fa-chevron-down"></i>
                 </div>
 
@@ -38,7 +39,8 @@
                         <div class="menuContent">
                                 <div class="profTop" (click)="profile()">
 
-                                        <img src="../../../assets/images/default.png" width="40" height="40" />
+                                        <img *ngIf="userModel.imagem == null" src="../../../assets/images/default.png" width="40" height="40" />
+                                        <img *ngIf="userModel.imagem != null" src="../../../../../assets/uploads/{{userModel.imagem}}" width="40" height="40" />
                                         <span  id="userMenu">{{user}}</span>
                                 </div>
 

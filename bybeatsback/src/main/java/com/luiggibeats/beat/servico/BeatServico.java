@@ -32,7 +32,7 @@ public class BeatServico {
     @Autowired
     private BeatRepositorio beatRepositorio;
     
-    public final String storageDirectoryPath = "C:\\Users\\luigg\\Desktop\\html\\luiggibeats\\luiggibeats\\luiggibeatsfront\\src\\assets\\uploads";
+    public final String storageDirectoryPath = "C:\\Users\\luigg\\Desktop\\html\\bybeats\\ByBeats\\bybeatsfront\\src\\assets\\uploads";
     
     public List<Beat> getMeusBeats(Usuario user){
 		return beatRepositorio.findByUsuario(user);
