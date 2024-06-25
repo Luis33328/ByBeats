@@ -39,6 +39,7 @@ import { EditarPerfilComponent } from './pages/usuario/components/editar-perfil/
 import { FavoritosComponent } from './pages/beats/components/favoritos/favoritos.component';
 
 import { PlayerComponent } from './player/player.component';
+import { DialogComponent } from './authentication/dialog/dialog.component';
 
 
 @NgModule({
@@ -61,11 +62,11 @@ import { PlayerComponent } from './player/player.component';
     PerfilComponent,
     FavoritosComponent,
     EditarPerfilComponent,
-    PlayerComponent
-
+    PlayerComponent,
+    DialogComponent
   ],
   entryComponents: [
-    
+    DialogComponent
   ],
   imports: [
     BrowserModule,

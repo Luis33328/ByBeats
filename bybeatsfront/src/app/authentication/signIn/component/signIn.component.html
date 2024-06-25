@@ -18,23 +18,41 @@
 
                         <div class="formInputs">
                             <span class="inputSpan">Nome de usuário</span>
-                            <mat-form-field class="searchInput" style="width: 330px; ">
+                            <mat-form-field class="searchInput" style="width: 330px;">
                                 <mat-label></mat-label>
                                 <input matInput formControlName="login" placeholder="Usuário" autocomplete="off"/>
+                                <mat-error *ngIf="form.get('login').invalid && form.get('login').touched">
+                                    Nome de usuário deve conter mais de 3 caracteres.
+                                </mat-error>
                             </mat-form-field> 
-
+                        
                             <span class="inputSpan">E-mail</span>
-                            <mat-form-field class="searchInput" style="width: 330px; ">
+                            <mat-form-field class="searchInput" style="width: 330px;">
                                 <mat-label></mat-label>
                                 <input matInput formControlName="email" placeholder="email" autocomplete="off"/>
+                                <mat-error *ngIf="form.get('email').invalid && form.get('email').touched">
+                                    Por favor insira um email válido.
+                                </mat-error>
                             </mat-form-field> 
-
+                        
                             <span class="inputSpan">Senha</span>
-                            <mat-form-field class="searchInput" style="width: 330px; ">
+                            <mat-form-field class="searchInput" style="width: 330px;">
                                 <mat-label></mat-label>
                                 <input type="password" matInput formControlName="senha" placeholder="Senha" autocomplete="off"/>
+                                <mat-error *ngIf="form.get('senha').invalid && form.get('senha').touched">
+                                    Senha deverá conter mais de 8 caracteres, sendo compostos por letras e números.
+                                </mat-error>
                             </mat-form-field> 
-                        </div>
+
+                            <span class="inputSpan">Confirmar Senha</span>
+                            <mat-form-field class="searchInput" style="width: 330px;">
+                                <mat-label></mat-label>
+                                <input type="password" matInput formControlName="confirmSenha" placeholder="Confirmar Senha" autocomplete="off"/>
+                                <mat-error *ngIf="form.get('confirmSenha').invalid && form.get('confirmSenha').touched">
+                                    Senhas não conferem.
+                                </mat-error>
+                            </mat-form-field>
+                        </div> 
 
                     </form>
 
@@ -56,4 +74,3 @@
         </div>
     </body>
 </html>
-

@@ -21,39 +21,48 @@ export class SignInComponent implements OnInit {
       private autenticacaoService: AutenticacaoService,
       private usuarioService: SignInService) { }
 
-    public ngOnInit() {
+      public ngOnInit() {
         this.initializeForms();
     }
-
+    
     public initializeForms() {
-        this.form = new FormGroup({
-          login: new FormControl(''),
-          senha: new FormControl(''),
-          email: new FormControl('')
-    
-        });
+      this.form = new FormGroup({
+        login: new FormControl('', [Validators.required, Validators.minLength(3)]),
+        senha: new FormControl('', [
+          Validators.required,
+          Validators.minLength(8),
+          Validators.pattern(/^(?=.*[a-zA-Z])(?=.*[0-9]).{8,}$/)
+        ]),
+        email: new FormControl('', [Validators.required, Validators.email]),
+        confirmSenha: new FormControl('', [Validators.required, Validators.minLength(8)]),
+      }, { validators: this.passwordsMatch });
+  }
+  
+  public save() {   
+      if (this.form.valid) {
+        let usuario = new SignIn();
+        usuario.login = this.form.get('login').value;
+        usuario.senha = this.form.get('senha').value;
+        usuario.email = this.form.get('email').value;
+  
+        this.usuarioService.save(usuario).subscribe(
+          (resp) => {
+            console.log(resp);
+            this.router.navigate(['/']);
+          },
+          (err) => {
+            console.log(err);
+          }
+        );
+      } else {
+        console.log("Form Inválido");
       }
-    
-      public save() {   
-        if (this.form.valid) {
-          let usuario = new SignIn();
-          usuario.login = this.form.get('login').value;
-          usuario.senha = this.form.get('senha').value;
-          usuario.email = this.form.get('email').value;
-    
-          
-          this.usuarioService.save(usuario).subscribe(
-            (resp) => {
-              console.log(resp);
-              this.router.navigate(['/']);
-            },
-            (err) => {
-              console.log(err);
-            }
-          );
-        } else {
-          console.log("Form Inválido");
-        }
-    }
-
+  }
+  
+  public passwordsMatch(group: FormGroup) {
+    const senha = group.get('senha').value;
+    const confirmSenha = group.get('confirmSenha').value;
+  
+    return senha === confirmSenha ? null : { notSame: true };
+  }
 }

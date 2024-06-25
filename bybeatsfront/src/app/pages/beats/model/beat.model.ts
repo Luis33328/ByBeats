@@ -15,6 +15,7 @@ export class Beat {
     public precoBasic: String;
     public precoPremium: String;
     public precoUnlimited: String;
+    public discount: Number;
     public wavTagged: String;
     public wavUntagged: String;
     public stems: String;

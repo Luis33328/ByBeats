@@ -67,51 +67,11 @@ public class UsuarioServico {
         Random rand = new Random();
         int num = rand.nextInt(90000) + 10000;
         usuario.setOtp(num);
-        String body = "<!DOCTYPE html>\n" +
-                        "<html>\n" +
-                        "<head>\n" +
-                        "    <style>\n" +
-                        "        body {\n" +
-                        "            color: black;\n" +
-                        "            background-color: #f0f0f0;\n" +
-                        "            font-family: Arial, sans-serif;\n" +
-                        "        }\n" +
-                        "        .container {\n" +
-                        "            margin: 0 auto;\n" +
-                        "            width: 80%;\n" +
-                        "            padding: 20px;\n" +
-                        "            background-color: white;\n" +
-                        "            border-radius: 5px;\n" +
-                        "        }\n" +
-                        "        .code {\n" +
-                        "            color: red;\n" +
-                        "            font-weight: bold;\n" +
-                        "        }\n" +
-                        "        .footer {\n" +
-                        "            color: grey;\n" +
-                        "            font-size: 0.8em;\n" +
-                        "        }\n" +
-                        "    </style>\n" +
-                        "</head>\n" +
-                        "<body>\n" +
-                        "    <div class=\"container\">\n" +
-                        "        <h2>Alteração de senha</h2>\n" +
-                        "        <p>\n" +
-                        usuario.getLogin() +", Você solicitou uma alteração de senha. Utilize o seguinte código para alterar sua senha:\n" +
-                        "        </p>\n" +
-                        "        <p class=\"code\">\n" +
+        String body =   usuario.getLogin() +", Você solicitou uma alteração de senha. Utilize o seguinte código para alterar sua senha:\n" +
                                     num + "\n" +
-                        "        </p>\n" +
-                        "        <p>\n" +
                         "            Se você não solicitou a alteração de senha, por favor ignore esse email.\n" +
-                        "        </p>\n" +
-                        "        <p class=\"footer\">\n" +
-                        "            Com atenção, <br>\n" +
-                        "            ByBeats\n" +
-                        "        </p>\n" +
-                        "    </div>\n" +
-                        "</body>\n" +
-                        "</html>";
+                        "            Com atenção,\n" +
+                        "            ByBeats\n";
         String retorno = emailServico.sendEmail(usuario.getEmail(), "Recuperação de senha",body);
         System.out.println(retorno);
         return this.usuarioRepositorio.save(usuario);

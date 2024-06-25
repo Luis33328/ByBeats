@@ -25,7 +25,6 @@ public class EmailServico {
             message.setText(body);
 
             emailSender.send(message);
-            System.out.println("funfa");
             return "Email enviado com sucesso!";
         } catch (Exception e){
             return "Erro ao enviar e-mail: " + e.getMessage();

@@ -86,10 +86,13 @@
                         [dropSpecialCharacters]="false" formControlName="precoUnlimited" placeholder="R$"
                         autocomplete="off" />
                 </mat-form-field>
+                <span class="inputSpan">Desconto</span>
 
-
-
-
+                <mat-form-field class="searchInput" style="width: 450px; ">
+                    <mat-label></mat-label>
+                    <input matInput formControlName="discount" placeholder="Desconto %" autocomplete="off" />
+                    <span matSuffix>%</span>
+                </mat-form-field>
 
             </div>
 

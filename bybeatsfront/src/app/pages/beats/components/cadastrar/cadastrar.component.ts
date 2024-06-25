@@ -84,6 +84,7 @@ export class CadastrarBeatComponent implements OnInit {
       precoBasic: beat.precoBasic,
       precoPremium: beat.precoPremium,
       precoUnlimited: beat.precoUnlimited,
+      discount: beat.discount,
       bpm: beat.bpm,
       nota: beat.nota,
     });
@@ -98,8 +99,9 @@ export class CadastrarBeatComponent implements OnInit {
       precoBasic: new FormControl(''),
       precoPremium: new FormControl(''),
       precoUnlimited: new FormControl(''),
+      discount: new FormControl(''),
       bpm: new FormControl(''),
-      nota: new FormControl('')
+      nota: new FormControl(''),
 
     });
 }
@@ -110,7 +112,7 @@ export class CadastrarBeatComponent implements OnInit {
       console.log(this.user)
 
     }, err => {
-      console.log("eero");
+      console.log("erro");
     });
   }
 
@@ -239,6 +241,7 @@ export class CadastrarBeatComponent implements OnInit {
         beat.precoBasic = this.form.get('precoBasic').value;
         beat.precoPremium = this.form.get('precoPremium').value;
         beat.precoUnlimited = this.form.get('precoUnlimited').value;
+        beat.discount = this.form.get('discount').value;
         beat.bpm = this.form.get('bpm').value;
         beat.nota = this.form.get('nota').value;
         beat.usuario = this.user;

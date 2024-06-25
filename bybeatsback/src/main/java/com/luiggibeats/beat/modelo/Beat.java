@@ -53,6 +53,9 @@ public class Beat {
     
     @Column(name = "SELECTED")
     private Integer selected;
+
+	@Column(name = "DISCOUNT")
+	private Float discount;
     
     @OneToOne
     //@Column(name = "USUARIO")
@@ -64,6 +67,14 @@ public class Beat {
 
 	public void setUsuario(Usuario usuario) {
 		this.usuario = usuario;
+	}
+
+	public Float getDiscount() {
+		return discount;
+	}
+
+	public Float setDiscount() {
+		return discount;
 	}
 
 	public Integer getSelected() {
