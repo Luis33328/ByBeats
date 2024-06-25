@@ -22,12 +22,14 @@ import { MeusBeatsComponent } from '../pages/beats/components/cadastrados/meus-b
 import { FavoritosComponent } from '../pages/beats/components/favoritos/favoritos.component';
 import { EditarPerfilComponent } from '../pages/usuario/components/editar-perfil/editar-perfil.component';
 import { PlayerComponent } from '../player/player.component';
+import { RecoverPasswordComponent } from '../authentication/recover-password/recover-password.component';
 
 
 const routes: Routes = [
   { path: 'login', component: LoginComponent },
   { path: 'cadastro', component: SignInComponent },
   { path: 'forgotPassword', component: ForgotComponent },
+  { path: 'recover-password', component: RecoverPasswordComponent }, 
   { path: 'player', component: PlayerComponent },
   
   
@@ -50,6 +52,7 @@ const routes: Routes = [
       { path: 'user/profile', component: PerfilComponent },
       { path: 'user/edit-profile', component: EditarPerfilComponent },
       { path: 'beats/favoritos', component: FavoritosComponent },
+
     ]
   },
   {

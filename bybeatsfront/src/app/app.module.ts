@@ -39,7 +39,8 @@ import { EditarPerfilComponent } from './pages/usuario/components/editar-perfil/
 import { FavoritosComponent } from './pages/beats/components/favoritos/favoritos.component';
 
 import { PlayerComponent } from './player/player.component';
-import { DialogComponent } from './authentication/dialog/dialog.component';
+
+import { RecoverPasswordComponent } from './authentication/recover-password/recover-password.component';
 
 
 @NgModule({
@@ -63,10 +64,9 @@ import { DialogComponent } from './authentication/dialog/dialog.component';
     FavoritosComponent,
     EditarPerfilComponent,
     PlayerComponent,
-    DialogComponent
+    RecoverPasswordComponent
   ],
   entryComponents: [
-    DialogComponent
   ],
   imports: [
     BrowserModule,
