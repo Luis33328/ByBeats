@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { FormGroup, FormControl, Validators } from '@angular/forms';
+import { Router } from '@angular/router';
 import { RecoverPasswordService } from './service/recover-password.service';
 import { SignInService } from '../signIn/service/signIn.service';
 
@@ -12,11 +13,12 @@ export class RecoverPasswordComponent implements OnInit {
   public loading = false;
   public errorMessage = false;
   public successMessage = false;
-  form: FormGroup; // define the form group
+  form: FormGroup; 
 
   constructor(
     private recoverService: RecoverPasswordService,
-    private signInService: SignInService
+    private signInService: SignInService,
+    private router: Router
   ) { }
 
   ngOnInit() {
@@ -24,11 +26,10 @@ export class RecoverPasswordComponent implements OnInit {
       this.email = email;
     });
 
-    // initialize the form group
     this.form = new FormGroup({
       email: new FormControl(this.email),
-      senha: new FormControl('', Validators.required), // add this line
-      confirmSenha: new FormControl('', Validators.required) // add this line
+      senha: new FormControl('', Validators.required), 
+      confirmSenha: new FormControl('', Validators.required) 
     });
   }
   
@@ -40,6 +41,7 @@ export class RecoverPasswordComponent implements OnInit {
       this.loading = false;
       this.errorMessage = false;
       this.successMessage = true;
+      this.router.navigate(['/login']); 
     });
   }
 }
