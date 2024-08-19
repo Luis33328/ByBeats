@@ -65,6 +65,24 @@ export class SignInService {
     );
     
   }
+  
+  public getByLogin(login): Observable<any> {
+    return this.http.get(environment.baseUrl + '/private/luiggibeats/usuario/buscarPorLogin/' + login, { headers: this.HEADERS }).pipe(
+      map(
+        data => data
+      )
+    );
+    
+  }
+
+  public getByCPF(cpf): Observable<any> {
+    return this.http.get(environment.baseUrl + '/private/luiggibeats/usuario/buscarPorCPF/' + cpf, { headers: this.HEADERS }).pipe(
+      map(
+        data => data
+      )
+    );
+    
+  }
 
   public getByEmail(email): Observable<any> {
     return this.http.get(environment.baseUrl + '/private/luiggibeats/usuario/buscarPorEmail/' + email, { headers: this.HEADERS }).pipe(
@@ -74,6 +92,8 @@ export class SignInService {
     );
     
   }
+
+  
 
 
 

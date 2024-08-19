@@ -53,6 +53,12 @@ public class BeatRecurso extends BaseController {
     public Beat buscarPorId(@PathVariable(name = "id") Integer id) throws BusinessException {
         return this.beatServico.buscarPorId(id);
     }
+    
+    @Operation(description = "Endpoint para listar todos os beats com data")
+    @GetMapping(value = "/listarDate", produces = "application/json")
+    public List<Beat> listarDate() throws BusinessException {
+        return this.beatServico.listarDate();
+    }
 
     @Operation(description = "Endpoint para listar todos os beats")
     @GetMapping(value = "/listar", produces = "application/json")

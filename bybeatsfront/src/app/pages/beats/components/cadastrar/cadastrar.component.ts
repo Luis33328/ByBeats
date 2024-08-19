@@ -24,11 +24,19 @@ export class CadastrarBeatComponent implements OnInit {
   wavTagged: File = null;
   image: File = null;
 
+  imgName = "";
+
   user:SignIn;
 
   public guidBeat = '';
 
   public form: FormGroup = new FormGroup({});
+
+  public mask = {
+    guide: true,
+    showMask : true,
+    mask: [/\d/, /\d/, '/', /\d/, /\d/, '/',/\d/, /\d/,/\d/, /\d/]
+  };
 
 
   constructor(
@@ -84,7 +92,7 @@ export class CadastrarBeatComponent implements OnInit {
       precoBasic: beat.precoBasic,
       precoPremium: beat.precoPremium,
       precoUnlimited: beat.precoUnlimited,
-      discount: beat.discount,
+      //discount: beat.discount,
       bpm: beat.bpm,
       nota: beat.nota,
     });
@@ -93,15 +101,15 @@ export class CadastrarBeatComponent implements OnInit {
 
   public initializeForms() {
     this.form = new FormGroup({
-      titulo: new FormControl(''),
+      titulo: new FormControl('', [Validators.required]),
       tags: new FormControl(''),
-      dataLancamento: new FormControl(''),
-      precoBasic: new FormControl(''),
-      precoPremium: new FormControl(''),
-      precoUnlimited: new FormControl(''),
-      discount: new FormControl(''),
-      bpm: new FormControl(''),
-      nota: new FormControl(''),
+      dataLancamento: new FormControl('', [Validators.required]),
+      precoBasic: new FormControl('', [Validators.required]),
+      precoPremium: new FormControl('', [Validators.required]),
+      precoUnlimited: new FormControl('', [Validators.required]),
+      //discount: new FormControl(''),
+      bpm: new FormControl('', [Validators.required]),
+      nota: new FormControl('', [Validators.required]),
 
     });
 }
@@ -193,6 +201,7 @@ export class CadastrarBeatComponent implements OnInit {
     this.image = event.target.files[event.target.files.length - 1] as File;
     console.log(this.image);
     console.log(this.image.name);
+    this.imgName = this.image.name;
     //label.style.backgroundColor = "#911e1a";
   }
 
@@ -211,57 +220,89 @@ export class CadastrarBeatComponent implements OnInit {
       });
   }
 
+  
+
 
   public save() {   
+
+    var regexp;
+
+    var untagged = document.getElementById('file-name2').textContent;
+    var stems = document.getElementById('file-name3').textContent;
+    var tagged = document.getElementById('file-name4').textContent;
+
+    var extensionUntagged = untagged.substr(untagged.lastIndexOf('.'));
+    var extensionStems = stems.substr(stems.lastIndexOf('.'));
+    var extensionTagged = tagged.substr(tagged.lastIndexOf('.'));
+    var extensionImg = this.imgName.substr(this.imgName.lastIndexOf('.'));
+
+    
+    
+
+
+
     if (this.form.valid) {
       if(this.wavUntagged != null && this.stems != null && this.wavTagged != null && this.image != null || this.guidBeat != 'novo'){
-        if(this.guidBeat == 'novo'){
-          this.onUpload()
-        }
-          
 
-        let beat = new Beat();
-        beat.titulo = this.form.get('titulo').value;
-        //beat.tags = this.form.get('tags').value;
-        beat.dataLancamento = this.form.get('dataLancamento').value;
-        if(this.guidBeat == 'novo'){
-          beat.wavUntagged = this.wavUntagged.name;
-          beat.stems = this.stems.name;
-          beat.wavTagged = this.wavTagged.name;
-          beat.imagem = this.image.name;
+        if ((extensionUntagged.toLowerCase() == ".wav") && (extensionStems.toLowerCase() == ".rar") && (extensionTagged.toLowerCase() == ".wav") && (extensionImg.toLowerCase() == ".png")){
+
+          if(this.guidBeat == 'novo'){
+            this.onUpload()
+          }
+            
+
+          let beat = new Beat();
+          beat.titulo = this.form.get('titulo').value;
+          //beat.tags = this.form.get('tags').value;
+          beat.dataLancamento = this.form.get('dataLancamento').value;
+          if(this.guidBeat == 'novo'){
+            beat.wavUntagged = this.wavUntagged.name;
+            beat.stems = this.stems.name;
+            beat.wavTagged = this.wavTagged.name;
+            beat.imagem = this.image.name;
+          }
+          else{
+            beat.wavUntagged = this.wavUntagged.name;
+            beat.stems = this.stems.name;
+            beat.wavTagged = this.wavTagged.name;
+            beat.imagem = this.image.name;
+          
+          }
+          
+          beat.precoBasic = this.form.get('precoBasic').value;
+          beat.precoPremium = this.form.get('precoPremium').value;
+          beat.precoUnlimited = this.form.get('precoUnlimited').value;
+          //beat.discount = this.form.get('discount').value;
+          beat.bpm = this.form.get('bpm').value;
+          beat.nota = this.form.get('nota').value;
+          beat.usuario = this.user;
+          
+          this.beatService.save(beat).subscribe(
+            (resp) => {
+              console.log(resp);
+              this.snackBar.open('Instrumental cadastrado com sucesso.', 'Fechar');
+              this.router.navigate(['/']);
+            },
+            (err) => {
+              console.log(err);
+              this.snackBar.open('Erro ao cadastrar instrumental.', 'Fechar');
+            }
+          );
         }
         else{
-          beat.wavUntagged = this.wavUntagged.name;
-          beat.stems = this.stems.name;
-          beat.wavTagged = this.wavTagged.name;
-          beat.imagem = this.image.name;
-        
+          console.log("Formato de arquivo inválido.");
+          this.snackBar.open('Formato de arquivo inválido.', 'Fechar');
         }
-        
-        beat.precoBasic = this.form.get('precoBasic').value;
-        beat.precoPremium = this.form.get('precoPremium').value;
-        beat.precoUnlimited = this.form.get('precoUnlimited').value;
-        beat.discount = this.form.get('discount').value;
-        beat.bpm = this.form.get('bpm').value;
-        beat.nota = this.form.get('nota').value;
-        beat.usuario = this.user;
-        
-        this.beatService.save(beat).subscribe(
-          (resp) => {
-            console.log(resp);
-            this.router.navigate(['/']);
-          },
-          (err) => {
-            console.log(err);
-          }
-        );
       }
       else{
         console.log("Arquivos Necessários!");
+        this.snackBar.open('Faça upload dos arquivos necessários.', 'Fechar')
+        
       }
     } 
     else {
       console.log("Form Inválido");
+      this.snackBar.open('Preencha os campos corretamente.', 'Fechar');
     }
   }
 

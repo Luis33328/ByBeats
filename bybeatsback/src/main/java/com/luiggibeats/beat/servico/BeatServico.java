@@ -6,6 +6,8 @@ import java.nio.file.Files;
 import java.nio.file.Path;
 import java.nio.file.Paths;
 import java.nio.file.StandardCopyOption;
+import java.time.LocalDate;
+import java.time.LocalDateTime;
 import java.util.List;
 
 import org.apache.commons.io.IOUtils;
@@ -37,6 +39,15 @@ public class BeatServico {
     public List<Beat> getMeusBeats(Usuario user){
 		return beatRepositorio.findByUsuario(user);
 	}
+    
+    public List<Beat> listarDate() throws BusinessException {
+    	LocalDateTime localDateTime = LocalDateTime.now();
+        LocalDate localDate = localDateTime.toLocalDate();
+        
+        System.out.println(localDateTime);
+    	
+        return this.beatRepositorio.findAllByDataLancamentoLessThanEqual(localDateTime);
+    }
 
     public List<Beat> listar() throws BusinessException {
         return this.beatRepositorio.findAll();

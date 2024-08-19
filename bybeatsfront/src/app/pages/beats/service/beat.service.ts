@@ -137,6 +137,14 @@ export class BeatService {
     );
   }
 
+  public getDate(): Observable<any> {
+    return this.http.get(environment.baseUrl + '/private/luiggibeats/beat/listarDate/', { headers: this.HEADERS }).pipe(
+      map(
+        data => data
+      )
+    );
+  }
+
   public uploadImage(formData: FormData): Observable<any> {
     //const file = formData.get('image') as File;
     //const url = environment.baseUrl + `/private/luiggibeats/beat/upload?file=${file.name}`;

@@ -1,5 +1,5 @@
 import { Component, OnInit, ViewChildren, QueryList, ViewChild, ElementRef, AfterViewInit } from '@angular/core';
-import { FormControl, FormGroup, Validators } from '@angular/forms';
+import { AbstractControl, FormControl, FormGroup, ValidatorFn, Validators } from '@angular/forms';
 import { MatSnackBar } from '@angular/material';
 import { ActivatedRoute, Router } from '@angular/router';
 import { ConverterUtils } from 'src/app/common/converter.utils';
@@ -76,8 +76,59 @@ export class EditarPerfilComponent implements OnInit {
       cpf: new FormControl(''),
       sobre: new FormControl('')
 
-    });
+    }, {validators: EditarPerfilComponent.isValidCpf});
 }
+
+static isValidCpf(): ValidatorFn {
+  return (control: AbstractControl): Validators => {
+    const cpf = control.value;
+    if (cpf) {
+      let numbers, digits, sum, i, result, equalDigits;
+      equalDigits = 1;
+      if (cpf.length < 11) {
+       return null;
+      }
+
+      for (i = 0; i < cpf.length - 1; i++) {
+        if (cpf.charAt(i) !== cpf.charAt(i + 1)) {
+          equalDigits = 0;
+          break;
+        }
+      }
+
+      if (!equalDigits) {
+        numbers = cpf.substring(0, 9);
+        digits = cpf.substring(9);
+        sum = 0;
+        for (i = 10; i > 1; i--) {
+          sum += numbers.charAt(10 - i) * i;
+        }
+
+        result = sum % 11 < 2 ? 0 : 11 - (sum % 11);
+
+        if (result !== Number(digits.charAt(0))) {
+          return { cpfNotValid: true };
+        }
+        numbers = cpf.substring(0, 10);
+        sum = 0;
+
+        for (i = 11; i > 1; i--) {
+          sum += numbers.charAt(11 - i) * i;
+        }
+        result = sum % 11 < 2 ? 0 : 11 - (sum % 11);
+
+        if (result !== Number(digits.charAt(1))) {
+          return { cpfNotValid: true };
+        }
+        return null;
+      } else {
+        return { cpfNotValid: true };
+      }
+   }
+ return null;
+};
+}
+
 
   private getLogged() {
     this.usuarioService.getByUsername().subscribe(data => {
@@ -140,6 +191,7 @@ export class EditarPerfilComponent implements OnInit {
       });
   }
 
+  
 
   public save() {   
     if (this.form.valid) {
@@ -159,18 +211,50 @@ export class EditarPerfilComponent implements OnInit {
         user.senha = this.user.senha;
         user.email = this.user.email;
 
+        user.role = this.user.role;
+  
+        user.otp = this.user.otp
+
         user.imagem = this.image === null ? this.user.imagem : this.image.name;
 
-        
-        this.usuarioService.edit(user).subscribe(
+        this.usuarioService.getByCPF(user.cpf).subscribe(
           (resp) => {
             console.log(resp);
-            this.router.navigate(['/user/profile']);
+            if(resp.guidUsuario != user.guidUsuario){
+              this.snackBar.open('CPF já cadastrado.', 'Fechar');
+            }
+            else{
+              this.usuarioService.edit(user).subscribe(
+                (resp) => {
+                  console.log(resp);
+                  this.snackBar.open('Informações atualizadas com sucesso', 'Fechar');
+                  this.router.navigate(['/user/profile']);
+                },
+                (err) => {
+                  console.log(err);
+                  this.snackBar.open('Erro ao atualizar suas informações', 'Fechar');
+                }
+              );
+            }
           },
           (err) => {
             console.log(err);
+            this.usuarioService.edit(user).subscribe(
+              (resp) => {
+                console.log(resp);
+                this.snackBar.open('Informações atualizadas com sucesso', 'Fechar');
+                this.router.navigate(['/user/profile']);
+              },
+              (err) => {
+                console.log(err);
+                this.snackBar.open('Erro ao atualizar suas informações', 'Fechar');
+              }
+            );
           }
         );
+
+        
+        
       
     } 
     else {

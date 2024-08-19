@@ -3,6 +3,8 @@ import { FormGroup, FormControl, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
 import { RecoverPasswordService } from './service/recover-password.service';
 import { SignInService } from '../signIn/service/signIn.service';
+import { SignIn } from '../signIn/model/signIn.model';
+import { MatSnackBar } from '@angular/material';
 
 @Component({
   templateUrl: './recover-password.component.html',
@@ -15,9 +17,12 @@ export class RecoverPasswordComponent implements OnInit {
   public successMessage = false;
   form: FormGroup; 
 
+  public notSame = false;
+
   constructor(
     private recoverService: RecoverPasswordService,
     private signInService: SignInService,
+    private snackBar: MatSnackBar,
     private router: Router
   ) { }
 
@@ -28,12 +33,16 @@ export class RecoverPasswordComponent implements OnInit {
 
     this.form = new FormGroup({
       email: new FormControl(this.email),
-      senha: new FormControl('', Validators.required), 
-      confirmSenha: new FormControl('', Validators.required) 
-    });
+      senha: new FormControl('', [
+        Validators.required,
+        Validators.minLength(8),
+        Validators.pattern(/^(?=.*[a-zA-Z])(?=.*[0-9]).{8,}$/)
+      ]), 
+      confirmSenha: new FormControl('', [Validators.required, Validators.minLength(8) ]),
+    }, { validators: this.passwordsMatch });
   }
   
-  atualizarSenha(){
+  /*atualizarSenha(){
     this.signInService.getByEmail(this.email).subscribe(ret => {
       this.recoverService.update(ret).subscribe(ret => {
         console.log(ret);
@@ -43,5 +52,54 @@ export class RecoverPasswordComponent implements OnInit {
       this.successMessage = true;
       this.router.navigate(['/login']); 
     });
-  }
+  }*/
+
+    atualizarSenha(){
+      if (this.form.valid) {
+        this.signInService.getByEmail(this.email).subscribe(ret => {
+
+          let user = new SignIn();
+          user.guidUsuario = Number.parseInt(ret.guidUsuario);
+          user.nome = ret.nome;
+          user.sobrenome = ret.sobrenome;
+          user.login = ret.login;
+          user.cpf = ret.cpf;
+          user.sobre = ret.sobre;
+          user.senha = this.form.get('senha').value;
+          user.email = ret.email;
+          user.role = ret.role;
+    
+          user.imagem = ret.imagem;
+          user.otp = ret.otp
+    
+            
+
+          this.recoverService.update(user).subscribe(ret => {
+            console.log(ret);
+          });
+          this.loading = false;
+          this.errorMessage = false;
+          this.successMessage = true;
+          this.router.navigate(['/login']); 
+        });
+      }
+      else {
+        console.log("Form Inválido");
+        this.snackBar.open('Preencha os campos adequadamente.', 'Fechar');
+      }
+    }  
+
+    /*public passwordsMatch(group: FormGroup) {
+      const senha = group.get('senha').value;
+      const confirmSenha = group.get('confirmSenha').value;
+    
+      return senha === confirmSenha ? null : { notSame: true };
+    }*/
+
+      public passwordsMatch(group: FormGroup) {
+      const senha = group.get('senha').value;
+      const confirmSenha = group.get('confirmSenha').value;
+    
+      return senha === confirmSenha ? null : { notSame: true };
+    }
 }

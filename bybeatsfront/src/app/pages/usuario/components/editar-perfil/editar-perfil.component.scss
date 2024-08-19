@@ -226,3 +226,20 @@ button:hover{
 #cancelBtn:hover{
     background-color: #1b1b1b;
 }
+
+
+::ng-deep snack-bar-container {
+    background: rgb(3, 3, 3) !important;
+  }
+  
+::ng-deep .mat-button-wrapper {
+    color: rgb(199, 41, 41) !important;
+}
+
+.mat-input-invalid .mat-input-placeholder {
+    color: red;
+}
+
+.mat-input-invalid .mat-input-ripple {
+    background-color: red;
+}
