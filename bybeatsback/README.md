@@ -1,0 +1,1 @@
+# Para execução do back-end junto com o Postgres, executar comando docker-compose up -d
