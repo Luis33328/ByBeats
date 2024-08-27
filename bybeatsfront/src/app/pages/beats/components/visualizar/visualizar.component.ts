@@ -90,6 +90,7 @@ export class VisualizarBeatComponent implements OnInit {
 
   public showPlayer(){
     this.sharedService.beat = this.beat;
+    this.sharedService.beatModel = this.beatModel
     this.sharedService.showPlayer = true;
 
   }

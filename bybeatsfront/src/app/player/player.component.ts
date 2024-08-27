@@ -21,7 +21,7 @@ import { SharedService } from '../common/shared.service';
   templateUrl: './player.component.html',
   styleUrls: ['./player.component.css']
 })
-export class PlayerComponent implements OnInit  {
+export class PlayerComponent implements OnInit, AfterContentInit  {
 
 
   public role = "";
@@ -35,6 +35,7 @@ export class PlayerComponent implements OnInit  {
   currentTime: string = '0:00';
 
   public beat = [];
+  public beatModel:Beat;
 
   constructor(
     private snackBar: MatSnackBar,
@@ -71,8 +72,17 @@ export class PlayerComponent implements OnInit  {
 
   public ngOnInit() {
     this.getBeat();
+    //console.log(this.sharedService.beat[0].wavUntagged);
+    //this.play(this.sharedService.beat[0].wavUntagged);
     
   }
+
+  public ngAfterContentInit(){
+    //this.play(this.beat[0].wavTagged);
+    //console.log(this.sharedService.beat);
+  }
+
+  
 
   /*private getBeats(){
     this.beatService.listWithoutPaginator().subscribe(data => {
@@ -83,9 +93,13 @@ export class PlayerComponent implements OnInit  {
     });
   }*/
 
+
   private getBeat(){
     this.beat = this.sharedService.beat; 
-    console.log(this.beat);
+    //this.beatModel = this.beat[0];
+    //console.log(this.beat);
+    //console.log(this.beatModel.wavTagged);
+    
   }
 
   private getLogged() {
