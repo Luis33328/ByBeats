@@ -11,7 +11,7 @@ import javax.persistence.Table;
 import com.luiggibeats.beat.modelo.Beat;
 
 @Entity
-@Table(name = "USUARIO")
+@Table(name = "USUARIO", indexes= {@Index(name = "usernameindex", columnList = "guidUsuario", unique = true)})
 public class Usuario {
 
     @Id

@@ -7,7 +7,9 @@ import com.luiggibeats.usuario.modelo.Usuario;
 import java.util.Date;
 
 @Entity
-@Table(name = "BEATS")
+@Table(name = "BEATS", indexes= {@Index(name = "tituloindex", columnList = "titulo"), 
+@Index(name = "guidBeatindex", columnList = "guidBeat", unique = true), 
+@Index(name = "tagsindex", columnList = "tags")})
 public class Beat {
 
     @Id
