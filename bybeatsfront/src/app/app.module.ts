@@ -15,7 +15,7 @@ import { AuthInterceptor } from './authentication/interceptor/auth.interceptor';
 
 import { NavbarComponent } from './navigation/navbar/navbar.component';
 import { NoopAnimationsModule } from '@angular/platform-browser/animations';
-import { MatAutocompleteModule, MatDialogModule, MatFormFieldModule, MatIconModule, MatInputModule, MatListModule, MatPaginatorModule, MatSelectModule, MatSidenavModule, MatSnackBarModule, MatSortModule, MatTableModule, MatToolbarModule, MatMenuModule, MatButtonModule, MatSliderModule } from '@angular/material';
+import { MatAutocompleteModule, MatDialogModule, MatFormFieldModule, MatIconModule, MatInputModule, MatListModule, MatPaginatorModule, MatSelectModule, MatSidenavModule, MatSnackBarModule, MatSortModule, MatTableModule, MatToolbarModule, MatMenuModule, MatButtonModule, MatSliderModule, MatDatepickerModule, MatNativeDateModule } from '@angular/material';
 import { NgMaterialMultilevelMenuModule } from 'ng-material-multilevel-menu';
 import { NgMatSearchBarModule } from 'ng-mat-search-bar';
 
@@ -94,6 +94,8 @@ import { RecoverPasswordComponent } from './authentication/recover-password/reco
     NgMatSearchBarModule,
     NgxTinySliderModule,
     MatMenuModule,
+    MatDatepickerModule,        // <----- import(must)
+    MatNativeDateModule,        // <----- import for date formating(optional)
     NgxLoadingModule.forRoot({}),
     NgxMaskModule.forRoot()
   ],

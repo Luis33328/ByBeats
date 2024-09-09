@@ -20,3 +20,10 @@ body {
     font-family: 'Poppins', sans-serif;
 }
 
+::ng-deep snack-bar-container {
+    background: rgb(3, 3, 3) !important;
+  }
+  
+::ng-deep .mat-button-wrapper {
+    color: rgb(199, 41, 41) !important;
+}

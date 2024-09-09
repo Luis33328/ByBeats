@@ -13,5 +13,8 @@ export class SignIn {
     public sobre: String;
 
     public imagem: String;
+
+    public role: String;
+    public otp: String;
 q
 }

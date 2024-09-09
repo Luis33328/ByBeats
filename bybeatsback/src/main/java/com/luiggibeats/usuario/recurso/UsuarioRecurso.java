@@ -43,6 +43,18 @@ public class UsuarioRecurso extends BaseController {
         return this.usuarioServico.buscarPorUsername(principal.getName());
     }
     
+    @Operation(description = "Endpoint para buscar usuario por username")
+    @GetMapping(value = "/buscarPorLogin/{login}", produces = "application/json")
+    public Usuario buscarPorLogin(@PathVariable(name = "login")String login) throws BusinessException {
+        return this.usuarioServico.buscarPorUsername(login);
+    }
+    
+    @Operation(description = "Endpoint para buscar usuario por cpf")
+    @GetMapping(value = "/buscarPorCPF/{cpf}", produces = "application/json")
+    public Usuario buscarPorCPF(@PathVariable(name = "cpf")String cpf) throws BusinessException {
+        return this.usuarioServico.buscarPorCPF(cpf);
+    }
+    
     @Operation(description = "Endpoint para buscar usuario por email")
     @GetMapping(value = "/buscarPorEmail/{email}", produces = "application/json")
     public Usuario buscarPorEmail(@PathVariable(name = "email")String email) throws BusinessException {

@@ -5,6 +5,7 @@ import { AutenticacaoService } from '../../service/autenticacao.service';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { SignInService } from '../service/signIn.service';
 import { SignIn } from '../model/signIn.model';
+import { MatSnackBar } from '@angular/material';
 
 @Component({
     templateUrl: 'signIn.component.html',
@@ -19,6 +20,7 @@ export class SignInComponent implements OnInit {
     constructor(
       private router: Router, 
       private autenticacaoService: AutenticacaoService,
+      private snackBar: MatSnackBar,
       private usuarioService: SignInService) { }
 
       public ngOnInit() {
@@ -44,18 +46,29 @@ export class SignInComponent implements OnInit {
         usuario.login = this.form.get('login').value;
         usuario.senha = this.form.get('senha').value;
         usuario.email = this.form.get('email').value;
-  
-        this.usuarioService.save(usuario).subscribe(
+        this.usuarioService.getByLogin(usuario.login).subscribe(
           (resp) => {
             console.log(resp);
-            this.router.navigate(['/']);
+            this.snackBar.open('Usuário já cadastrado.', 'Fechar');
           },
           (err) => {
             console.log(err);
+            this.usuarioService.save(usuario).subscribe(
+              (resp) => {
+                console.log(resp);
+                this.snackBar.open('Usuário cadastrado com sucesso.', 'Fechar');
+                this.router.navigate(['/']);
+              },
+              (err) => {
+                console.log(err);
+              }
+            );
           }
         );
+          
       } else {
         console.log("Form Inválido");
+        this.snackBar.open('Preencha os campos corretamente.', 'Fechar');
       }
   }
   

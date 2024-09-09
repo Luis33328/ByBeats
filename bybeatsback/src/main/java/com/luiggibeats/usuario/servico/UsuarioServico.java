@@ -1,6 +1,8 @@
 package com.luiggibeats.usuario.servico;
 
 
+import java.time.LocalDate;
+import java.time.LocalDateTime;
 import java.util.List;
 import java.util.Optional;
 import java.util.Random;
@@ -26,11 +28,18 @@ public class UsuarioServico {
 
     @Autowired
     private EmailServico emailServico;
+    
+    
 
     public List<Usuario> listar() throws BusinessException {
         return this.usuarioRepositorio.findAll();
     }
-
+    
+    public Usuario buscarPorCPF(String cpf) throws BusinessException {
+        Optional<Usuario> usuarioSearch = this.usuarioRepositorio.findByCpf(cpf);
+        return usuarioSearch.orElseThrow(() -> new BusinessException(BusinessExceptionCode.USUARIO_NAO_ENCONTRADO));
+    }
+    
     public Usuario buscarPorUsername(String username) throws BusinessException {
         Optional<Usuario> usuarioSearch = this.usuarioRepositorio.findByLogin(username);
         return usuarioSearch.orElseThrow(() -> new BusinessException(BusinessExceptionCode.USUARIO_NAO_ENCONTRADO));
