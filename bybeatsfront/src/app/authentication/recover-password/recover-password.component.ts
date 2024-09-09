@@ -43,15 +43,28 @@ export class RecoverPasswordComponent implements OnInit {
   }
   
   /*atualizarSenha(){
-    this.signInService.getByEmail(this.email).subscribe(ret => {
-      this.recoverService.update(ret).subscribe(ret => {
-        console.log(ret);
+    if (this.form.valid) {
+      const senha = this.form.get('senha').value;
+      const confirmPassword = this.form.get('confirmSenha').value;
+  
+      if (senha !== confirmPassword) {
+        console.log('Senhas não conferem');
+        return;
+      }
+  
+      this.signInService.getByEmail(this.email).subscribe(ret => {
+        const updateData = { ...ret, senha }; 
+        this.recoverService.update(updateData).subscribe(ret => {
+          console.log(ret);
+        });
+        this.loading = false;
+        this.errorMessage = false;
+        this.successMessage = true;
+        this.router.navigate(['/login']); 
       });
-      this.loading = false;
-      this.errorMessage = false;
-      this.successMessage = true;
-      this.router.navigate(['/login']); 
-    });
+    } else {
+      console.log('Formulário inválido')
+    }
   }*/
 
     atualizarSenha(){

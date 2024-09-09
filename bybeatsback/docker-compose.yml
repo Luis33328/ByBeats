@@ -1,0 +1,28 @@
+version: "3.8"
+services:
+  bybeats:
+    build: .
+    image: bybeats-app
+    ports:
+      - "8080:8080"
+    depends_on:
+      - bybeats-postgres
+    environment:
+      SPRING_DATASOURCE_URL: jdbc:postgresql://bybeats-postgres:5432/bybeats_db
+      SPRING_DATASOURCE_USERNAME: ${DB_USER}
+      SPRING_DATASOURCE_PASSWORD: ${DB_PASS}
+
+  bybeats-postgres:
+    image: postgres:15-alpine
+    restart: always
+    environment:
+      POSTGRES_USER: ${DB_USER}
+      POSTGRES_PASSWORD: ${DB_PASS}
+      POSTGRES_DB: ${DB_NAME}
+    ports:
+      - "5432:5432"
+    volumes:
+      - bybeats-postgres-data:/var/lib/postgresql/data
+
+volumes:
+  bybeats-postgres-data:
