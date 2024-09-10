@@ -140,6 +140,10 @@ export class NavbarComponent implements OnInit  {
     this.router.navigate(["/beats/catalog"])
   }
 
+  public cartCheckout(){
+    this.router.navigate(["/cart-checkout"])
+  }
+
   private getLogged() {
     this.usuarioService.getByUsername().subscribe(data => {
       this.user = data.login;

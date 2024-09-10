@@ -34,7 +34,7 @@ export class PlayerComponent implements OnInit  {
   duration: number = 1;
   currentTime: string = '0:00';
 
-  public beat = [];
+  public beat:Beat;
 
   constructor(
     private snackBar: MatSnackBar,
@@ -71,6 +71,14 @@ export class PlayerComponent implements OnInit  {
 
   public ngOnInit() {
     this.getBeat();
+    this.play(this.beat);
+    
+    
+  }
+
+  public ngOnDestroy() {
+    this.play(this.beat);
+    
     
   }
 
@@ -83,9 +91,15 @@ export class PlayerComponent implements OnInit  {
     });
   }*/
 
-  private getBeat(){
+  public startPlayer(){
+    //this.play(this.beat[0].wavTagged);
+    console.log(this.sharedService.beat);
+  }
+
+  public getBeat(){
     this.beat = this.sharedService.beat; 
     console.log(this.beat);
+    //setTimeout(this.startPlayer, 1.0 * 1000);
   }
 
   private getLogged() {
@@ -99,12 +113,12 @@ export class PlayerComponent implements OnInit  {
     });
   }
 
-  play(beat): void {
+  play(beat:Beat): void {
     //if (index === undefined) {
       if (this.audio.paused) {
         if (this.audio.readyState === 0) {
           this.trackPointer = 0;
-          this.audio.src = "../assets/uploads/" + beat;
+          this.audio.src = "../assets/uploads/" + beat.wavTagged;
         }
         this.audio.play();
       } else {

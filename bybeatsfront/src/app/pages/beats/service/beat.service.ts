@@ -89,6 +89,16 @@ export class BeatService {
     );
   }
 
+  public deleteCarrinho(guidCarrinho): Observable<any> {
+
+
+    return this.http.post(environment.baseUrl + '/private/luiggibeats/carrinho/deletarCarrinho/' + guidCarrinho, { headers: this.HEADERS }).pipe(
+      map(
+        data => data
+      )
+    );
+  }
+
   public getMeusBeats(user:SignIn): Observable<any> {
     return this.http.post(environment.baseUrl + '/private/luiggibeats/beat/getMeusBeats/', user, { headers: this.HEADERS }).pipe(
       map(

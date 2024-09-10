@@ -1,0 +1,35 @@
+<div class="catalog">
+
+    <div class="beatsLeft">
+        <h1>Carrinho</h1>
+        <div class="beats">
+            <div class="beatRow" *ngFor="let cart of cartBeats">
+                <div class="beatImage">
+                    <img src="../../../../../assets/uploads/{{cart.beat.imagem}}" width="90" height="90" />
+                    <span id="playCatalog"><i class="fa-regular fa-circle-play"></i></span>
+                </div>
+                
+                <a (click)="getId(cart.beat)" id="title">{{cart.beat.titulo}}</a>
+
+
+                <a href="" id="buyButton">$ {{cart.precoBeat}},00</a>
+
+                <span id="delete" (click)="deleteCarrinho(cart.guidCarrinho)"><i class="fa-regular fa-x"></i></span>
+
+            </div>
+        </div>
+    </div>
+
+    <div class="beatsRight">
+        <div class="summary">
+            <div class="sumContent">
+                <span id="sumTitle">Resumo do Carrinho</span>
+                <span id="subtotal" class="cartDet">Subtotal</span><span class="rightInf">${{getTotal()}},00</span>
+                <Span id="fee" class="cartDet">Taxas</Span><span class="rightInf">$00,00</span>
+                <span id="total" class="cartDet">Total</span><span class="rightInf">${{getTotal()}},00</span>
+
+                <span id="checkout">Continuar Checkout</span>
+            </div>
+        </div>
+    </div>
+</div>

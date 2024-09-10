@@ -42,6 +42,8 @@ import { PlayerComponent } from './player/player.component';
 
 import { RecoverPasswordComponent } from './authentication/recover-password/recover-password.component';
 
+import { PreCheckoutComponent } from './pages/beats/components/pre-checkout/pre-checkout.component';
+
 
 @NgModule({
   declarations: [
@@ -64,7 +66,8 @@ import { RecoverPasswordComponent } from './authentication/recover-password/reco
     FavoritosComponent,
     EditarPerfilComponent,
     PlayerComponent,
-    RecoverPasswordComponent
+    RecoverPasswordComponent,
+    PreCheckoutComponent
   ],
   entryComponents: [
   ],

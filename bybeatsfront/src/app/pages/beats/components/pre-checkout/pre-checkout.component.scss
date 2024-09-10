@@ -1,0 +1,269 @@
+.catalog{
+    display: flex;
+    margin-top: 65px;
+    color: #D8D8D8;
+}
+
+h1{
+    font-size: 35px;
+}
+
+
+a{
+    text-decoration: none;
+    transition: .3s;
+}
+
+
+
+.summary{
+    width: 450px;
+    height: 500px;
+    background-color: #1B1B1B;
+    margin-left: 80px;
+    margin-top: 115px;
+}
+
+
+
+.sumContent{
+    margin-left: 35px;
+    padding-top: 35px;
+}
+
+#sumTitle{
+    display: block;
+    font-size: 22px;
+    border-bottom: 1px solid rgb(49, 49, 49);
+    padding-bottom: 15px;
+    width: 380px;
+}
+
+#subtotal{
+    
+    font-size: 18px;
+    color: rgb(105, 105, 105);
+    margin-top: 40px;
+}
+
+#fee{
+    
+    font-size: 18px;
+    color: rgb(105, 105, 105);
+    margin-top: 10px;
+}
+
+#total{
+
+    font-size: 21px;
+    margin-top: 20px;
+}
+
+.cartDet{
+    display: inline-block;
+    width: 320px;
+}
+
+.cartDet span{
+    display: inline-block;
+}
+
+.rightInf{
+    text-align:right;
+}
+
+
+#checkout{
+    display: block;
+    width: 380px;
+    height: 40px;
+    border-radius: 6px;
+    background-color: #901D1D;
+    color: #D8D8D8;
+    text-align: center;
+    margin-top: 40px;
+    transition: .3s;
+    padding-top: 7px;
+    font-size: 15px;
+  }
+
+  #checkout:hover{
+    background-color: #a52828;
+    cursor: pointer;
+  }
+
+
+.beatsLeft{
+    margin-left: 5%;
+    margin-top: 15px;
+}
+
+
+.details{
+    color: #8F8F8F;
+    font-size: 12px;
+    font-weight: 600;
+    margin-left: 155px;
+    margin-bottom: 10px;
+    margin-top: 45px;
+}
+
+#detTime{
+    margin-left: 508px;
+}
+
+#detBPM{
+    margin-left: 82px;
+}
+
+#detTags{
+    margin-left: 100px;
+}
+
+.beats{
+    margin-left: 40px;
+    margin-top: 60px;
+}
+
+.beatRow{
+    display: flex;
+    width: 890px;
+    height: 90px;
+    margin-bottom: 20px;
+    background-color: #1B1B1B;
+    transition: .2s;
+}
+
+.beatRow img{
+    border-radius: 4px;
+
+    transition: .2s;
+}
+
+#guid{
+    display: inline-block;
+    color: #979797;
+    font-size: 18px;
+    margin-top: 20px;
+    margin-left: 30px;
+}
+
+#title{
+    color: #D8D8D8;
+    width: 620px;
+    font-size: 21px;
+
+    margin-left: 15px;
+   // background-color: #901D1D;
+
+}
+
+#title:hover{
+    color: #e0e0e0;
+    cursor: pointer;
+}
+
+.rowDet{
+    color: #949494;
+    margin-top: 21px;
+    font-size: 17px;
+
+}
+
+#time{
+    width: 142px;
+    //background-color: #901D1D;
+}
+
+#bpm{
+width: 130px;
+}
+
+
+#tag1{
+    display: inline-block;
+    white-space: nowrap; 
+    overflow: hidden;
+    text-overflow: ellipsis; 
+    width: 70px;
+    //background-color: red;
+    margin-right: 8px;
+}
+
+#tag2{
+    display: inline-block;
+    white-space: nowrap; 
+    overflow: hidden;
+    text-overflow: ellipsis; 
+    width: 65px;
+    //background-color: red;
+    margin-right: 8px;
+}
+
+
+.beatIcons{
+    font-size: 26px;
+    margin-top: 13px;
+    margin-left: 23px;
+    
+}
+
+.beatIcons a {
+    display: inline-block;
+    color: #9F9F9F;
+    margin-right: 30px;
+    transition: .3s;
+}
+
+.beatIcons a:hover {
+    color: #b9b9b9;
+}
+
+#buyButton{
+    display: inline-block;
+    width: 120px;
+    height: 40px;
+
+    transition: .3s;
+    font-weight: 400;
+    font-size: 18px;
+    color: #D8D8D8;
+    border-radius: 8px;
+    text-align: center;
+    padding-top: 5px;
+}
+
+
+#buyButton i {
+    margin-right: 5px;
+}
+
+#playCatalog{
+    font-size: 25px;
+    position: absolute;
+    margin-left: -46px;
+    margin-top: 15px;
+    cursor: pointer;
+    color: #00000000;
+    transition: .3s;
+    
+}
+
+.beatImage:hover img{
+    opacity: .9;
+}
+
+.beatImage:hover #playCatalog{
+    color: #D8D8D8;
+}
+
+#delete{
+    margin-top: 55px;
+    transition: .3s;
+    color: rgb(201, 201, 201);
+}
+
+#delete:hover{
+    cursor: pointer;
+    color: rgb(224, 224, 224);
+}

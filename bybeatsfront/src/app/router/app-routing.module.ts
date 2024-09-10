@@ -23,6 +23,7 @@ import { FavoritosComponent } from '../pages/beats/components/favoritos/favorito
 import { EditarPerfilComponent } from '../pages/usuario/components/editar-perfil/editar-perfil.component';
 import { PlayerComponent } from '../player/player.component';
 import { RecoverPasswordComponent } from '../authentication/recover-password/recover-password.component';
+import { PreCheckoutComponent } from '../pages/beats/components/pre-checkout/pre-checkout.component';
 
 
 const routes: Routes = [
@@ -52,6 +53,7 @@ const routes: Routes = [
       { path: 'user/profile', component: PerfilComponent },
       { path: 'user/edit-profile', component: EditarPerfilComponent },
       { path: 'beats/favoritos', component: FavoritosComponent },
+      { path: 'cart-checkout', component: PreCheckoutComponent },
 
     ]
   },
