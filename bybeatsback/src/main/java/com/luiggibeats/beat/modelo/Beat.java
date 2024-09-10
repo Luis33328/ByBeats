@@ -8,7 +8,7 @@ import java.util.Date;
 
 @Entity
 @Table(name = "BEATS", indexes= {@Index(name = "tituloindex", columnList = "titulo"), 
-@Index(name = "guidBeatindex", columnList = "guidBeat", unique = true), 
+@Index(name = "guidBeatindex", columnList = "guid_beat", unique = true), 
 @Index(name = "tagsindex", columnList = "tags")})
 public class Beat {
 

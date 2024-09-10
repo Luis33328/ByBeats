@@ -13,7 +13,7 @@ import java.util.Date;
 import com.luiggibeats.beat.modelo.Beat;
 
 @Entity
-@Table(name = "USUARIO", indexes= {@Index(name = "usernameindex", columnList = "guidUsuario", unique = true)})
+@Table(name = "USUARIO", indexes= {@Index(name = "usernameindex", columnList = "guid_usuario", unique = true)})
 public class Usuario {
 
     @Id
