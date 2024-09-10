@@ -27,6 +27,7 @@ export class PlayerComponent implements OnInit  {
   public role = "";
   public user = "";
   public userModel:SignIn;
+  public isPlayerVisible = true;
 
   title = 'angular-music-player';
   audio = new Audio();
@@ -71,15 +72,20 @@ export class PlayerComponent implements OnInit  {
 
   public ngOnInit() {
     this.getBeat();
-    this.play(this.beat);
-    
-    
+    this.isPlayerVisible = true;
+    if (this.beat) {
+      this.play(this.beat);
+    }
   }
 
   public ngOnDestroy() {
-    this.play(this.beat);
-    
-    
+    this.isPlayerVisible = false;
+    this.audio.pause();
+  }
+
+  public closePlayer() {
+    this.isPlayerVisible = false;
+    this.audio.pause();
   }
 
   /*private getBeats(){

@@ -1,5 +1,4 @@
-<footer class="nav" style="overflow: hidden">
-
+<footer class="nav" style="overflow: hidden" *ngIf="isPlayerVisible">
         <mat-toolbar class="player">
 
                 <img src="../../assets/uploads/{{beat.imagem}}" />
@@ -31,13 +30,11 @@
                           min="0" max="{{ duration }}">
                         </mat-slider>
                 </mat-toolbar>
+
+                <button mat-icon-button (click)="closePlayer()">
+                        <mat-icon>close</mat-icon>
+                </button>
         </mat-toolbar>
-        
-        
-
-
-
-
 </footer>
 
 <!--<div class="beatHeader" *ngIf="role == 'admin'">-->
