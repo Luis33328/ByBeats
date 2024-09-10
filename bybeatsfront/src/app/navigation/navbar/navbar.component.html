@@ -62,7 +62,7 @@
 
                 </mat-menu> 
 
-                <div class="cartHeader" [matMenuTriggerFor]="cartMenu">
+                <div class="cartHeader" [matMenuTriggerFor]="cartMenu" *ngIf="role == ''">
                         <span><i class="fa-regular fa-cart-shopping"></i></span>
                 </div>
 

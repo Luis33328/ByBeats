@@ -7,6 +7,8 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.OneToOne;
 import javax.persistence.Table;
+import javax.persistence.Index;
+import java.util.Date;
 
 import com.luiggibeats.beat.modelo.Beat;
 
@@ -49,6 +51,9 @@ public class Usuario {
     
     @Column(name = "SOBRE")
     private String sobre;
+
+	@Column(name = "DATA_NASC")
+    private Date dataNasc;
     
     
     public String getNome() {
@@ -82,6 +87,14 @@ public class Usuario {
 	public void setSobre(String sobre) {
 		this.sobre = sobre;
 	}
+
+	public Date getDataNasc() {
+        return dataNasc;
+    }
+
+    public void setDataNasc(Date dataNasc) {
+        this.dataNasc = dataNasc;
+    }
 
 	public Beat[] getCarrinho() {
 		return carrinho;
