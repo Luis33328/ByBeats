@@ -33,6 +33,7 @@ export class PreCheckoutComponent implements OnInit {
   public ngOnInit() {
     this.getLogged()
     
+    
   }
 
   public getFavoritos(){
@@ -66,8 +67,8 @@ export class PreCheckoutComponent implements OnInit {
     this.beatService.deleteCarrinho(guidCarrinho).subscribe(
       data => {
         //alert("adicionou");
-        location.reload();
-        console.log(data);
+        this.getCarrinho();
+        
       }, err => {
         console.log(err);
       }

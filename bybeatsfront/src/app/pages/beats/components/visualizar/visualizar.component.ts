@@ -221,31 +221,29 @@ export class VisualizarBeatComponent implements OnInit {
   }
 
   public addToFavorites(guidBeat){
-    //console.log(guidBeat)
     let favorite = new Favorito();
     favorite.usuario = this.userLogged;
-
+  
     this.beatService.addAosFavoritos(guidBeat, favorite).subscribe(
       data => {
-        //alert("adicionou");
-        location.reload();
         console.log(data);
+        // Update the onFavorites property to reflect the change
+        this.onFavorites = true;
       }, err => {
         console.log(err);
       }
     );
   }
-
+  
   public deleteFavorite(guidBeat){
-    //console.log(guidBeat)
     let favorite = new Favorito();
     favorite.usuario = this.userLogged;
-
+  
     this.beatService.deleteFavorito(guidBeat, favorite).subscribe(
       data => {
-        //alert("adicionou");
-        location.reload();
         console.log(data);
+        // Update the onFavorites property to reflect the change
+        this.onFavorites = false;
       }, err => {
         console.log(err);
       }

@@ -70,7 +70,7 @@
                         <div class="cartMenuContent">
                                 <span id="cartTitle">Meu Carrinho ({{cartBeats.length}})</span>
 
-                                <div class="beatsDiv" *ngIf="cartBeats != null">
+                                <div class="beatsDiv" *ngIf="cartBeats.length > 0">
                                         <div class="beatCart" *ngFor="let cart of cartBeats">
                                                 <img src="../../../assets/uploads/{{cart.beat.imagem}}" width="50px" height="50px" />
 
@@ -84,9 +84,9 @@
 
                                 </div>
 
-                                <span id="subtotal">Subtotal: <span id="subNumber">${{getTotal()}},00</span></span>
+                                <span id="subtotal"*ngIf="cartBeats.length > 0">Subtotal: <span id="subNumber" *ngIf="cartBeats.length > 0">${{getTotal()}},00</span></span>
 
-                                <span (click)="cartCheckout()" id="checkout">Fazer Checkout</span>
+                                <span (click)="cartCheckout()" id="checkout" *ngIf="cartBeats.length > 0" >Fazer Checkout</span>
                         </div>
 
                 </mat-menu> 
