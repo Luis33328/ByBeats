@@ -10,8 +10,10 @@ import com.luiggibeats.beat.modelo.Beat;
 import com.luiggibeats.beat.servico.BeatServico;
 import com.luiggibeats.carrinho.modelo.Carrinho;
 import com.luiggibeats.carrinho.repositorio.CarrinhoRepositorio;
+import com.luiggibeats.favoritos.modelo.Favoritos;
 import com.luiggibeats.usuario.modelo.Usuario;
 import com.luiggibeats.usuario.servico.UsuarioServico;
+import com.luiggibeats.util.excecao.BusinessException;
 
 @Service
 public class CarrinhoServico {
@@ -75,6 +77,10 @@ public class CarrinhoServico {
 	public List<Carrinho> getCarrinho(Usuario user){
 		return carrinhoRepositorio.findByUsuario(user);
 	}
+	
+	public void deletar(Integer guidCarrinho) throws BusinessException {
+        this.carrinhoRepositorio.deleteById(guidCarrinho);
+    }
 	
 	/*public Carrinho atualizar(Carrinho carrinho) {
 		Carrinho update = carrinhoRepositorio.findByUsuarioAndBeat(carrinho.getUsuario(), carrinho.getBeat());

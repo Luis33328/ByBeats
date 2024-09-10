@@ -18,6 +18,7 @@ import { NavbarComponent } from 'src/app/navigation/navbar/navbar.component';
 import { Favorito } from '../../model/Favorito.model';
 import { AppComponent } from 'src/app/app.component';
 import { SharedService } from 'src/app/common/shared.service';
+import { PlayerComponent } from 'src/app/player/player.component';
 
 @Component({
   selector: 'app-visualizar-beat',
@@ -88,9 +89,25 @@ export class VisualizarBeatComponent implements OnInit {
     
   }
 
-  public showPlayer(){
-    this.sharedService.beat = this.beat;
+  public setTrue(){
     this.sharedService.showPlayer = true;
+  }
+
+  public showPlayer(){
+    this.sharedService.beat = this.beatModel;
+    if(this.sharedService.showPlayer == true ){
+      this.sharedService.showPlayer = false;
+
+      //setTimeout(this.setTrue, 1.0 * 1000);
+      //this.sharedService.change = true;
+      console.log(this.sharedService.showPlayer);
+    }
+    else{
+      this.sharedService.showPlayer = true;
+    }
+    
+    
+    console.log(this.beatModel);
 
   }
 
@@ -111,6 +128,7 @@ export class VisualizarBeatComponent implements OnInit {
       this.beatModel = data
       console.log(this.guidBeat);
       this.getBeatPrice(this.guidBeat);
+      //this.sharedService.beat = this.beatModel;
       
     });
   }

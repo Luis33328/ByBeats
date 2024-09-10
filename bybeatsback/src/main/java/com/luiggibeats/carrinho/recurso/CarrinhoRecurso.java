@@ -13,6 +13,7 @@ import org.springframework.web.bind.annotation.RestController;
 import com.luiggibeats.carrinho.modelo.Carrinho;
 import com.luiggibeats.carrinho.servico.CarrinhoServico;
 import com.luiggibeats.desconto.modelo.Desconto;
+import com.luiggibeats.favoritos.modelo.Favoritos;
 import com.luiggibeats.usuario.modelo.Usuario;
 import com.luiggibeats.util.base.BaseController;
 import com.luiggibeats.util.excecao.BusinessException;
@@ -41,6 +42,11 @@ public class CarrinhoRecurso extends BaseController {
     @PostMapping(value = "/getBeatPrice/{guidBeat}")
     public String getBeatPrice(@PathVariable(name = "guidBeat") Integer guidBeat,@RequestBody Carrinho carrinho) {
     	return carrinhoServico.getBeatPrice(guidBeat, carrinho);
+    }
+    
+    @PostMapping(value = "/deletarCarrinho/{guidCarrinho}")
+    public void deletarCarrinho(@PathVariable(name = "guidCarrinho") Integer guidCarrinho) {
+    	this.carrinhoServico.deletar(guidCarrinho);
     }
     
     
