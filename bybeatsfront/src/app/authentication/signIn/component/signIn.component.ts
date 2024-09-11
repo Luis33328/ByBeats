@@ -36,40 +36,42 @@ export class SignInComponent implements OnInit {
           Validators.pattern(/^(?=.*[a-zA-Z])(?=.*[0-9]).{8,}$/)
         ]),
         email: new FormControl('', [Validators.required, Validators.email]),
+        dataNasc: new FormControl('', [Validators.required]),
         confirmSenha: new FormControl('', [Validators.required, Validators.minLength(8)]),
       }, { validators: this.passwordsMatch });
   }
   
   public save() {   
-      if (this.form.valid) {
-        let usuario = new SignIn();
-        usuario.login = this.form.get('login').value;
-        usuario.senha = this.form.get('senha').value;
-        usuario.email = this.form.get('email').value;
-        this.usuarioService.getByLogin(usuario.login).subscribe(
-          (resp) => {
-            console.log(resp);
-            this.snackBar.open('Usuário já cadastrado.', 'Fechar');
-          },
-          (err) => {
-            console.log(err);
-            this.usuarioService.save(usuario).subscribe(
-              (resp) => {
-                console.log(resp);
-                this.snackBar.open('Usuário cadastrado com sucesso.', 'Fechar');
-                this.router.navigate(['/']);
-              },
-              (err) => {
-                console.log(err);
-              }
-            );
-          }
-        );
-          
-      } else {
-        console.log("Form Inválido");
-        this.snackBar.open('Preencha os campos corretamente.', 'Fechar');
-      }
+    if (this.form.valid) {
+      let usuario = new SignIn();
+      usuario.login = this.form.get('login').value;
+      usuario.senha = this.form.get('senha').value;
+      usuario.email = this.form.get('email').value;
+      usuario.dataNasc = this.form.get('dataNasc').value; 
+      this.usuarioService.getByLogin(usuario.login).subscribe(
+        (resp) => {
+          console.log(resp);
+          this.snackBar.open('Usuário já cadastrado.', 'Fechar');
+        },
+        (err) => {
+          console.log(err);
+          this.usuarioService.save(usuario).subscribe(
+            (resp) => {
+              console.log(resp);
+              this.snackBar.open('Usuário cadastrado com sucesso.', 'Fechar');
+              this.router.navigate(['/']);
+            },
+            (err) => {
+              console.log(err);
+            }
+          );
+        }
+      );
+        
+    } else {
+      console.log("Form Inválido");
+      this.snackBar.open('Preencha os campos corretamente.', 'Fechar');
+    }
   }
   
   public passwordsMatch(group: FormGroup) {

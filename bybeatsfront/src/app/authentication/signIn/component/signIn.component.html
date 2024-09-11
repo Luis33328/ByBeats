@@ -36,7 +36,14 @@
                                     Por favor insira um email válido.
                                 </mat-error>
                             </mat-form-field> 
-                        
+                            <span class="inputSpan">Data de Nascimento</span>
+                            <mat-form-field class="searchInput">
+                            <mat-label></mat-label>
+                            <input type="date" matInput formControlName="dataNasc" placeholder="Data de Nascimento">
+                            <mat-error *ngIf="form.get('dataNasc').invalid && form.get('dataNasc').touched">
+                                Data de nascimento obrigatória
+                            </mat-error>
+                            </mat-form-field>
                             <span class="inputSpan">Senha</span>
                             <mat-form-field class="searchInput" style="width: 330px;">
                                 <mat-label></mat-label>

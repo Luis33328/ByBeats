@@ -6,7 +6,7 @@ export class SignIn {
     public login: String;
     public senha: String;
     public email: String;
-
+    public dataNasc: Date; 
     public nome: String;
     public sobrenome: String;
     public cpf: String;
