@@ -18,46 +18,43 @@ import { NgMaterialMultilevelMenuModule } from 'ng-material-multilevel-menu';
 import { NgMatSearchBarModule } from 'ng-mat-search-bar';
 import { DatePipe } from '@angular/common';
 import {NgxTinySliderModule} from 'ngx-tiny-slider';
-
-
 import { NgxMaskModule } from 'ngx-mask';
 import { NgxLoadingModule } from 'ngx-loading';
-
 import { HomeComponent } from './pages/home/components/home.component';
-
 import { CadastrarBeatComponent } from './pages/beats/components/cadastrar/cadastrar.component';
 import { PesquisarBeatComponent } from './pages/beats/components/pesquisar/pesquisar.component';
 import { VisualizarBeatComponent } from './pages/beats/components/visualizar/visualizar.component';
 import { MeusBeatsComponent } from './pages/beats/components/cadastrados/meus-beats.component';
-
 import { PerfilComponent } from './pages/usuario/components/perfil/perfil.component';
-
 import { EditarPerfilComponent } from './pages/usuario/components/editar-perfil/editar-perfil.component';
-
 import { FavoritosComponent } from './pages/beats/components/favoritos/favoritos.component';
-
 import { PlayerComponent } from './player/player.component';
-
 import { RecoverPasswordComponent } from './authentication/recover-password/recover-password.component';
-
 import { PreCheckoutComponent } from './pages/beats/components/pre-checkout/pre-checkout.component';
 import { CustomDateAdapter } from './common/dateadapter.utils';
 import { MAT_DATE_FORMATS, MAT_DATE_LOCALE } from '@angular/material/core';
+//import { AngularFireStorageModule } from '@angular/fire/storage';
+import { environment } from 'src/environments/environment';
+// import { AngularFireModule } from '@angular/fire';
 
+const firebaseConfig = {
+  apiKey: environment.apiKey,
+  authDomain: environment.authDomain,
+  projectId: environment.projectId,
+  storageBucket: environment.storageBucket,
+  messagingSenderId: environment.messagingSenderId,
+  appId: environment.appId
+};
 
 @NgModule({
   declarations: [
     AppComponent,
     LayoutComponent,
-
     LoginComponent,
     SignInComponent,
     ForgotComponent,
-
     NavbarComponent,
-    
     HomeComponent,
-
     CadastrarBeatComponent,
     PesquisarBeatComponent,
     VisualizarBeatComponent,
@@ -100,12 +97,12 @@ import { MAT_DATE_FORMATS, MAT_DATE_LOCALE } from '@angular/material/core';
     MatDatepickerModule,        // <----- import(must)
     MatNativeDateModule,        // <----- import for date formating(optional)
     NgxLoadingModule.forRoot({}),
-    NgxMaskModule.forRoot()
+    NgxMaskModule.forRoot(),
+
   ],
   schemas: [
     CUSTOM_ELEMENTS_SCHEMA
   ],
-  // ... existing code ...
 
   providers: [ 
     DatePipe,

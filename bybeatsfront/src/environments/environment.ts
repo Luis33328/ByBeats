@@ -5,6 +5,12 @@
 export const environment = {
   production: false,
   baseUrl: 'http://localhost:8080',
+  apiKey: "AIzaSyDkuP7jDXqtZS2t2Fqd_zuvA-B16GABGkc",
+  authDomain: "bybeats-a9065.firebaseapp.com",
+  projectId: "bybeats-a9065",
+  storageBucket: "bybeats-a9065.appspot.com",
+  messagingSenderId: "264142330207",
+  appId: "1:264142330207:web:a30651594182dc364afeea"
 };
 
 /*
