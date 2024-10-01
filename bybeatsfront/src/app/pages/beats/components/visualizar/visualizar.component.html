@@ -8,6 +8,7 @@
         <div class="beatActions">
             <span (click)="changeFavorite()" *ngIf="onFavorites == false" id="like"><i class="fa-regular fa-heart"></i></span>
             <span (click)="changeFavorite()" *ngIf="onFavorites == true" id="liked"><i class="fa-solid fa-heart"></i></span>
+            <span id="likeCount">{{likes}}</span>
         </div>
 
 

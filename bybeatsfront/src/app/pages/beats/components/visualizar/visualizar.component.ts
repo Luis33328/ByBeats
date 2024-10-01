@@ -63,6 +63,8 @@ export class VisualizarBeatComponent implements OnInit {
 
   public favorites = []
 
+  public likes = 0;
+
   productOrders: ProductOrder[] = [];
   beats: Beat[] = [];
   selectedProductOrder: Beat;
@@ -179,6 +181,7 @@ export class VisualizarBeatComponent implements OnInit {
       console.log(data);
       this.getBeat();
       this.getFavorite();
+      this.getLikes();
       
 
     }, err => {
@@ -220,6 +223,22 @@ export class VisualizarBeatComponent implements OnInit {
     );
   }
 
+  public getLikes(){
+    this.beatService.getLikes(this.guidBeat).subscribe(
+      data =>{
+        console.log(data);
+        if(data != null){
+          this.likes = data.length;
+          console.log('likes: ',this.likes);
+          
+        }
+      },
+      err =>{
+        console.log(err);
+      }
+    );
+  }
+
   public addToFavorites(guidBeat){
     let favorite = new Favorito();
     favorite.usuario = this.userLogged;
@@ -229,6 +248,7 @@ export class VisualizarBeatComponent implements OnInit {
         console.log(data);
         // Update the onFavorites property to reflect the change
         this.onFavorites = true;
+        this.likes++;
       }, err => {
         console.log(err);
       }
@@ -244,6 +264,7 @@ export class VisualizarBeatComponent implements OnInit {
         console.log(data);
         // Update the onFavorites property to reflect the change
         this.onFavorites = false;
+        this.likes--;
       }, err => {
         console.log(err);
       }

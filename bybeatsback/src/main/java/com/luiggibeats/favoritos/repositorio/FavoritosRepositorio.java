@@ -17,6 +17,8 @@ public interface FavoritosRepositorio extends JpaRepository<Favoritos, Integer> 
 	
 	public Favoritos findByUsuarioAndBeat(Usuario user, Beat beat);
 	
+	public List<Favoritos> findByBeat(Beat beat);
+	
 	@Transactional
 	public void deleteByUsuarioAndBeat(Usuario user, Beat beat);
 }

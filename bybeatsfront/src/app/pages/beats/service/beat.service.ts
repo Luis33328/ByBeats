@@ -22,6 +22,16 @@ export class BeatService {
 
   constructor(private http: HttpClient) { }
 
+  public getLikes(guidBeat): Observable<any> {
+
+
+    return this.http.post(environment.baseUrl + '/private/luiggibeats/favoritos/getLikes/' + guidBeat, { headers: this.HEADERS }).pipe(
+      map(
+        data => data
+      )
+    );
+  }
+
   public addAosFavoritos(guidBeat, favorito:Favorito): Observable<any> {
 
 

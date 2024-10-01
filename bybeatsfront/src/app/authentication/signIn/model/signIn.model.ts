@@ -16,5 +16,7 @@ export class SignIn {
 
     public role: String;
     public otp: String;
+
+    public data: String;
 q
 }

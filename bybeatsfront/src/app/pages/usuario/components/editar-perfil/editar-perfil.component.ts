@@ -64,6 +64,7 @@ export class EditarPerfilComponent implements OnInit {
       usuario: user.login,
       cpf: user.cpf,
       sobre: user.sobre,
+      dataNasc: user.data,
     });
   }
 
@@ -74,7 +75,8 @@ export class EditarPerfilComponent implements OnInit {
       sobrenome: new FormControl(''),
       usuario: new FormControl(''),
       cpf: new FormControl(''),
-      sobre: new FormControl('')
+      sobre: new FormControl(''),
+      dataNasc: new FormControl('')
 
     }, {validators: EditarPerfilComponent.isValidCpf});
 }
@@ -208,6 +210,9 @@ static isValidCpf(): ValidatorFn {
         user.login = this.form.get('usuario').value;
         user.cpf = this.form.get('cpf').value;
         user.sobre = this.form.get('sobre').value;
+
+        user.data = this.form.get('dataNasc').value;
+
         user.senha = this.user.senha;
         user.email = this.user.email;
 
