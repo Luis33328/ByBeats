@@ -3,6 +3,29 @@
     margin-top: 65px;
     color: #D8D8D8;
 }
+.header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+
+  .searchInput input{
+    padding: 10px;
+    background-color: #2C2C2C;
+    border: 0;
+    text-indent: 10px;
+    color: #a3a3a3;
+    border-radius: 6px;
+    caret-color: #a3a3a3;
+}
+
+
+.searchInput button{
+    float: right;
+    font-size: 20px;
+    color: #949494;
+    position: relative;
+}
 
 h1{
     font-size: 35px;
