@@ -3,7 +3,17 @@
 
     </div>
     <div class="beatsRight">
-        <h1>Catálogo de Beats</h1>
+        <div class="header">
+            <h1>Catálogo de Beats</h1>
+            <div class="searchInput">
+              <mat-form-field class="search-form" floatLabel="never" appearance="fill">
+                <input matInput [(ngModel)]="searchTerm" placeholder="Procurar beats">
+                <button mat-icon-button matSuffix class="center-icon">
+                <mat-icon>search</mat-icon>
+                </button>
+              </mat-form-field>
+            </div>
+          </div>
         <div class="beats">
             <div class="details">
                 <span id="detTitle">TITULO</span>
@@ -11,7 +21,7 @@
                 <span id="detBPM">BPM</span>
                 <span id="detTags">TAGS</span>
             </div>
-            <div class="beatRow" *ngFor="let beat of beats">
+            <div class="beatRow" *ngFor="let beat of beats | filter:searchTerm">
                 <span id="guid">{{beat.guidBeat + 1}}</span>
                 <div class="beatImage">
                     <img src="../../../../../assets/uploads/{{beat.imagem}}" width="65" height="65" />

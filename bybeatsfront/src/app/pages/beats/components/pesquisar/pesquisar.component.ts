@@ -16,7 +16,7 @@ export class PesquisarBeatComponent implements OnInit {
   public form: FormGroup = new FormGroup({});
 
   public beats = [];
-
+  private searchTerm: string = '';
 
   constructor(
     private router: Router,

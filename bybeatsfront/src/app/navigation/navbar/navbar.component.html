@@ -12,16 +12,6 @@
                         <span >Mix</span>
                 </div>
 
-                <div class="searchHeader">
-                        <form [formGroup]="search">
-                                <mat-form-field class="searchInput" style="width: 270px; ">
-                                        <mat-label></mat-label>
-                                        <input matInput formControlName="searchInput" placeholder="Pesquisar Beats..." autocomplete="off" style="height: 38px;"/>
-                                        <a href=""><i class="fa-solid fa-magnifying-glass"></i></a>
-                                </mat-form-field> 
-                        </form>
-                </div>
-
                 <div class="loginButtons" *ngIf="role == ''">
                         <a id="loginSpanH" href="login">Login</a>
                         <a id="signSpanH" href="cadastro">Cadastrar-se</a>

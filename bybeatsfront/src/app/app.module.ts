@@ -35,6 +35,7 @@ import { CustomDateAdapter } from './common/dateadapter.utils';
 import { MAT_DATE_FORMATS, MAT_DATE_LOCALE } from '@angular/material/core';
 //import { AngularFireStorageModule } from '@angular/fire/storage';
 import { environment } from 'src/environments/environment';
+import { FilterPipe } from './pages/beats/components/pesquisar/filter.pipe';
 // import { AngularFireModule } from '@angular/fire';
 
 const firebaseConfig = {
@@ -64,7 +65,8 @@ const firebaseConfig = {
     EditarPerfilComponent,
     PlayerComponent,
     RecoverPasswordComponent,
-    PreCheckoutComponent
+    PreCheckoutComponent,
+    FilterPipe
   ],
   entryComponents: [
   ],
