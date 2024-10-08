@@ -26,6 +26,20 @@
     color: #949494;
     position: relative;
 }
+.mat-paginator {
+    background-color: rgb(65, 65, 65);
+    color: white;
+  }
+  
+  .mat-paginator .mat-select-value {
+    color: white;
+  }
+  
+  .mat-paginator .mat-paginator-navigation-next,
+  .mat-paginator .mat-paginator-navigation-previous,
+  .mat-paginator .mat-icon {
+    color: rgb(145, 0, 0);
+  }
 
 h1{
     font-size: 35px;
