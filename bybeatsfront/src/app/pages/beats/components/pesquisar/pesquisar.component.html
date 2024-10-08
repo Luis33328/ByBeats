@@ -5,6 +5,8 @@
     <div class="beatsRight">
         <div class="header">
             <h1>Catálogo de Beats</h1>
+            <button mat-button (click)="orderBy('titulo')">Ordenar por nome</button>
+            <button mat-button (click)="orderBy('bpm')">Order por BPM</button>
             <div class="searchInput">
               <mat-form-field class="search-form" floatLabel="never" appearance="fill">
                 <input matInput [(ngModel)]="searchTerm" placeholder="Procurar beats">
@@ -21,7 +23,7 @@
                 <span id="detBPM">BPM</span>
                 <span id="detTags">TAGS</span>
             </div>
-            <div class="beatRow" *ngFor="let beat of beats | filter:searchTerm">
+            <div class="beatRow" *ngFor="let beat of displayedBeats | filter:searchTerm">
                 <span id="guid">{{beat.guidBeat + 1}}</span>
                 <div class="beatImage">
                     <img src="../../../../../assets/uploads/{{beat.imagem}}" width="65" height="65" />
@@ -45,6 +47,8 @@
                 <a href="" id="buyButton">$ {{beat.precoBasic}},00</a>
 
             </div>
+            <mat-paginator [length]="beats.length" [pageSize]="pageSize" [pageSizeOptions]="pageSizeOptions" (page)="pageEvent = $event; paginate($event)">
+            </mat-paginator>
         </div>
     </div>
 </div>
