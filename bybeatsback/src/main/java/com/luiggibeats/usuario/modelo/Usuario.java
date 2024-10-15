@@ -54,9 +54,20 @@ public class Usuario {
 
 	@Column(name = "DATA_NASC")
     private Date dataNasc;
+	
+	@Column(name = "DATA")
+    private String data;
     
     
-    public String getNome() {
+    public String getData() {
+		return data;
+	}
+
+	public void setData(String data) {
+		this.data = data;
+	}
+
+	public String getNome() {
 		return nome;
 	}
 

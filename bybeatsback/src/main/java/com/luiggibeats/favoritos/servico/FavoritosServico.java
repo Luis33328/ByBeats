@@ -59,6 +59,11 @@ public class FavoritosServico {
 		return favoritosRepositorio.findByUsuario(user);
 	}
 	
+	public List<Favoritos> getLikes(Integer guidBeat){
+		Beat beat = beatServico.buscarPorId(guidBeat);
+		return favoritosRepositorio.findByBeat(beat);
+	}
+	
 	public Favoritos checkFavorito(Integer guidBeat, Favoritos favoritos){
 		Beat beat = beatServico.buscarPorId(guidBeat);
 		return favoritosRepositorio.findByUsuarioAndBeat(favoritos.getUsuario(), beat);

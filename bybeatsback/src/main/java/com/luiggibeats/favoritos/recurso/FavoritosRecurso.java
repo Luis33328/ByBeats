@@ -11,6 +11,7 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
+import com.luiggibeats.beat.modelo.Beat;
 import com.luiggibeats.carrinho.modelo.Carrinho;
 import com.luiggibeats.carrinho.servico.CarrinhoServico;
 import com.luiggibeats.desconto.modelo.Desconto;
@@ -49,6 +50,11 @@ public class FavoritosRecurso extends BaseController {
     @PostMapping(value = "/getFavoritos")
     public List<Favoritos> getFavoritos(@RequestBody Usuario user) {
     	return favoritosServico.getFavoritos(user);
+    }
+    
+    @PostMapping(value = "/getLikes/{guidBeat}")
+    public List<Favoritos> getLikes(@PathVariable(name = "guidBeat") Integer guidBeat) {
+    	return favoritosServico.getLikes(guidBeat);
     }
     
     
