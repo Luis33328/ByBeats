@@ -66,7 +66,7 @@ export class EditarPerfilComponent implements OnInit {
       usuario: user.login,
       cpf: user.cpf,
       sobre: user.sobre,
-      dataNasc: this.datePipe.transform(user.dataNasc, 'dd/MM/yyy'),
+      dataNasc: this.datePipe.transform(user.dataNasc, 'dd/MM/yyy')
     });
   }
 
