@@ -9,6 +9,7 @@ import { Beat } from '../../../beats/model/beat.model';
 import { BeatService } from '../../../beats/service/beat.service';
 import { SignIn } from 'src/app/authentication/signIn/model/signIn.model';
 import { NavbarComponent } from 'src/app/navigation/navbar/navbar.component';
+import { DatePipe } from '@angular/common';
 
 @Component({
   selector: 'app-editar-perfil',
@@ -33,6 +34,7 @@ export class EditarPerfilComponent implements OnInit {
     private activeRoute: ActivatedRoute,
     private usuarioService: SignInService,
     private beatService: BeatService,
+    private datePipe: DatePipe,
     private snackBar: MatSnackBar) { }
 
   public ngOnInit() {
@@ -64,7 +66,7 @@ export class EditarPerfilComponent implements OnInit {
       usuario: user.login,
       cpf: user.cpf,
       sobre: user.sobre,
-      dataNasc: user.data,
+      dataNasc: this.datePipe.transform(user.dataNasc, 'dd/MM/yyy'),
     });
   }
 
@@ -211,7 +213,7 @@ static isValidCpf(): ValidatorFn {
         user.cpf = this.form.get('cpf').value;
         user.sobre = this.form.get('sobre').value;
 
-        user.data = this.form.get('dataNasc').value;
+        user.dataNasc = this.form.get('dataNasc').value;
 
         user.senha = this.user.senha;
         user.email = this.user.email;
