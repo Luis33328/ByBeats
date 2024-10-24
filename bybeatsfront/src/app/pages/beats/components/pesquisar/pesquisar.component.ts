@@ -16,6 +16,8 @@ export class PesquisarBeatComponent implements OnInit {
   public form: FormGroup = new FormGroup({});
 
   public beats = [];
+  public bpmMin = 80;
+  public bpmMax = 120;
   private searchTerm: string = '';
   private lastSortedProperty: string = '';
   private sortDirection: number = 1;
@@ -37,10 +39,10 @@ export class PesquisarBeatComponent implements OnInit {
     this.getBeats()
   }
 
-  public getBeats(){
+  public getBeats() {
     this.beatService.listWithoutPaginator().subscribe(data => {
-      this.beats = data;
-      this.displayedBeats = data.slice(0, this.pageSize); 
+      this.beats = data.filter(beat => beat.bpm >= this.bpmMin && beat.bpm <= this.bpmMax);
+      this.displayedBeats = this.beats.slice(0, this.pageSize); 
       console.log(data);
     }, err => {
       console.log("List Error.")

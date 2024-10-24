@@ -7,6 +7,8 @@
             <h1>Catálogo de Beats</h1>
             <button mat-button (click)="orderBy('titulo')">Ordenar por nome</button>
             <button mat-button (click)="orderBy('bpm')">Ordenar por BPM</button>
+            <mat-slider min="60" max="200" step="1" [(ngModel)]="bpmMin" (ngModelChange)="bpmMin = (bpmMin > bpmMax) ? bpmMax : bpmMin; getBeats()" tickInterval="20" thumbLabel></mat-slider>
+            <mat-slider min="60" max="200" step="1" [(ngModel)]="bpmMax" (ngModelChange)="bpmMax = (bpmMax < bpmMin) ? bpmMin : bpmMax; getBeats()" tickInterval="20" thumbLabel></mat-slider>
             <div class="searchInput">
               <mat-form-field class="search-form" floatLabel="never" appearance="fill">
                 <input matInput [(ngModel)]="searchTerm" placeholder="Procurar beats">

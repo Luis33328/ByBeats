@@ -24,6 +24,7 @@ import { EditarPerfilComponent } from '../pages/usuario/components/editar-perfil
 import { PlayerComponent } from '../player/player.component';
 import { RecoverPasswordComponent } from '../authentication/recover-password/recover-password.component';
 import { PreCheckoutComponent } from '../pages/beats/components/pre-checkout/pre-checkout.component';
+import { SellerDashboardComponent } from '../sellerDashboard/sellerDashboard.component';
 
 
 const routes: Routes = [
@@ -32,6 +33,7 @@ const routes: Routes = [
   { path: 'forgotPassword', component: ForgotComponent },
   { path: 'recover-password', component: RecoverPasswordComponent }, 
   { path: 'player', component: PlayerComponent },
+  {path: 'dashboard', component: SellerDashboardComponent},
   
   
   {
