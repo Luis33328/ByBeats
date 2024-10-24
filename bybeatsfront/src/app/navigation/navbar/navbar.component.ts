@@ -140,6 +140,10 @@ export class NavbarComponent implements OnInit  {
     this.router.navigate(["/beats/catalog"])
   }
 
+  public dashboard(){
+    this.router.navigate(["/dashboard"])
+  }
+
   public cartCheckout(){
     this.router.navigate(["/cart-checkout"])
   }
