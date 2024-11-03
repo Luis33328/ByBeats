@@ -1,21 +1,35 @@
 <div class="catalog">
     <div class="beatsLeft">
-
     </div>
     <div class="beatsRight">
         <div class="header">
             <h1>Catálogo de Beats</h1>
-            <button mat-button (click)="orderBy('titulo')">Ordenar por nome</button>
-            <button mat-button (click)="orderBy('bpm')">Order por BPM</button>
-            <div class="searchInput">
-              <mat-form-field class="search-form" floatLabel="never" appearance="fill">
-                <input matInput [(ngModel)]="searchTerm" placeholder="Procurar beats">
-                <button mat-icon-button matSuffix class="center-icon">
-                <mat-icon>search</mat-icon>
-                </button>
-              </mat-form-field>
+            <div class="header-controls">
+                <button mat-button [matMenuTriggerFor]="filterMenu" matMenuTriggerRestoreFocus="false">Filtros</button>
+                <mat-menu #filterMenu="matMenu">
+                    <div class="filter-menu-content" (click)="$event.stopPropagation()">
+                        <div>
+                            <label for="bpmMinInput">Min BPM:</label>
+                            <input id="bpmMinInput" type="number" [(ngModel)]="bpmMin" [max]="bpmMax" (ngModelChange)="onBpmMinChange($event)" min="24" />
+                        </div>
+                        <mat-slider min="24" [max]="bpmMax" step="1" [(ngModel)]="bpmMin" (ngModelChange)="onBpmMinChange($event)" tickInterval="20" thumbLabel></mat-slider>
+                        <div>
+                            <label for="bpmMaxInput">Max BPM:</label>
+                            <input id="bpmMaxInput" type="number" [(ngModel)]="bpmMax" [min]="bpmMin" (ngModelChange)="onBpmMaxChange($event)" max="300" />
+                        </div>
+                        <mat-slider [min]="bpmMin" max="300" step="1" [(ngModel)]="bpmMax" (ngModelChange)="onBpmMaxChange($event)" tickInterval="20" thumbLabel></mat-slider>
+                    </div>
+                </mat-menu>
+                <div class="searchInput">
+                    <mat-form-field class="search-form" floatLabel="never" appearance="fill">
+                        <input matInput [(ngModel)]="searchTerm" placeholder="Procurar beats">
+                        <button mat-icon-button matSuffix class="center-icon">
+                            <mat-icon>search</mat-icon>
+                        </button>
+                    </mat-form-field>
+                </div>
             </div>
-          </div>
+        </div>
         <div class="beats">
             <div class="details">
                 <span id="detTitle">TITULO</span>
@@ -29,23 +43,15 @@
                     <img src="../../../../../assets/uploads/{{beat.imagem}}" width="65" height="65" />
                     <span id="playCatalog"><i class="fa-regular fa-circle-play"></i></span>
                 </div>
-                
                 <a (click)="getId(beat)" id="title">{{beat.titulo}}</a>
-
                 <span class="rowDet" id="time">3:28</span>
-
                 <span class="rowDet" id="bpm">{{beat.bpm}}</span>
-
                 <span class="rowDet" id="tags"><span id="tag1">#lil peep</span><span id="tag2">#hip hop</span></span>
-
-
                 <div class="beatIcons">
                     <a href=""><i class="fa-regular fa-share-nodes"></i></a>
                     <a href=""><i class="fa-regular fa-arrow-down-to-line"></i></a>
                 </div>
-
                 <a href="" id="buyButton">$ {{beat.precoBasic}},00</a>
-
             </div>
             <mat-paginator [length]="beats.length" [pageSize]="pageSize" [pageSizeOptions]="pageSizeOptions" (page)="pageEvent = $event; paginate($event)">
             </mat-paginator>

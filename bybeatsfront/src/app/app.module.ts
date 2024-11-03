@@ -1,4 +1,5 @@
 import { BrowserModule } from '@angular/platform-browser';
+import { SellerDashboardComponent } from './sellerDashboard/sellerDashboard.component';
 import { NgModule, CUSTOM_ELEMENTS_SCHEMA } from '@angular/core';
 import { AppRoutingModule } from './router/app-routing.module';
 import { AppComponent } from './app.component';
@@ -36,7 +37,10 @@ import { MAT_DATE_FORMATS, MAT_DATE_LOCALE } from '@angular/material/core';
 //import { AngularFireStorageModule } from '@angular/fire/storage';
 import { environment } from 'src/environments/environment';
 import { FilterPipe } from './pages/beats/components/pesquisar/filter.pipe';
-// import { AngularFireModule } from '@angular/fire';
+//import { AngularFireModule } from '@angular/fire';
+import { ChartsModule, ThemeService } from 'ng2-charts'; // Import from ng2-charts
+import { CustomThemeService } from './CustomTheme.service';
+
 
 const firebaseConfig = {
   apiKey: environment.apiKey,
@@ -48,7 +52,7 @@ const firebaseConfig = {
 };
 
 @NgModule({
-  declarations: [
+  declarations: [	
     AppComponent,
     LayoutComponent,
     LoginComponent,
@@ -66,8 +70,9 @@ const firebaseConfig = {
     PlayerComponent,
     RecoverPasswordComponent,
     PreCheckoutComponent,
-    FilterPipe
-  ],
+    FilterPipe,
+    SellerDashboardComponent
+   ],
   entryComponents: [
   ],
   imports: [
@@ -75,6 +80,9 @@ const firebaseConfig = {
     AppRoutingModule,
     HttpClientModule,
     FormsModule,
+    ChartsModule,
+    //AngularFireModule.initializeApp(firebaseConfig),
+    //AngularFireStorageModule,
     NoopAnimationsModule,
     MatSidenavModule,
     MatFormFieldModule,
@@ -96,8 +104,8 @@ const firebaseConfig = {
     NgMatSearchBarModule,
     NgxTinySliderModule,
     MatMenuModule,
-    MatDatepickerModule,        // <----- import(must)
-    MatNativeDateModule,        // <----- import for date formating(optional)
+    MatDatepickerModule,        
+    MatNativeDateModule,        
     NgxLoadingModule.forRoot({}),
     NgxMaskModule.forRoot(),
 
@@ -110,6 +118,8 @@ const firebaseConfig = {
     DatePipe,
     AuthGuard, 
     AdminGuard,
+    ThemeService,
+    { provide: ThemeService, useClass: CustomThemeService },
     {
       provide : HTTP_INTERCEPTORS,
       useClass: AuthInterceptor,

@@ -42,7 +42,7 @@ export class HomeComponent implements OnInit, AfterViewInit {
     this.getUserRole();
 
     this.tinySliderConfig = {
-      waiteForDom: true,
+      waitForDom: true,
       slideBy: 6,
       items: 6,
       speed: 400,
