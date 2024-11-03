@@ -32,9 +32,10 @@
 
                 <div class="field">
                     <span class="inputSpan">Data de Nascimento</span>
-                    <mat-form-field class="searchInput" style="width: 420px; ">
-                        <mat-label></mat-label>
-                        <input matInput formControlName="dataNasc" placeholder="Data de Nascimento" autocomplete="off" />
+                    <mat-form-field class="searchInput" style="width: 420px;">
+                        <input matInput [matDatepicker]="picker" formControlName="dataNasc" autocomplete="off" />
+                        <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+                        <mat-datepicker #picker></mat-datepicker>
                     </mat-form-field>
                 </div>
                 

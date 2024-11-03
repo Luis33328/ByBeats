@@ -53,20 +53,13 @@ export class EditarPerfilComponent implements OnInit {
   }
 
   public fillForms(user: SignIn) {
-
-    /*if(user.imagem != null){
-      let img    = <HTMLInputElement>document.getElementById('profImage');  
-      img.src = '../../../../../assets/uploads/' + user.imagem;
-    }*/
-
-
     this.form.patchValue({
       nome: user.nome,
       sobrenome: user.sobrenome,
       usuario: user.login,
       cpf: user.cpf,
       sobre: user.sobre,
-      dataNasc: this.datePipe.transform(user.dataNasc, 'dd/MM/yyy')
+      dataNasc: this.datePipe.transform(user.dataNasc, 'yyyy-MM-dd')
     });
   }
 
@@ -163,14 +156,6 @@ static isValidCpf(): ValidatorFn {
     });
   }
 
-
-  
-
-
-
-  //mds que crime essas funcoes nao sei usar angular
-
-
   public changeImg(event){
     let img    = <HTMLInputElement>document.getElementById('profImage');
     let fileImg    = (<HTMLInputElement>document.getElementById('profImg')).files[0];  
@@ -202,8 +187,6 @@ static isValidCpf(): ValidatorFn {
         if(this.image != null){
           this.onUpload()
         }
-
-          
 
         let user = new SignIn();
         user.guidUsuario = Number.parseInt(this.guidUsuario);
