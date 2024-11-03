@@ -1,31 +1,33 @@
-<div style="display: block;">
-  <h2>Sales Overview</h2>
-  <canvas baseChart
-          [datasets]="lineChartData"
-          [labels]="lineChartLabels"
-          [options]="lineChartOptions"
-          [legend]="lineChartLegend"
-          [chartType]="lineChartType"
-          (chartClick)="onChartClick($event)">
-  </canvas>
-</div>
+<div class="dashboard-container">
+  <div class="chart-container">
+    <h2>Vendas ao longo dos meses</h2>
+    <canvas baseChart
+            [datasets]="lineChartData"
+            [labels]="lineChartLabels"
+            [options]="lineChartOptions"
+            [legend]="lineChartLegend"
+            [chartType]="lineChartType"
+            (chartClick)="onChartClick($event)">
+    </canvas>
+  </div>
 
-<div style="display: block; margin-top: 20px;">
-  <h2>Revenue Overview</h2>
-  <canvas baseChart
-          [datasets]="barChartData"
-          [labels]="barChartLabels"
-          [options]="barChartOptions"
-          [legend]="barChartLegend"
-          [chartType]="barChartType">
-  </canvas>
-</div>
+  <div class="chart-container">
+    <h2>Receita ao longo dos meses</h2>
+    <canvas baseChart
+            [datasets]="barChartData"
+            [labels]="barChartLabels"
+            [options]="barChartOptions"
+            [legend]="barChartLegend"
+            [chartType]="barChartType">
+    </canvas>
+  </div>
 
-<div style="display: block; margin-top: 20px;">
-  <h2>Product Distribution</h2>
-  <canvas baseChart
-          [data]="pieChartData"
-          [labels]="pieChartLabels"
-          [chartType]="pieChartType">
-  </canvas>
+  <div class="chart-container">
+    <h2>Total de vendas por produto</h2>
+    <canvas baseChart
+            [data]="pieChartData"
+            [labels]="pieChartLabels"
+            [chartType]="pieChartType">
+    </canvas>
+  </div>
 </div>
