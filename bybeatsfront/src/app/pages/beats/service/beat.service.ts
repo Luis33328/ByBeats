@@ -9,6 +9,7 @@ import { Usuario } from '../../usuario/model/usuario.model';
 import { SignIn } from 'src/app/authentication/signIn/model/signIn.model';
 import { Carrinho } from '../model/Carrinho.model';
 import { Favorito } from '../model/Favorito.model';
+import {S3Service} from 'src/app/common/s3.service';
 
 @Injectable({
   providedIn: 'root'
