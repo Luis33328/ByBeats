@@ -35,21 +35,10 @@ import { PreCheckoutComponent } from './pages/beats/components/pre-checkout/pre-
 import { CustomDateAdapter } from './common/dateadapter.utils';
 import { MAT_DATE_FORMATS, MAT_DATE_LOCALE } from '@angular/material/core';
 //import { AngularFireStorageModule } from '@angular/fire/storage';
-import { environment } from 'src/environments/environment';
 import { FilterPipe } from './pages/beats/components/pesquisar/filter.pipe';
 //import { AngularFireModule } from '@angular/fire';
 import { ChartsModule, ThemeService } from 'ng2-charts'; // Import from ng2-charts
 import { CustomThemeService } from './CustomTheme.service';
-
-
-const firebaseConfig = {
-  apiKey: environment.apiKey,
-  authDomain: environment.authDomain,
-  projectId: environment.projectId,
-  storageBucket: environment.storageBucket,
-  messagingSenderId: environment.messagingSenderId,
-  appId: environment.appId
-};
 
 @NgModule({
   declarations: [	
