@@ -13,10 +13,10 @@ export class SellerDashboardComponent {
   filter = {
     startDate: null,
     endDate: null,
-    beat: null // Add beat filter
+    beat: null 
   };
 
-  beats = ['Beat A', 'Beat B', 'Beat C']; // Available beats for filtering
+  beats = ['Beat A', 'Beat B', 'Beat C']; 
 
   originalData = [
     { date: new Date('2024-01-15'), sales: 65, revenue: 28, beat: 'Beat A' },
@@ -34,7 +34,7 @@ export class SellerDashboardComponent {
   lineChartData: ChartDataSets[] = [{ data: [], label: 'Sales' }];
   lineChartLabels: Label[] = [];
   lineChartOptions: ChartOptions = { responsive: true };
-  lineChartColors: Color[] = [{ borderColor: 'blue' }];  // Customize color
+  lineChartColors: Color[] = [{ borderColor: 'blue' }]; 
   lineChartLegend = true;
   lineChartType: ChartType = 'line';
 
@@ -80,7 +80,7 @@ export class SellerDashboardComponent {
     };
     this.applyFilters(); 
   }
-  
+
   updateCharts() {
 
     this.lineChartData = [{
@@ -100,7 +100,6 @@ export class SellerDashboardComponent {
       item.date.toLocaleString('default', { month: 'long' })
     );
 
-    // Pie chart update: Group and sum revenue by beat
     const beatRevenue = this.filteredData.reduce((acc, item) => {
       acc[item.beat] = (acc[item.beat] || 0) + item.revenue;
       return acc;

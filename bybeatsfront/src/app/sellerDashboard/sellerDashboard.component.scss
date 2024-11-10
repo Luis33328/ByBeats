@@ -18,7 +18,7 @@ body {
 
 /* Filter form */
 .filter-form {
-  background-color: #7a7a7a; 
+  background-color: #c4c4c4; 
   padding: 20px;
   border-radius: 8px;
   grid-column: 1 / -1; 
@@ -66,7 +66,7 @@ body {
 }
 
 .chart-container {
-  background-color: #8d8d8d; 
+  background-color: #c4c4c4; 
   border: none;                 
   border-radius: 8px;          
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
@@ -76,13 +76,13 @@ body {
   h2 {
     margin-top: 0;  
     font-size: 1.5em;
-    color: #d8d8d8; 
+    color: #000000; 
     text-align: center;
     margin-bottom: 20px;
   }
 
   canvas { 
-    background-color: #8d8d8d; 
+    background-color: #c6c6c6; 
   }
 }
 
