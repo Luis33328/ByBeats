@@ -40,13 +40,13 @@
             <div class="beatRow" *ngFor="let beat of displayedBeats | filter:searchTerm">
                 <span id="guid">{{beat.guidBeat + 1}}</span>
                 <div class="beatImage">
-                    <img src="../../../../../assets/uploads/{{beat.imagem}}" width="65" height="65" />
+                    <img src="{{beat.imagem}}" width="65" height="65" />
                     <span id="playCatalog"><i class="fa-regular fa-circle-play"></i></span>
                 </div>
                 <a (click)="getId(beat)" id="title">{{beat.titulo}}</a>
                 <span class="rowDet" id="time">3:28</span>
                 <span class="rowDet" id="bpm">{{beat.bpm}}</span>
-                <span class="rowDet" id="tags"><span id="tag1">#lil peep</span><span id="tag2">#hip hop</span></span>
+                <span class="rowDet" id="tags"><span id="tag1">#hip hop</span><span id="tag2">#instrumental</span></span>
                 <div class="beatIcons">
                     <a href=""><i class="fa-regular fa-share-nodes"></i></a>
                     <a href=""><i class="fa-regular fa-arrow-down-to-line"></i></a>

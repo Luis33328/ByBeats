@@ -9,6 +9,9 @@ import { Beat } from '../../model/beat.model';
 import { BeatService } from '../../service/beat.service';
 import { SignIn } from 'src/app/authentication/signIn/model/signIn.model';
 import { NavbarComponent } from 'src/app/navigation/navbar/navbar.component';
+import { S3Service } from 'src/app/common/s3.service';
+import { forkJoin } from 'rxjs';
+import { finalize } from 'rxjs/operators';
 
 @Component({
   selector: 'app-cadastrar-beat',
@@ -23,7 +26,7 @@ export class CadastrarBeatComponent implements OnInit {
   stems: File = null;
   wavTagged: File = null;
   image: File = null;
-
+  imageUrl: string;
   imgName = "";
 
   user:SignIn;
@@ -38,16 +41,15 @@ export class CadastrarBeatComponent implements OnInit {
     mask: [/\d/, /\d/, '/', /\d/, /\d/, '/',/\d/, /\d/,/\d/, /\d/]
   };
 
-
   constructor(
     private router: Router,
     private activeRoute: ActivatedRoute,
     private usuarioService: SignInService,
     private beatService: BeatService,
-    private snackBar: MatSnackBar) { }
+    private snackBar: MatSnackBar,
+    private s3Service: S3Service) { }
 
   public ngOnInit() {
-
     this.getUserRole();
     this.initializeForms()
     this.get();
@@ -61,16 +63,14 @@ export class CadastrarBeatComponent implements OnInit {
     if (this.guidBeat !== 'novo') {
       this.beatService.get(this.guidBeat).subscribe(data => {
         this.fillForms(data);
-        
       });
     }
     this.getLogged();
   }
 
   public fillForms(beat: Beat) {
-
-    let img    = <HTMLInputElement>document.getElementById('beatImage');  
-    img.src = '../../../../../assets/uploads/' + beat.imagem;
+    let img = <HTMLInputElement>document.getElementById('beatImage');  
+    img.src = beat.imagem;
 
     let untagged = document.getElementById('file-name2');
     ////untagged.textContent = beat.wavUntagged;
@@ -79,7 +79,7 @@ export class CadastrarBeatComponent implements OnInit {
 
     //let stems = document.getElementById('file-name3');
     ////stems.textContent = beat.stems;
-  //  this.stems = fetch('../../../../../assets/uploads/' + beat.stems); 
+    //this.stems = fetch('../../../../../assets/uploads/' + beat.stems); 
 
     //let tagged = document.getElementById('file-name4');
     ////tagged.textContent = beat.wavTagged;
@@ -88,7 +88,6 @@ export class CadastrarBeatComponent implements OnInit {
     this.form.patchValue({
       titulo: beat.titulo,
       dataLancamento: ConverterUtils.convertDateBackendToFrontend(beat.dataLancamento),
-
       precoBasic: beat.precoBasic,
       precoPremium: beat.precoPremium,
       precoUnlimited: beat.precoUnlimited,
@@ -192,32 +191,77 @@ export class CadastrarBeatComponent implements OnInit {
     //label.style.backgroundColor = "#911e1a";
   }
 
-  public changeImg(event){
-    let img    = <HTMLInputElement>document.getElementById('beatImage');
-    let fileImg    = (<HTMLInputElement>document.getElementById('beatImg')).files[0];  
+public changeImg(event) {
+  let img = <HTMLInputElement>document.getElementById('beatImage');
+  let fileImg = (<HTMLInputElement>document.getElementById('beatImg')).files[0];
 
-    img.src = URL.createObjectURL(fileImg);
+  img.src = URL.createObjectURL(fileImg);
 
-    this.image = event.target.files[event.target.files.length - 1] as File;
-    console.log(this.image);
-    console.log(this.image.name);
-    this.imgName = this.image.name;
-    //label.style.backgroundColor = "#911e1a";
-  }
+  this.image = event.target.files[event.target.files.length - 1] as File;
+  console.log(this.image);
+  console.log(this.image.name);
+  this.imgName = this.image.name;
 
-  public onUpload(){
-    const fd = new FormData();
+  if (this.image) {
+    const bucketName = 'by-beats';
+    const key = `imgs/${this.image.name}`;
 
-    fd.append('files', this.wavUntagged, this.wavUntagged.name);
-    fd.append('files', this.stems, this.stems.name);
-    fd.append('files', this.wavTagged, this.wavTagged.name);
-    fd.append('files', this.image, this.image.name);
-
-    
-      this.beatService.uploadImage(fd).subscribe(
+    this.s3Service.uploadFile(this.image, bucketName, key)
+      .pipe(
+        finalize(() => {
+          this.imageUrl = this.s3Service.getFileUrl(bucketName, key);
+          console.log("imageUrl:", this.imageUrl);
+        })
+      )
+      .subscribe(
         res => {
-        console.log(res);
-      });
+          console.log('Image upload successful:', res);
+        },
+        err => {
+          console.error('Image upload failed:', err);
+          this.snackBar.open('Error uploading image. Please try again.', 'Close', { duration: 5000 });
+        }
+      );
+  }
+}
+
+  public onUpload() {
+    if (!this.wavUntagged || !this.stems || !this.wavTagged || !this.image) {
+      this.snackBar.open('All files must be selected before uploading.', 'Close', { duration: 5000 });
+      return;
+    }
+  
+    const bucketName = 'by-beats';
+    const keyUntagged = `files/${this.wavUntagged.name}`;
+    const keyStems = `files/${this.stems.name}`;
+    const keyTagged = `files/${this.wavTagged.name}`;
+    const keyImage = `imgs/${this.image.name}`;
+  
+    const uploadTasks = [
+      this.s3Service.uploadFile(this.wavUntagged, bucketName, keyUntagged),
+      this.s3Service.uploadFile(this.stems, bucketName, keyStems),
+      this.s3Service.uploadFile(this.wavTagged, bucketName, keyTagged),
+      this.s3Service.uploadFile(this.image, bucketName, keyImage)
+    ];
+  
+    forkJoin(uploadTasks)
+      .pipe(
+        finalize(() => {
+          this.imageUrl = this.s3Service.getFileUrl(bucketName, keyImage);
+          console.log("imageUrl:", this.image);
+          this.save();
+        })
+      )
+      .subscribe(
+        res => {
+          console.log('Upload successful:', res);
+          this.snackBar.open('Files uploaded successfully.', 'Close', { duration: 5000 });
+        },
+        err => {
+          console.error('Upload failed:', err);
+          this.snackBar.open('Error uploading files. Please try again.', 'Close', { duration: 5000 });
+        }
+      );
   }
 
   
@@ -234,23 +278,17 @@ export class CadastrarBeatComponent implements OnInit {
     var extensionUntagged = untagged.substr(untagged.lastIndexOf('.'));
     var extensionStems = stems.substr(stems.lastIndexOf('.'));
     var extensionTagged = tagged.substr(tagged.lastIndexOf('.'));
-    var extensionImg = this.imgName.substr(this.imgName.lastIndexOf('.'));
-
-    
-    
-
-
+    //var extensionImg = this.imgName.substr(this.imgName.lastIndexOf('.'));
 
     if (this.form.valid) {
       if(this.wavUntagged != null && this.stems != null && this.wavTagged != null && this.image != null || this.guidBeat != 'novo'){
 
-        if ((extensionUntagged.toLowerCase() == ".wav") && (extensionStems.toLowerCase() == ".rar") && (extensionTagged.toLowerCase() == ".wav") && (extensionImg.toLowerCase() == ".png")){
+        if ((extensionUntagged.toLowerCase() == ".wav") && (extensionStems.toLowerCase() == ".rar") && (extensionTagged.toLowerCase() == ".wav")){
 
           if(this.guidBeat == 'novo'){
             this.onUpload()
           }
             
-
           let beat = new Beat();
           beat.titulo = this.form.get('titulo').value;
           //beat.tags = this.form.get('tags').value;
@@ -259,13 +297,13 @@ export class CadastrarBeatComponent implements OnInit {
             beat.wavUntagged = this.wavUntagged.name;
             beat.stems = this.stems.name;
             beat.wavTagged = this.wavTagged.name;
-            beat.imagem = this.image.name;
+            beat.imagem = this.imageUrl;
           }
           else{
             beat.wavUntagged = this.wavUntagged.name;
             beat.stems = this.stems.name;
             beat.wavTagged = this.wavTagged.name;
-            beat.imagem = this.image.name;
+            beat.imagem = this.imageUrl;
           
           }
           

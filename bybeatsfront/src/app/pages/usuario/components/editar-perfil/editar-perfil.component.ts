@@ -5,7 +5,7 @@ import { ActivatedRoute, Router } from '@angular/router';
 import { SignInService } from '../../../../authentication/signIn/service/signIn.service';
 import { SignIn } from 'src/app/authentication/signIn/model/signIn.model';
 import { DatePipe } from '@angular/common';
-import { S3Service } from 'src/app/s3.service';
+import { S3Service } from 'src/app/common/s3.service';
 import { finalize } from 'rxjs/operators';
 
 @Component({

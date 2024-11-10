@@ -39,6 +39,7 @@ import { FilterPipe } from './pages/beats/components/pesquisar/filter.pipe';
 //import { AngularFireModule } from '@angular/fire';
 import { ChartsModule, ThemeService } from 'ng2-charts'; // Import from ng2-charts
 import { CustomThemeService } from './CustomTheme.service';
+import { LicenciamentoComponent } from './pages/licenciamento/licenciamento.component';
 
 @NgModule({
   declarations: [	
@@ -60,7 +61,8 @@ import { CustomThemeService } from './CustomTheme.service';
     RecoverPasswordComponent,
     PreCheckoutComponent,
     FilterPipe,
-    SellerDashboardComponent
+    SellerDashboardComponent,
+    LicenciamentoComponent
    ],
   entryComponents: [
   ],
