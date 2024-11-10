@@ -1,20 +1,121 @@
+body {
+  background-color: #363636; 
+  color: #d8d8d8;      
+  font-family: sans-serif;
+  margin: 0;
+}
+
+
 .dashboard-container {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-    gap: 20px;
-    padding: 20px;
-  }
+  background-color: #424242;  
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); 
+  gap: 20px;
+  padding: 20px;
   
-  .chart-container {
-    background: #e2e2e2;
-    border: 1px solid #292929;
-    border-radius: 8px;
-    padding: 20px;
-    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
-  }
+}
+
+
+/* Filter form */
+.filter-form {
+  background-color: #7a7a7a; 
+  padding: 20px;
+  border-radius: 8px;
+  grid-column: 1 / -1; 
+  display: flex;
+  flex-wrap: wrap;      
+  gap: 10px;
+  justify-content: center; 
+
   
-  .chart-container h2 {
-    margin-top: 0;
-    font-size: 1.2em;
+  mat-form-field {
+    flex: 1 1 200px; 
+  }
+
+  .filter-buttons {
+    display: flex;
+    gap: 10px;
+    margin-top: 10px;
+    flex: 1 1 100%; 
+    justify-content: space-between; 
+
+
+    button {
+      flex: 1 1 auto;  
+      height: fit-content; 
+      align-self: flex-end; 
+      
+    }
+  }
+}
+
+.filter-buttons {
+    display: flex;
+    gap: 10px; 
+    margin-top: 10px;
+    button {
+        flex: 1 1 auto; 
+    }
+}
+
+.chart-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  gap: 20px;
+  background-color: #8d8d8d; 
+}
+
+.chart-container {
+  background-color: #8d8d8d; 
+  border: none;                 
+  border-radius: 8px;          
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+  padding: 20px;
+
+
+  h2 {
+    margin-top: 0;  
+    font-size: 1.5em;
+    color: #d8d8d8; 
     text-align: center;
+    margin-bottom: 20px;
   }
+
+  canvas { 
+    background-color: #8d8d8d; 
+  }
+}
+
+/* Buttons */
+button.mat-raised-button {
+    &.mat-primary {
+        background-color: #901D1D; 
+        color: #d8d8d8;
+        line-height: normal; 
+        padding: 8px 16px;  
+        &:hover {
+          background-color: #a52828; 
+        }
+      }
+}
+
+// .dashboard-container {
+//     display: grid;
+//     grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+//     gap: 20px;
+//     padding: 20px;
+//   }
+  
+//   .chart-container {
+//     background: #e2e2e2;
+//     border: 1px solid #292929;
+//     border-radius: 8px;
+//     padding: 20px;
+//     box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+//   }
+  
+//   .chart-container h2 {
+//     margin-top: 0;
+//     font-size: 1.2em;
+//     text-align: center;
+//   }
