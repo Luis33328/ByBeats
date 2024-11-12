@@ -53,6 +53,15 @@ export class BeatService {
     );
   }
 
+  public getPedidos(user:SignIn): Observable<any> {
+    return this.http.post(environment.baseUrl + '/private/luiggibeats/pedido/getPedidos/', user, { headers: this.HEADERS }).pipe(
+      map(
+        data => data
+      )
+    );
+  }
+
+
   public getLikes(guidBeat): Observable<any> {
 
 

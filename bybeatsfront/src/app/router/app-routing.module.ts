@@ -20,6 +20,7 @@ import { PreCheckoutComponent } from '../pages/beats/components/pre-checkout/pre
 import { SellerDashboardComponent } from '../sellerDashboard/sellerDashboard.component';
 import { LicenciamentoComponent } from '../pages/licenciamento/licenciamento.component';
 import { ComprasComponent } from '../pages/beats/components/compras/compras.component';
+import { PedidosComponent } from '../pages/beats/components/pedidos/pedidos.component';
 
 
 const routes: Routes = [
@@ -53,6 +54,7 @@ const routes: Routes = [
       { path: 'beats/favoritos', component: FavoritosComponent },
       { path: 'cart-checkout', component: PreCheckoutComponent },
       { path: 'beats/minhas-compras', component: ComprasComponent },
+      { path: 'beats/meus-pedidos', component: PedidosComponent },
 
     ]
   },
