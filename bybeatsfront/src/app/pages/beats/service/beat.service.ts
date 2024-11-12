@@ -11,6 +11,7 @@ import { Carrinho } from '../model/Carrinho.model';
 import { Favorito } from '../model/Favorito.model';
 import { Compra } from '../model/Compra.model';
 import { Pedido } from '../model/Pedido.model';
+import {S3Service} from 'src/app/common/s3.service';
 
 @Injectable({
   providedIn: 'root'

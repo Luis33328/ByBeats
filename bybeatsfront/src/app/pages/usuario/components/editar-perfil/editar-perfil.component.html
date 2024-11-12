@@ -1,22 +1,19 @@
 <div class="newBeat">
     <h1>Editar Perfil</h1>
 
-
-    <form [formGroup]="form" enctype="multipart/form-data">
-        <!--<span id="genTitle">Informações Gerais</span>-->
+    <form [formGroup]="form" enctype="multipart/form-data" (ngSubmit)="save()">
         <div class="profileForms">
 
             <div class="imageInput">
-                <img *ngIf="user.imagem == null" id="profImage" src="../../../../../assets/images/default.png" />
-                <img *ngIf="user.imagem != null" id="profImage" src="../../../../../assets/uploads/{{user.imagem}}" />
+                <img *ngIf="!user?.imagem" id="profImage" src="../../../../../assets/images/default.png" alt="Default Image" />
+                <img *ngIf="user?.imagem" id="profImage" [src]="user.imagem" alt="User Image" /> 
                 <label for="profImg" id="lblImg">Selecionar Imagem</label>
                 <input type="file" name="profImg" id="profImg" accept="image/*" (change)="changeImg($event)" />
             </div>
-
             <div class="formInputs">
                 <div class="field">
                     <span class="inputSpan">Nome</span>
-                    <mat-form-field class="searchInput" style="width: 420px; ">
+                    <mat-form-field class="searchInput" style="width: 420px;">
                         <mat-label></mat-label>
                         <input matInput formControlName="nome" placeholder="Nome" autocomplete="off" />
                     </mat-form-field>
@@ -24,7 +21,7 @@
 
                 <div class="field">
                     <span class="inputSpan">Sobrenome</span>
-                    <mat-form-field class="searchInput" style="width: 420px; ">
+                    <mat-form-field class="searchInput" style="width: 420px;">
                         <mat-label></mat-label>
                         <input matInput formControlName="sobrenome" placeholder="Sobrenome" autocomplete="off" />
                     </mat-form-field>
@@ -32,15 +29,16 @@
 
                 <div class="field">
                     <span class="inputSpan">Data de Nascimento</span>
-                    <mat-form-field class="searchInput" style="width: 420px; ">
-                        <mat-label></mat-label>
-                        <input matInput formControlName="dataNasc" placeholder="Data de Nascimento" autocomplete="off" />
+                    <mat-form-field class="searchInput" style="width: 420px;">
+                        <input matInput [matDatepicker]="picker" formControlName="dataNasc" autocomplete="off" />
+                        <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+                        <mat-datepicker #picker></mat-datepicker>
                     </mat-form-field>
                 </div>
-                
+
                 <div class="field">
                     <span class="inputSpan">Usuário</span>
-                    <mat-form-field class="searchInput" style="width: 550px; ">
+                    <mat-form-field class="searchInput" style="width: 550px;">
                         <mat-label></mat-label>
                         <input matInput formControlName="usuario" placeholder="Usuario" autocomplete="off" />
                     </mat-form-field>
@@ -48,9 +46,9 @@
 
                 <div class="field">
                     <span class="inputSpan">CPF</span>
-                    <mat-form-field class="searchInput" style="width: 290px; ">
+                    <mat-form-field class="searchInput" style="width: 290px;">
                         <mat-label></mat-label>
-                        <input matInput mask="000.000.000-00"  formControlName="cpf" placeholder="CPF" autocomplete="off" />
+                        <input matInput mask="000.000.000-00" formControlName="cpf" placeholder="CPF" autocomplete="off" />
                         <mat-error *ngIf="form.get('cpf').touched">
                             CPF inválido
                         </mat-error>
@@ -58,36 +56,18 @@
                 </div>
 
                 <div class="field">
-                    <span class="inputSpan">Data de Nascimento</span>
-                    <mat-form-field class="searchInput" style="width: 290px; ">
-                        <mat-label></mat-label>
-                        <input matInput mask="00/00/0000"  formControlName="dataNasc" placeholder="Data de Nascimento" autocomplete="off" />
- 
-                    </mat-form-field>
-                </div>
-
-                <div class="field">
                     <span class="inputSpan">Sobre mim</span>
-                    <mat-form-field class="searchInput" style="width: 890px; ">
+                    <mat-form-field class="searchInput" style="width: 890px;">
                         <mat-label></mat-label>
-                        <textarea matInput formControlName="sobre" placeholder="Sobre mim" cols="35" rows="8"  autocomplete="off"></textarea>
+                        <textarea matInput formControlName="sobre" placeholder="Sobre mim" cols="35" rows="8" autocomplete="off"></textarea>
                     </mat-form-field>
                 </div>
-
             </div>
 
-           
             <div class="publishBtns">
                 <button id="cancelBtn" type="button" (click)="cancel()">Cancelar</button>
-                <button id="saveBtn" type="button" (click)="save()">Salvar</button>
+                <button id="saveBtn" type="submit">Salvar</button>
             </div>
-            
-
         </div>
-
-        
-
-    
-
     </form>
 </div>

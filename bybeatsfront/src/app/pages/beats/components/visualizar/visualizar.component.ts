@@ -185,7 +185,6 @@ export class VisualizarBeatComponent implements OnInit {
       
 
     }, err => {
-      console.log("eero");
     });
 
   }

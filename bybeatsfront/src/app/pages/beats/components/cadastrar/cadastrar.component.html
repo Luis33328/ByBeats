@@ -59,10 +59,14 @@
             </div>
 
             <div class="imageInput">
-                <img id="beatImage" src="../../../../../assets/images/black.png" />
+                <img 
+                  id="beatImage" 
+                  [src]="imageUrl || 'https://by-beats.s3.us-east-2.amazonaws.com/imgs/black.png'" 
+                  alt="Beat Image" 
+                />
                 <label for="beatImg" id="lblImg">Selecionar Imagem</label>
                 <input type="file" name="beatImg" id="beatImg" accept="image/*" (change)="changeImg($event)" />
-            </div>
+              </div>
 
         </div>
 

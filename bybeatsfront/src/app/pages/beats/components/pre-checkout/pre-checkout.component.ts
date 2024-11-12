@@ -153,7 +153,6 @@ export class PreCheckoutComponent implements OnInit {
       this.getCarrinho()
 
     }, err => {
-      console.log("eero");
     });
   }
 

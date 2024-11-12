@@ -4,12 +4,11 @@ export class Beat {
 
     constructor() { }
 
-    
     public guidBeat: Number;
     public titulo: String;
     public nota: String;
     public bpm: String;
-    public imagem: String;
+    public imagem: string;
     public dataLancamento: String;
     public tags: String;
     public precoBasic: String;

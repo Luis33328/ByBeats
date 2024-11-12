@@ -104,7 +104,6 @@ export class NavbarComponent implements OnInit  {
       this.role = data.role;
       localStorage.setItem('role',data.role);
     }, err => {
-      console.log("Role error.");
     });
   }
 
@@ -140,6 +139,12 @@ export class NavbarComponent implements OnInit  {
     this.router.navigate(["/beats/catalog"])
   }
 
+  public dashboard(){
+    this.router.navigate(["/dashboard"])
+  }
+  public licenciamento(){
+    this.router.navigate(["/licenciamento"])
+  }
   public cartCheckout(){
     this.router.navigate(["/cart-checkout"])
   }
@@ -152,7 +157,6 @@ export class NavbarComponent implements OnInit  {
       this.getCarrinho()
 
     }, err => {
-      console.log("eero");
     });
   }
 

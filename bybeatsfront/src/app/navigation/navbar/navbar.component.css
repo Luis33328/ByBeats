@@ -16,7 +16,7 @@ a{
 .header{
     display: flex;
     margin-top: 25px;
-    margin-left: 10%;
+    margin-left: 16%;
 }
 
 .logo{
@@ -76,10 +76,8 @@ a{
 }
 
 .loginButtons{
-    margin-left: 8%;
+    margin-left: 35%;
     width: 800px;
-    
-
 }
 
 .loginButtons a{
@@ -166,7 +164,7 @@ a{
 
 .headerProf{
     display: flex;
-    margin-left: 200px;
+    margin-left: 700px;
     width: 240px;
     height: 41px;
     border-radius: 15px;

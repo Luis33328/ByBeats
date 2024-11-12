@@ -2,7 +2,7 @@
     <div class="beatsLeft">
         <div class="profDetails">
             <img *ngIf="userModel.imagem == null" id="profileImg" src="../../../../../assets/images/default.png" />
-            <img *ngIf="userModel.imagem != null" id="profileImg" src="../../../../../assets/uploads/{{userModel.imagem}}" />
+            <img *ngIf="userModel.imagem != null" id="profileImg" src="{{userModel.imagem}}" />
             <span id="profUser">{{user}}</span>
 
             <span (click)="editProfile()" id="editProfile"><i class="fa-solid fa-pen"></i>Editar perfil</span>
@@ -30,7 +30,7 @@
             
                 <div class="item" *ngFor="let beat of beats">
                     <div  class="slideImg img-1">
-                        <img (click)="getId(beat)"  src="../../../../assets/uploads/{{beat.imagem}}">
+                        <img (click)="getId(beat)"  src="{{beat.imagem}}">
                         <span id="playRegular"><i class="fa-regular fa-circle-play"></i></span>
                     </div>
                     <div class="likedFurther">
