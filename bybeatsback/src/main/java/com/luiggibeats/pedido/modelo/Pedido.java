@@ -1,21 +1,20 @@
 package com.luiggibeats.pedido.modelo;
 
-import java.time.LocalDate;
-import java.util.ArrayList;
-import java.util.List;
+import java.util.Date;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
-import javax.persistence.OneToMany;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
+import javax.persistence.OneToOne;
 import javax.persistence.Table;
-import javax.persistence.Transient;
-import javax.validation.Valid;
 
-import com.fasterxml.jackson.annotation.JsonFormat;
-import com.fasterxml.jackson.annotation.JsonManagedReference;
+import com.luiggibeats.beat.modelo.Beat;
+import com.luiggibeats.usuario.modelo.Usuario;
 
 @Entity
 @Table(name = "PEDIDO")
@@ -24,73 +23,73 @@ public class Pedido {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     @Column(name = "GUID_PEDIDO")
-    private Long guidPedido;
+    private Integer guidPedido;
     
-    @JsonFormat(pattern = "dd/MM/yyyy")
-    @Column(name = "DATA")
-    private LocalDate data;
+    /*@OneToOne
+    @Column(name = "BEAT")
+    private Beat beat;*/
     
-	@Column(name = "status")
-    private String status;
+    @OneToOne
+    //@Column(name = "USUARIO")
+    private Usuario usuario;
+    
+    @Column(name = "TOTAL")
+    private String total;
+    
+ 
+    @Column(name = "DATA_PEDIDO")
+    private Date dataPedido;
+    
+    
+ 
 
-    @JsonManagedReference
-    @OneToMany(mappedBy = "pk.pedido")
-    @Valid
-    private List<OrderProduct> orderProducts = new ArrayList<>();
-
-    @Transient
-    public Double getTotalOrderPrice() {
-        double sum = 0D;
-        List<OrderProduct> orderProducts = getOrderProducts();
-        for (OrderProduct op : orderProducts) {
-            sum += op.getTotalPrice();
-        }
-        return sum;
+	public Pedido() {
+    	
     }
     
 
-   
-
-    public Long getGuidPedido() {
+	public Integer getGuidPedido() {
 		return guidPedido;
 	}
 
-	public void setGuidPedido(Long guidPedido) {
+
+	public void setGuidPedido(Integer guidPedido) {
 		this.guidPedido = guidPedido;
 	}
 
-	public LocalDate getData() {
-		return data;
-	}
 
-	public void setData(LocalDate data) {
-		this.data = data;
-	}
-
-	public String getStatus() {
-		return status;
-	}
-
-	public void setStatus(String status) {
-		this.status = status;
-	}
-
-	public List<OrderProduct> getOrderProducts() {
-		return orderProducts;
-	}
-
-	public void setOrderProducts(List<OrderProduct> orderProducts) {
-		this.orderProducts = orderProducts;
+	public String getTotal() {
+		return total;
 	}
 
 
+	public void setTotal(String total) {
+		this.total = total;
+	}
 
-    @Transient
-    public int getNumberOfProducts() {
-        return this.orderProducts.size();
-    }
 
-    // standard getters and setters
+	public Date getDataPedido() {
+		return dataPedido;
+	}
+
+
+	public void setDataPedido(Date dataPedido) {
+		this.dataPedido = dataPedido;
+	}
+
+
+	public Usuario getUsuario() {
+		return usuario;
+	}
+	public void setUsuario(Usuario usuario) {
+		this.usuario = usuario;
+	}
+    
+    
+
+    
+    
+
 
 	
 }

@@ -49,6 +49,10 @@ public class CarrinhoRecurso extends BaseController {
     	this.carrinhoServico.deletar(guidCarrinho);
     }
     
+    @PostMapping(value = "/deletarCarrinhoCompra/")
+    public void deletarFavorito(@RequestBody Usuario user) {
+    	this.carrinhoServico.deleteByUser(user);
+    }
     
 
     

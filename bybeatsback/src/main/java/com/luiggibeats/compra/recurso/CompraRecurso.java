@@ -1,4 +1,4 @@
-package com.luiggibeats.pedido.recurso;
+package com.luiggibeats.compra.recurso;
 
 import java.util.List;
 
@@ -16,8 +16,6 @@ import com.luiggibeats.compra.modelo.Compra;
 import com.luiggibeats.compra.servico.CompraServico;
 import com.luiggibeats.desconto.modelo.Desconto;
 import com.luiggibeats.favoritos.modelo.Favoritos;
-import com.luiggibeats.pedido.modelo.Pedido;
-import com.luiggibeats.pedido.servico.PedidoServico;
 import com.luiggibeats.usuario.modelo.Usuario;
 import com.luiggibeats.util.base.BaseController;
 import com.luiggibeats.util.excecao.BusinessException;
@@ -25,22 +23,22 @@ import com.luiggibeats.util.excecao.BusinessException;
 import io.swagger.v3.oas.annotations.Operation;
 
 @RestController
-@RequestMapping(value = "/private/luiggibeats/pedido")
-public class PedidoRecurso extends BaseController {
+@RequestMapping(value = "/private/luiggibeats/compra")
+public class CompraRecurso extends BaseController {
 
 	
 	@Autowired
-    private PedidoServico pedidoServico;
+    private CompraServico compraServico;
 	
 	
-    @PostMapping(value = "/salvarPedido/")
-    public Pedido savePedido(@RequestBody Pedido pedido) {
-    	return pedidoServico.save(pedido);
+    @PostMapping(value = "/saveCompra/")
+    public Compra saveCompra(@RequestBody List<Compra> compra) {
+    	return compraServico.saveCompra(compra);
     }
     
-    @PostMapping(value = "/getPedidos")
-    public List<Pedido> getCompra(@RequestBody Usuario user) {
-    	return pedidoServico.getPedido(user);
+    @PostMapping(value = "/getCompras")
+    public List<Compra> getCompra(@RequestBody Usuario user) {
+    	return compraServico.getCompra(user);
     }
     
     /*@PostMapping(value = "/getBeatPrice/{guidBeat}")

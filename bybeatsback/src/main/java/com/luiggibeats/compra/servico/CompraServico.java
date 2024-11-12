@@ -1,4 +1,4 @@
-package com.luiggibeats.pedido.servico;
+package com.luiggibeats.compra.servico;
 
 
 import java.util.List;
@@ -14,17 +14,16 @@ import com.luiggibeats.compra.modelo.Compra;
 import com.luiggibeats.compra.repositorio.CompraRepositorio;
 import com.luiggibeats.favoritos.modelo.Favoritos;
 import com.luiggibeats.pedido.modelo.Pedido;
-import com.luiggibeats.pedido.repositorio.PedidoRepositorio;
 import com.luiggibeats.usuario.modelo.Usuario;
 import com.luiggibeats.usuario.servico.UsuarioServico;
 import com.luiggibeats.util.excecao.BusinessException;
 
 @Service
-public class PedidoServico {
+public class CompraServico {
 	
 	
 	@Autowired
-    private PedidoRepositorio pedidoRepositorio;
+    private CompraRepositorio compraRepositorio;
 	
 	@Autowired
     private BeatServico beatServico;
@@ -55,29 +54,51 @@ public class PedidoServico {
 		return null;
 	}*/
 	
-	public Pedido save(Pedido pedido) {
+	public Compra saveCompra(List<Compra> compras) {
 		
-		/*Usuario user = pedido.getUsuario();
-		if(user != null ) {
-			Compra pedidoSave = new Pedido(beat, user, comprasA[i].getLicenca());
-			
+		
+		Compra[] comprasA = compras.toArray(new Compra[0]);
+		
+		for(int i=0; i<compras.size(); i++) {
+			Beat beat = comprasA[i].getBeat();
+			Usuario user = comprasA[i].getUsuario();
+			Pedido pedido = comprasA[i].getPedido();
+			System.out.println(beat);
+			System.out.println(user);
+			System.out.println(pedido);
+			if(beat != null && user != null ) {
+				Compra compraSave = new Compra(beat, user, comprasA[i].getLicenca(), pedido);
+				return compraRepositorio.save(compraSave);
 	
+			}
 		}
-	
 		
-		return null;*/
-		
-		return pedidoRepositorio.save(pedido);
+		return null;
 	}
 	
-
+	public String getBeatPrice(Integer guidBeat, Carrinho carrinho) {
+		Beat beat = beatServico.buscarPorId(guidBeat);
+		Usuario user = carrinho.getUsuario();
+		Carrinho update = compraRepositorio.findByUsuarioAndBeat(user, beat);
+		if(beat != null && user != null ) {
+			if(update == null) {
+				System.out.println("oieee");
+				return null;
+			}
+			else {
+				return update.getPrecoBeat();
+			}
+		}
+		
+		return null;
+	}
 	
-	public List<Pedido> getPedido(Usuario user){
-		return pedidoRepositorio.findByUsuario(user);
+	public List<Compra> getCompra(Usuario user){
+		return compraRepositorio.findByUsuario(user);
 	}
 	
 	public void deletar(Integer guidCompra) throws BusinessException {
-        this.pedidoRepositorio.deleteById(guidCompra);
+        this.compraRepositorio.deleteById(guidCompra);
     }
 	
 	/*public Carrinho atualizar(Carrinho carrinho) {

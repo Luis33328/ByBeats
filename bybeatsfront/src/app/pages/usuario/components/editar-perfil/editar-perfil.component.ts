@@ -61,6 +61,19 @@ export class EditarPerfilComponent implements OnInit {
       usuario: new FormControl(''),
       cpf: new FormControl(''),
       sobre: new FormControl('')
+
+    }, {validators: EditarPerfilComponent.isValidCpf});
+}
+
+static isValidCpf(): ValidatorFn {
+  return (control: AbstractControl): Validators => {
+    const cpf = control.value;
+    if (cpf) {
+      let numbers, digits, sum, i, result, equalDigits;
+      equalDigits = 1;
+      if (cpf.length < 11) {
+       return null;
+      }
     }, { validators: EditarPerfilComponent.isValidCpf });
   }
 

@@ -82,6 +82,10 @@ public class CarrinhoServico {
         this.carrinhoRepositorio.deleteById(guidCarrinho);
     }
 	
+	public void deleteByUser(Usuario user) throws BusinessException {
+        this.carrinhoRepositorio.deleteByUsuario(user);
+    }
+	
 	/*public Carrinho atualizar(Carrinho carrinho) {
 		Carrinho update = carrinhoRepositorio.findByUsuarioAndBeat(carrinho.getUsuario(), carrinho.getBeat());
         return this.addAoCarrinho(carrinho.getBeat().getGuidBeat(), update);

@@ -7,6 +7,9 @@ import {NgxTinySliderSettingsInterface, NgxTinySliderComponent} from 'ngx-tiny-s
 import { BeatService } from '../../service/beat.service';
 import { SignIn } from 'src/app/authentication/signIn/model/signIn.model';
 import { SignInService } from '../../../../authentication/signIn/service/signIn.service';
+import { Beat } from '../../model/beat.model';
+import { Compra } from '../../model/Compra.model';
+import { Pedido } from '../../model/Pedido.model';
 
 @Component({
   selector: 'app-pre-checkout',
@@ -21,6 +24,13 @@ export class PreCheckoutComponent implements OnInit {
 
   public cartBeats = [];
 
+  pedidoModel:Pedido;
+
+  compras: Compra[] = [];
+  
+
+  //public 
+
   userModel:SignIn;
 
   constructor(
@@ -34,6 +44,58 @@ export class PreCheckoutComponent implements OnInit {
     this.getLogged()
     
     
+  }
+
+  public checkout(){
+
+    
+
+    let pedido = new Pedido();
+
+    pedido.usuario = this.userModel;
+    pedido.total = this.getTotal().toString();
+
+    this.beatService.savePedido(pedido).subscribe(
+      data => {
+        console.log(data);
+
+        this.pedidoModel = data;
+        console.log(this.pedidoModel);
+        
+        for (let i = 0; i < this.cartBeats.length; i++) {
+      
+          let compra = new Compra();
+          compra.usuario = this.userModel;
+          compra.beat = this.cartBeats[i].beat;
+          compra.licenca = this.cartBeats[i].precoBeat;
+          compra.pedido = this.pedidoModel;
+          this.compras.push(compra);
+        }
+        console.log(this.compras);
+
+        this.beatService.saveCompra(this.compras).subscribe(
+          data => {
+            console.log(data);
+            /*this.beatService.deleteCarrinhoCompra(this.userModel).subscribe(
+              data => {
+                console.log(data);
+                
+        
+              }, err => {
+                console.log(err);
+              }
+            );*/
+  
+          }, err => {
+            console.log(err);
+          }
+        );
+
+      }, err => {
+        console.log(err);
+      }
+    );
+      
   }
 
   public getFavoritos(){
