@@ -41,6 +41,8 @@ import { ChartsModule, ThemeService } from 'ng2-charts'; // Import from ng2-char
 import { CustomThemeService } from './CustomTheme.service';
 import { LicenciamentoComponent } from './pages/licenciamento/licenciamento.component';
 
+import { ComprasComponent } from './pages/beats/components/compras/compras.component';
+
 @NgModule({
   declarations: [	
     AppComponent,
@@ -62,7 +64,8 @@ import { LicenciamentoComponent } from './pages/licenciamento/licenciamento.comp
     PreCheckoutComponent,
     FilterPipe,
     SellerDashboardComponent,
-    LicenciamentoComponent
+    LicenciamentoComponent,
+    ComprasComponent
    ],
   entryComponents: [
   ],
