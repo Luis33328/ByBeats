@@ -1,21 +1,17 @@
-package com.luiggibeats.carrinho.repositorio;
+package com.luiggibeats.compra.repositorio;
 
 import java.util.List;
-
-import javax.transaction.Transactional;
 
 import org.springframework.data.jpa.repository.JpaRepository;
 
 import com.luiggibeats.beat.modelo.Beat;
 import com.luiggibeats.carrinho.modelo.Carrinho;
+import com.luiggibeats.compra.modelo.Compra;
 import com.luiggibeats.usuario.modelo.Usuario;
 
-public interface CarrinhoRepositorio extends JpaRepository<Carrinho, Integer> {
+public interface CompraRepositorio extends JpaRepository<Compra, Integer> {
 	
-	public List<Carrinho> findByUsuario(Usuario user);
+	public List<Compra> findByUsuario(Usuario user);
 	
 	public Carrinho findByUsuarioAndBeat(Usuario user, Beat beat);
-	
-	@Transactional
-	public void deleteByUsuario(Usuario user);
 }

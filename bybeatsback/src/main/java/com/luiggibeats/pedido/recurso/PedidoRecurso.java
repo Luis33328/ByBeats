@@ -1,4 +1,4 @@
-package com.luiggibeats.carrinho.recurso;
+package com.luiggibeats.pedido.recurso;
 
 import java.util.List;
 
@@ -12,8 +12,12 @@ import org.springframework.web.bind.annotation.RestController;
 
 import com.luiggibeats.carrinho.modelo.Carrinho;
 import com.luiggibeats.carrinho.servico.CarrinhoServico;
+import com.luiggibeats.compra.modelo.Compra;
+import com.luiggibeats.compra.servico.CompraServico;
 import com.luiggibeats.desconto.modelo.Desconto;
 import com.luiggibeats.favoritos.modelo.Favoritos;
+import com.luiggibeats.pedido.modelo.Pedido;
+import com.luiggibeats.pedido.servico.PedidoServico;
 import com.luiggibeats.usuario.modelo.Usuario;
 import com.luiggibeats.util.base.BaseController;
 import com.luiggibeats.util.excecao.BusinessException;
@@ -21,25 +25,25 @@ import com.luiggibeats.util.excecao.BusinessException;
 import io.swagger.v3.oas.annotations.Operation;
 
 @RestController
-@RequestMapping(value = "/private/luiggibeats/carrinho")
-public class CarrinhoRecurso extends BaseController {
+@RequestMapping(value = "/private/luiggibeats/pedido")
+public class PedidoRecurso extends BaseController {
 
 	
 	@Autowired
-    private CarrinhoServico carrinhoServico;
+    private PedidoServico pedidoServico;
 	
 	
-    @PostMapping(value = "/addCarrinho/{guidBeat}")
-    public Carrinho addAoCarrinho(@PathVariable(name = "guidBeat") Integer guidBeat,@RequestBody Carrinho carrinho) {
-    	return carrinhoServico.addAoCarrinho(guidBeat, carrinho);
+    @PostMapping(value = "/salvarPedido/")
+    public Pedido savePedido(@RequestBody Pedido pedido) {
+    	return pedidoServico.save(pedido);
     }
     
-    @PostMapping(value = "/getCarrinho")
-    public List<Carrinho> getCarrinho(@RequestBody Usuario user) {
-    	return carrinhoServico.getCarrinho(user);
+    @PostMapping(value = "/getPedidos")
+    public List<Pedido> getCompra(@RequestBody Usuario user) {
+    	return pedidoServico.getPedido(user);
     }
     
-    @PostMapping(value = "/getBeatPrice/{guidBeat}")
+    /*@PostMapping(value = "/getBeatPrice/{guidBeat}")
     public String getBeatPrice(@PathVariable(name = "guidBeat") Integer guidBeat,@RequestBody Carrinho carrinho) {
     	return carrinhoServico.getBeatPrice(guidBeat, carrinho);
     }
@@ -47,12 +51,8 @@ public class CarrinhoRecurso extends BaseController {
     @PostMapping(value = "/deletarCarrinho/{guidCarrinho}")
     public void deletarCarrinho(@PathVariable(name = "guidCarrinho") Integer guidCarrinho) {
     	this.carrinhoServico.deletar(guidCarrinho);
-    }
+    }*/
     
-    @PostMapping(value = "/deletarCarrinhoCompra/")
-    public void deletarFavorito(@RequestBody Usuario user) {
-    	this.carrinhoServico.deleteByUser(user);
-    }
     
 
     

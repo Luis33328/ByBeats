@@ -57,6 +57,9 @@ public class Usuario {
 	
 	@Column(name = "DATA")
     private String data;
+	
+	@Column(name = "SALDO")
+    private String saldo;
     
     
     public String getData() {

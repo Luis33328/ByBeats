@@ -1,4 +1,4 @@
-package com.luiggibeats.carrinho.servico;
+package com.luiggibeats.compra.servico;
 
 
 import java.util.List;
@@ -10,17 +10,20 @@ import com.luiggibeats.beat.modelo.Beat;
 import com.luiggibeats.beat.servico.BeatServico;
 import com.luiggibeats.carrinho.modelo.Carrinho;
 import com.luiggibeats.carrinho.repositorio.CarrinhoRepositorio;
+import com.luiggibeats.compra.modelo.Compra;
+import com.luiggibeats.compra.repositorio.CompraRepositorio;
 import com.luiggibeats.favoritos.modelo.Favoritos;
+import com.luiggibeats.pedido.modelo.Pedido;
 import com.luiggibeats.usuario.modelo.Usuario;
 import com.luiggibeats.usuario.servico.UsuarioServico;
 import com.luiggibeats.util.excecao.BusinessException;
 
 @Service
-public class CarrinhoServico {
+public class CompraServico {
 	
 	
 	@Autowired
-    private CarrinhoRepositorio carrinhoRepositorio;
+    private CompraRepositorio compraRepositorio;
 	
 	@Autowired
     private BeatServico beatServico;
@@ -39,18 +42,34 @@ public class CarrinhoServico {
 		return null;
 	}*/
 	
-	public Carrinho addAoCarrinho(Integer guidBeat, Carrinho carrinho) {
+	/*public Compra saveCompra(Integer guidBeat, Compra compra) {
 		Beat beat = beatServico.buscarPorId(guidBeat);
-		Usuario user = carrinho.getUsuario();
-		Carrinho update = carrinhoRepositorio.findByUsuarioAndBeat(carrinho.getUsuario(), beat);
+		Usuario user = compra.getUsuario();
 		if(beat != null && user != null ) {
-			if(update == null) {
-				Carrinho cart = new Carrinho(beat, user, carrinho.getPrecoBeat());
-				return carrinhoRepositorio.save(cart);
-			}
-			else {
-				update.setPrecoBeat(carrinho.getPrecoBeat());
-				return carrinhoRepositorio.save(update);
+			Compra compraSave = new Compra(beat, user, compra.getLicenca());
+			return compraRepositorio.save(compraSave);
+
+		}
+		
+		return null;
+	}*/
+	
+	public Compra saveCompra(List<Compra> compras) {
+		
+		
+		Compra[] comprasA = compras.toArray(new Compra[0]);
+		
+		for(int i=0; i<compras.size(); i++) {
+			Beat beat = comprasA[i].getBeat();
+			Usuario user = comprasA[i].getUsuario();
+			Pedido pedido = comprasA[i].getPedido();
+			System.out.println(beat);
+			System.out.println(user);
+			System.out.println(pedido);
+			if(beat != null && user != null ) {
+				Compra compraSave = new Compra(beat, user, comprasA[i].getLicenca(), pedido);
+				return compraRepositorio.save(compraSave);
+	
 			}
 		}
 		
@@ -60,7 +79,7 @@ public class CarrinhoServico {
 	public String getBeatPrice(Integer guidBeat, Carrinho carrinho) {
 		Beat beat = beatServico.buscarPorId(guidBeat);
 		Usuario user = carrinho.getUsuario();
-		Carrinho update = carrinhoRepositorio.findByUsuarioAndBeat(user, beat);
+		Carrinho update = compraRepositorio.findByUsuarioAndBeat(user, beat);
 		if(beat != null && user != null ) {
 			if(update == null) {
 				System.out.println("oieee");
@@ -74,16 +93,12 @@ public class CarrinhoServico {
 		return null;
 	}
 	
-	public List<Carrinho> getCarrinho(Usuario user){
-		return carrinhoRepositorio.findByUsuario(user);
+	public List<Compra> getCompra(Usuario user){
+		return compraRepositorio.findByUsuario(user);
 	}
 	
-	public void deletar(Integer guidCarrinho) throws BusinessException {
-        this.carrinhoRepositorio.deleteById(guidCarrinho);
-    }
-	
-	public void deleteByUser(Usuario user) throws BusinessException {
-        this.carrinhoRepositorio.deleteByUsuario(user);
+	public void deletar(Integer guidCompra) throws BusinessException {
+        this.compraRepositorio.deleteById(guidCompra);
     }
 	
 	/*public Carrinho atualizar(Carrinho carrinho) {

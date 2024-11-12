@@ -9,6 +9,8 @@ import { Usuario } from '../../usuario/model/usuario.model';
 import { SignIn } from 'src/app/authentication/signIn/model/signIn.model';
 import { Carrinho } from '../model/Carrinho.model';
 import { Favorito } from '../model/Favorito.model';
+import { Compra } from '../model/Compra.model';
+import { Pedido } from '../model/Pedido.model';
 
 @Injectable({
   providedIn: 'root'
@@ -21,6 +23,26 @@ export class BeatService {
   }
 
   constructor(private http: HttpClient) { }
+
+  public savePedido(pedido:Pedido): Observable<any> {
+
+
+    return this.http.post(environment.baseUrl + '/private/luiggibeats/pedido/salvarPedido/' , pedido, { headers: this.HEADERS }).pipe(
+      map(
+        data => data
+      )
+    );
+  }
+
+  public saveCompra(compra:Compra[]): Observable<any> {
+
+
+    return this.http.post(environment.baseUrl + '/private/luiggibeats/compra/saveCompra/' , compra, { headers: this.HEADERS }).pipe(
+      map(
+        data => data
+      )
+    );
+  }
 
   public getLikes(guidBeat): Observable<any> {
 
@@ -103,6 +125,16 @@ export class BeatService {
 
 
     return this.http.post(environment.baseUrl + '/private/luiggibeats/carrinho/deletarCarrinho/' + guidCarrinho, { headers: this.HEADERS }).pipe(
+      map(
+        data => data
+      )
+    );
+  }
+
+  public deleteCarrinhoCompra(user:SignIn): Observable<any> {
+
+
+    return this.http.post(environment.baseUrl + '/private/luiggibeats/carrinho/deletarCarrinhoCompra/' , user, { headers: this.HEADERS }).pipe(
       map(
         data => data
       )

@@ -78,8 +78,7 @@ export class EditarPerfilComponent implements OnInit {
       dataNasc: new FormControl(''),
       usuario: new FormControl(''),
       cpf: new FormControl(''),
-      sobre: new FormControl(''),
-      dataNasc: new FormControl('')
+      sobre: new FormControl('')
 
     }, {validators: EditarPerfilComponent.isValidCpf});
 }
