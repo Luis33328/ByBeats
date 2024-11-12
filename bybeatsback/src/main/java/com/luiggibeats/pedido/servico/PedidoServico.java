@@ -21,6 +21,9 @@ import com.luiggibeats.pedido.repositorio.PedidoRepositorio;
 import com.luiggibeats.usuario.modelo.Usuario;
 import com.luiggibeats.usuario.servico.UsuarioServico;
 import com.luiggibeats.util.excecao.BusinessException;
+import java.time.LocalDate;
+import java.time.ZoneId;
+import java.util.Date;
 
 @Service
 public class PedidoServico {
@@ -59,15 +62,13 @@ public class PedidoServico {
 	}*/
 	
 	public Pedido save(Pedido pedido) {
-		
-		LocalDate localDate = LocalDate.now();
-		Date date = Date.from(localDate.atStartOfDay(ZoneId.systemDefault()).toInstant());
-		
-		pedido.setDataPedido(date);
-		
-		return pedidoRepositorio.save(pedido);
-	}
-	
+        LocalDate localDate = LocalDate.now();
+        Date date = Date.from(localDate.atStartOfDay(ZoneId.systemDefault()).toInstant());
+        
+        pedido.setDataPedido(date);
+        
+        return pedidoRepositorio.save(pedido);
+    }
 
 	
 	public List<Pedido> getPedido(Usuario user){

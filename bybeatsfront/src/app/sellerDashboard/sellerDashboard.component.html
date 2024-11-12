@@ -52,11 +52,12 @@
   </div>
 
   <div class="chart-container">
-    <h2>Total de vendas por produto</h2>
+    <h2>Receita por instrumental</h2>
     <canvas baseChart
             [data]="pieChartData"
             [labels]="pieChartLabels"
-            [chartType]="pieChartType">
+            [chartType]="pieChartType"
+            [colors]="PieChartColors">
     </canvas>
   </div>
 
