@@ -16,7 +16,7 @@ a{
 
 .beatsLeft{
     width: 360px;
-    height: 750px;
+    min-height: 750px;
     background-color: #1D1D1D;
     border-radius: 16px;
     margin-left: 7%;
@@ -300,4 +300,18 @@ a i {
     color: rgb(165, 165, 165);
     font-size: 17px;
     text-align: center;
+}
+
+#delete{
+    display: block;
+    color: red;
+    transition: .3s;
+    margin-top: 20px;
+    margin-left: 20px;
+    font-size: 14px;
+    margin-bottom: 15px;
+}
+
+#delete:hover{
+    cursor:pointer;
 }

@@ -20,6 +20,8 @@
             <span class="furtherDet">Tom</span><span class="rightInf">{{beat.nota}}</span>
             <span class="furtherDet">Duração</span><span class="rightInf">3:26</span>
         </div>
+
+        <span *ngIf="role == 'admin'" id="delete" (click)="deleteBeat(guidBeat)">Deletar Beat</span>
     </div>
 
     <div class="beatsRight">

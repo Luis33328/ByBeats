@@ -76,15 +76,15 @@ export class PreCheckoutComponent implements OnInit {
         this.beatService.saveCompra(this.compras).subscribe(
           data => {
             console.log(data);
-            /*this.beatService.deleteCarrinhoCompra(this.userModel).subscribe(
+            this.beatService.deleteCarrinhoCompra(this.userModel).subscribe(
               data => {
                 console.log(data);
-                
+                this.router.navigate(["/"]);
         
               }, err => {
                 console.log(err);
               }
-            );*/
+            );
   
           }, err => {
             console.log(err);
