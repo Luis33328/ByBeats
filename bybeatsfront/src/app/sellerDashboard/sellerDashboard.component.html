@@ -18,7 +18,7 @@
     <mat-form-field appearance="outline">
       <mat-label>Beat</mat-label>
       <mat-select [(ngModel)]="filter.beat" name="beat">
-        <mat-option *ngFor="let beat of beats" [value]="beat">{{ beat }}</mat-option>
+        <mat-option *ngFor="let beat of beatsFilter" [value]="beat">{{ beat }}</mat-option>
       </mat-select>
     </mat-form-field>
 
@@ -59,4 +59,24 @@
             [chartType]="pieChartType">
     </canvas>
   </div>
+
+        
+<div class="chart-container">
+  <h2>Total de instrumentais</h2>
+  <div class="chart-overlay">
+    <span class="big-number-display">{{beatCount}}</span></div>
+</div>
+
+<div class="chart-container">
+  <h2>Média de Preços</h2>
+  <canvas baseChart
+          [data]="MediaPrecosPieChartData"
+          [labels]="MediaPrecosPieChartLabels"
+          [chartType]="MediaPrecosPieChartType"
+          [colors]="MediaPrecosPieChartColors">
+  </canvas>
+</div>
+
+
+    
 </div>

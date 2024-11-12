@@ -104,7 +104,6 @@ export class NavbarComponent implements OnInit  {
       this.role = data.role;
       localStorage.setItem('role',data.role);
     }, err => {
-      console.log("Role error.");
     });
   }
 
@@ -158,7 +157,6 @@ export class NavbarComponent implements OnInit  {
       this.getCarrinho()
 
     }, err => {
-      console.log("eero");
     });
   }
 

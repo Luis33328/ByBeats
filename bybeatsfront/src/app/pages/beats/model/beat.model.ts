@@ -4,7 +4,6 @@ export class Beat {
 
     constructor() { }
 
-    
     public guidBeat: Number;
     public titulo: String;
     public nota: String;

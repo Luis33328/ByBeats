@@ -52,7 +52,6 @@ export class FavoritosComponent implements OnInit {
       this.getFavoritos()
 
     }, err => {
-      console.log("eero");
     });
   }
 
