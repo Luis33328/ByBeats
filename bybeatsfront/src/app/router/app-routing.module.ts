@@ -19,6 +19,7 @@ import { RecoverPasswordComponent } from '../authentication/recover-password/rec
 import { PreCheckoutComponent } from '../pages/beats/components/pre-checkout/pre-checkout.component';
 import { SellerDashboardComponent } from '../sellerDashboard/sellerDashboard.component';
 import { LicenciamentoComponent } from '../pages/licenciamento/licenciamento.component';
+import { ComprasComponent } from '../pages/beats/components/compras/compras.component';
 
 
 const routes: Routes = [
@@ -51,6 +52,7 @@ const routes: Routes = [
       { path: 'user/edit-profile', component: EditarPerfilComponent },
       { path: 'beats/favoritos', component: FavoritosComponent },
       { path: 'cart-checkout', component: PreCheckoutComponent },
+      { path: 'beats/minhas-compras', component: ComprasComponent },
 
     ]
   },

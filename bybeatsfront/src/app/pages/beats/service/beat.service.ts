@@ -45,6 +45,14 @@ export class BeatService {
     );
   }
 
+  public getCompras(user:SignIn): Observable<any> {
+    return this.http.post(environment.baseUrl + '/private/luiggibeats/compra/getCompras/', user, { headers: this.HEADERS }).pipe(
+      map(
+        data => data
+      )
+    );
+  }
+
   public getLikes(guidBeat): Observable<any> {
 
 

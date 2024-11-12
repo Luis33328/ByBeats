@@ -59,16 +59,18 @@ public class CompraServico {
 		
 		Compra[] comprasA = compras.toArray(new Compra[0]);
 		
+		System.out.println(compras.size());
+		System.out.println(comprasA.length);
+		
 		for(int i=0; i<compras.size(); i++) {
 			Beat beat = comprasA[i].getBeat();
 			Usuario user = comprasA[i].getUsuario();
 			Pedido pedido = comprasA[i].getPedido();
-			System.out.println(beat);
-			System.out.println(user);
-			System.out.println(pedido);
+
 			if(beat != null && user != null ) {
 				Compra compraSave = new Compra(beat, user, comprasA[i].getLicenca(), pedido);
-				return compraRepositorio.save(compraSave);
+				System.out.println(compraSave.getBeat());
+				compraRepositorio.save(compraSave);
 	
 			}
 		}

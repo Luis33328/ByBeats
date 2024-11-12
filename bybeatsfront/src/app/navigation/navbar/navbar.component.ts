@@ -123,6 +123,10 @@ export class NavbarComponent implements OnInit  {
     this.router.navigate(["/beats/my-tracks"])
   }
 
+  public acquired(){
+    this.router.navigate(["/beats/minhas-compras"])
+  }
+
   public profile(){
     this.router.navigate(["/user/profile"])
   }
