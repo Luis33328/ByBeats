@@ -62,7 +62,6 @@ export class PerfilComponent implements OnInit {
       this.getBeats()
 
     }, err => {
-      console.log("eero");
     });
   }
 

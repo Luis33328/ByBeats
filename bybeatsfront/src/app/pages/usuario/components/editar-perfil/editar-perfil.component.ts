@@ -231,7 +231,7 @@ export class EditarPerfilComponent implements OnInit {
       }
     } else {
       if (!this.user) {
-        this.snackBar.open('User data not loaded yet. Please wait.', 'Fechar');
+        this.snackBar.open('Espere os dados do usuário', 'Fechar');
       } else {
         console.log("Form Inválido");
       }

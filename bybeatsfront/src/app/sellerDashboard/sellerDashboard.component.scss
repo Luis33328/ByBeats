@@ -15,8 +15,17 @@ body {
   
 }
 
+.big-number-display {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%); 
+  font-size: 3em; 
+  font-weight: bold;
+  color: #901D1D; 
+  z-index: 2; 
+}
 
-/* Filter form */
 .filter-form {
   background-color: #c4c4c4; 
   padding: 20px;
@@ -67,11 +76,11 @@ body {
 
 .chart-container {
   background-color: #c4c4c4; 
-  border: none;                 
+  border: none;               
+  position: relative; 
   border-radius: 8px;          
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
   padding: 20px;
-
 
   h2 {
     margin-top: 0;  

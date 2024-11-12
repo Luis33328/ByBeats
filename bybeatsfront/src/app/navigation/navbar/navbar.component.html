@@ -1,93 +1,78 @@
 <nav class="nav" style="overflow: hidden">
-
         <div class="header">
-                <div class="logo">
-                        <span (click)="home()">ByBeats</span>
+            <div class="logo">
+                <span (click)="home()">ByBeats</span>
+            </div>
+          <div class="navItems">
+            <span (click)="beatsNav()">Beats</span>
+            <span (click)="licenciamento()">Licenciamento</span>
+          </div>
+      
+          <div class="loginButtons" *ngIf="role == ''">
+            <a id="loginSpanH" routerLink="/login">Login</a>
+            <a id="signSpanH" routerLink="/cadastro">Cadastrar-se</a>
+          </div>
+      
+          <ng-container *ngIf="role != ''">
+            <div class="headerProf" [matMenuTriggerFor]="menu">
+              <img *ngIf="userModel.imagem == null" src="../../../assets/images/default.png" width="35" height="35">
+              <img *ngIf="userModel.imagem != null" src="{{userModel.imagem}}" width="35" height="35">
+              <i id="profArrow" class="fa-solid fa-chevron-down"></i>
+            </div>
+      
+            <mat-menu #menu="matMenu" class="profileMenu">
+              <div class="menuContent">
+                <div class="profTop" (click)="profile()">
+                  <img *ngIf="userModel.imagem == null" src="../../../assets/images/default.png" width="40" height="40">
+                  <img *ngIf="userModel.imagem != null" src="{{userModel.imagem}}" width="40" height="40">
+                  <span id="userMenu">{{user}}</span>
                 </div>
-
-                <div class="navItems">
-                        <span (click)="beatsNav()">Beats</span>
-                        <span (click)="licenciamento()">Licenciamento</span>
-                        <!-- <span >Sobre</span> -->
-                        <!-- <span >Mix</span> -->
+      
+                <div class="wallet">
+                  <span id="walletSpan">Minha carteira</span>
+                  <span id="walletMoney">R$0,00</span>
                 </div>
-
-                <div class="loginButtons" *ngIf="role == ''">
-                        <a id="loginSpanH" href="login">Login</a>
-                        <a id="signSpanH" href="cadastro">Cadastrar-se</a>
+      
+                <div class="menuOptions">
+                  <span (click)="favorites()"><i class="fa-regular fa-heart"></i>Favoritos</span>
+                  <span (click)="plusClick()"><i class="fa-solid fa-clock-rotate-left"></i>Histórico</span>
+                  <span (click)="myTracks()"><i class="fa-light fa-speakers"></i>Meus Beats</span>
+                  <span><i class="fa-regular fa-bag-shopping"></i>Histórico de Compras</span>
+                  <span (click)="dashboard()"><i class="fa-sharp fa-regular fa-user"></i>Minhas Vendas</span>
+                  <span (click)="disconnect()"><i class="fa-solid fa-arrow-right-from-bracket"></i>Sair</span>
                 </div>
-
-                
-                <div class="headerProf" [matMenuTriggerFor]="menu" *ngIf="role != ''">
-                        <img *ngIf="userModel.imagem == null" src="../../../assets/images/default.png" width="35" height="35" />
-                        <img *ngIf="userModel.imagem != null" src="{{userModel.imagem}}" width="35" height="35" />
-                        <i id="profArrow" class="fa-solid fa-chevron-down"></i>
+              </div>
+            </mat-menu>
+          </ng-container>
+      
+      
+          <ng-container *ngIf="role != ''">
+            <div class="cartHeader" [matMenuTriggerFor]="cartMenu">
+              <span><i class="fa-regular fa-cart-shopping"></i></span>
+            </div>
+      
+            <mat-menu #cartMenu="matMenu" class="cartMenuDiv">
+              <div class="cartMenuContent">
+                <span id="cartTitle">Meu Carrinho ({{cartBeats.length}})</span>
+      
+                <div class="beatsDiv" *ngIf="cartBeats.length > 0">
+                  <div class="beatCart" *ngFor="let cart of cartBeats">
+                    <img src="{{cart.beat.imagem}}" width="50px" height="50px">
+                    <div class="beatCartContent">
+                      <span id="cartName">{{cart.beat.titulo}}</span>
+                      <span id="cartPrice">${{cart.precoBeat}},00</span>
+                    </div>
+                  </div>
                 </div>
-
-                
-                <mat-menu #menu="matMenu" class="profileMenu" >
-                        <div class="menuContent">
-                                <div class="profTop" (click)="profile()">
-
-                                        <img *ngIf="userModel.imagem == null" src="../../../assets/images/default.png" width="40" height="40" />
-                                        <img *ngIf="userModel.imagem != null" src="{{userModel.imagem}}" width="40" height="40" />
-                                        <span  id="userMenu">{{user}}</span>
-                                </div>
-
-                                <div class="wallet">
-                                        <span id="walletSpan">Minha carteira</span>
-
-                                        <span id="walletMoney">R$0,00</span>
-                                </div>
-
-                                <div class="menuOptions">
-                                        <span (click)="favorites()"><i class="fa-regular fa-heart"></i>Favoritos</span>
-                                        <span (click)="plusClick()"><i class="fa-solid fa-clock-rotate-left"></i>Histórico</span>
-                                        <span (click)="myTracks()"><i class="fa-light fa-speakers"></i>Meus Beats</span>
-                                        <span><i class="fa-regular fa-bag-shopping"></i>Histórico de Compras</span>
-                                        <span (click)="dashboard()"><i class="fa-sharp fa-regular fa-user"></i>Minhas Vendas</span>
-                                        <span (click)="disconnect()"><i class="fa-solid fa-arrow-right-from-bracket"></i>Sair</span>
-                                </div>
-                        </div>
-
-                </mat-menu> 
-
-                <div class="cartHeader" [matMenuTriggerFor]="cartMenu">
-                        <span><i class="fa-regular fa-cart-shopping"></i></span>
-                </div>
-
-                <mat-menu #cartMenu="matMenu" class="cartMenuDiv" >
-                        <div class="cartMenuContent">
-                                <span id="cartTitle">Meu Carrinho ({{cartBeats.length}})</span>
-
-                                <div class="beatsDiv" *ngIf="cartBeats.length > 0">
-                                        <div class="beatCart" *ngFor="let cart of cartBeats">
-                                                <img src="{{cart.beat.imagem}}" width="50px" height="50px" />
-
-                                                <div class="beatCartContent">
-                                                        <span id="cartName">{{cart.beat.titulo}}</span>
-                                                        <span id="cartPrice">${{cart.precoBeat}},00</span>
-                                                </div>
-                                        </div>
-
-
-
-                                </div>
-
-                                <span id="subtotal"*ngIf="cartBeats.length > 0">Subtotal: <span id="subNumber" *ngIf="cartBeats.length > 0">${{getTotal()}},00</span></span>
-
-                                <span (click)="cartCheckout()" id="checkout" *ngIf="cartBeats.length > 0" >Fazer Checkout</span>
-                        </div>
-
-                </mat-menu> 
+      
+                <span id="subtotal" *ngIf="cartBeats.length > 0">Subtotal: <span id="subNumber">${{getTotal()}},00</span></span>
+                <span (click)="cartCheckout()" id="checkout" *ngIf="cartBeats.length > 0">Fazer Checkout</span>
+              </div>
+            </mat-menu>
+          </ng-container>
         </div>
-
-         
-
-
-</nav>
-
-<!--<div class="beatHeader" *ngIf="role == 'admin'">-->
-<div class="beatHeader" *ngIf="role">
+      </nav>
+      
+      <div class="beatHeader" *ngIf="role">
         <a id="beatHome" (click)="cadastrar('novo')">Cadastrar Beats <i class="fa-solid fa-plus"></i></a>
-</div> 
+      </div>

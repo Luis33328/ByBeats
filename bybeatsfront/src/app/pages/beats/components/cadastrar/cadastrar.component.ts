@@ -146,16 +146,9 @@ export class CadastrarBeatComponent implements OnInit {
       console.log(data.role);
       this.role = data.role;
     }, err => {
-      console.log("Role error.");
     });
   }
 
-
-  
-
-
-
-  //mds que crime essas funcoes nao sei usar angular
 
   public changeUntag(event){
     let input    = <HTMLInputElement>document.getElementById('untagged');

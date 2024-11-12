@@ -51,7 +51,6 @@ export class MeusBeatsComponent implements OnInit {
       this.getBeats()
 
     }, err => {
-      console.log("eero");
     });
   }
 

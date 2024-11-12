@@ -46,7 +46,9 @@ export class LoginComponent {
         localStorage.setItem('currentToken',ret.access_token);
         this.loading = false;
 
-        this.router.navigate(['']);
+        this.router.navigate(['']).then(() => {
+          window.location.reload();
+      });
 ;      }, error => {
         console.log(error);
         this.loading = false;

@@ -115,7 +115,6 @@ export class PlayerComponent implements OnInit  {
       console.log(this.userModel);
 
     }, err => {
-      console.log("eero");
     });
   }
 

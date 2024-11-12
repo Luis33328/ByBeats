@@ -97,7 +97,6 @@ export class HomeComponent implements OnInit, AfterViewInit {
       console.log(data.role);
       this.role = data.role;
     }, err => {
-      console.log("Role error.");
     });
   }
 
