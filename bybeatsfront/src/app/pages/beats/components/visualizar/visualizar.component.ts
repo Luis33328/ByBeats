@@ -65,6 +65,8 @@ export class VisualizarBeatComponent implements OnInit {
 
   public likes = 0;
 
+  public role = '';
+
   productOrders: ProductOrder[] = [];
   beats: Beat[] = [];
   selectedProductOrder: Beat;
@@ -118,6 +120,23 @@ export class VisualizarBeatComponent implements OnInit {
       this.guidBeat = param.get('id');
     });
   }
+
+  public deleteBeat(guidBeat){
+    //console.log(guidBeat)
+
+
+    this.beatService.deleteBeat(guidBeat).subscribe(
+      data => {
+
+        console.log(data);
+        this.router.navigate(["/"])
+        
+      }, err => {
+        console.log(err);
+      }
+    );
+  }
+
 
   private getBeat(){
     this.beatService.get(this.guidBeat).subscribe(data => {
@@ -178,6 +197,7 @@ export class VisualizarBeatComponent implements OnInit {
   private getLogged() {
     this.usuarioService.getByUsername().subscribe(data => {
       this.userLogged = data
+      this.role = data.role;
       console.log(data);
       this.getBeat();
       this.getFavorite();

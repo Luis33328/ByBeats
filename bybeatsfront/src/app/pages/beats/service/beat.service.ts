@@ -215,6 +215,16 @@ export class BeatService {
     );
   }
 
+  public deleteBeat(guidBeat): Observable<any> {
+
+
+    return this.http.post(environment.baseUrl + '/private/luiggibeats/beat/deletar/' + guidBeat, { headers: this.HEADERS }).pipe(
+      map(
+        data => data
+      )
+    );
+  }
+
   public uploadImage(formData: FormData): Observable<any> {
     //const file = formData.get('image') as File;
     //const url = environment.baseUrl + `/private/luiggibeats/beat/upload?file=${file.name}`;

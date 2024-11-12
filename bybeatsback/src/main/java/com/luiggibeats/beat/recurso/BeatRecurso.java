@@ -96,9 +96,9 @@ public class BeatRecurso extends BaseController {
     }
 
     @Operation(description = "Endpoint para deletar um beat")
-    @DeleteMapping(value = "/deletar/{id}", produces = "application/json")
-    public void deletar(@PathVariable(name = "id") Integer id) throws BusinessException {
-        this.beatServico.deletar(id);
+    @PostMapping(value = "/deletar/{guidBeat}", produces = "application/json")
+    public void deletar(@PathVariable(name = "guidBeat") Integer guidBeat) throws BusinessException {
+        this.beatServico.deletar(guidBeat);
     }
     
     //@PostMapping(value ="/upload")
