@@ -121,7 +121,7 @@ export class SellerDashboardComponent implements OnInit {
     this.lineChartData = [{ data: Object.values(salesByMonth), label: 'Sales' }];
     this.lineChartLabels = Object.keys(salesByMonth);
 
-    this.barChartData = [{ data: Object.values(licensesByMonth), label: 'Licenses Sold' }]; 
+    this.barChartData = [{ data: Object.values(licensesByMonth), label: 'Receita' }]; 
     this.barChartLabels = Object.keys(licensesByMonth);
 
     const licensesByBeat: { [guidBeat: string]: number } = {}; 
