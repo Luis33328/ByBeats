@@ -127,6 +127,11 @@ export class NavbarComponent implements OnInit  {
     this.router.navigate(["/beats/minhas-compras"])
   }
 
+  public myOrders(){
+    this.router.navigate(["/beats/meus-pedidos"])
+  }
+
+
   public profile(){
     this.router.navigate(["/user/profile"])
   }

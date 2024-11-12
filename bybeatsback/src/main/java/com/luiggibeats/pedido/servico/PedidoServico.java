@@ -1,6 +1,9 @@
 package com.luiggibeats.pedido.servico;
 
 
+import java.time.LocalDate;
+import java.time.ZoneId;
+import java.util.Date;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -57,15 +60,10 @@ public class PedidoServico {
 	
 	public Pedido save(Pedido pedido) {
 		
-		/*Usuario user = pedido.getUsuario();
-		if(user != null ) {
-			Compra pedidoSave = new Pedido(beat, user, comprasA[i].getLicenca());
-			
-	
-		}
-	
+		LocalDate localDate = LocalDate.now();
+		Date date = Date.from(localDate.atStartOfDay(ZoneId.systemDefault()).toInstant());
 		
-		return null;*/
+		pedido.setDataPedido(date);
 		
 		return pedidoRepositorio.save(pedido);
 	}

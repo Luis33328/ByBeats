@@ -43,6 +43,8 @@ import { LicenciamentoComponent } from './pages/licenciamento/licenciamento.comp
 
 import { ComprasComponent } from './pages/beats/components/compras/compras.component';
 
+import { PedidosComponent } from './pages/beats/components/pedidos/pedidos.component';
+
 @NgModule({
   declarations: [	
     AppComponent,
@@ -65,7 +67,8 @@ import { ComprasComponent } from './pages/beats/components/compras/compras.compo
     FilterPipe,
     SellerDashboardComponent,
     LicenciamentoComponent,
-    ComprasComponent
+    ComprasComponent,
+    PedidosComponent
    ],
   entryComponents: [
   ],

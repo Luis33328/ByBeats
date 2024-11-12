@@ -1,0 +1,17 @@
+<div class="catalog">
+
+    <div class="beatsRight">
+        <h1>Pedidos</h1>
+        <div class="beats">
+        
+            <div class="beatRow" *ngFor="let pedido of pedidos">
+                <span id="id">{{pedido.guidPedido}}</span>
+                <span id="data">Data da compra: <span id="dateSpan">{{pedido.dataPedido | date:'dd/MM/yyyy' }}</span></span>
+                <span id="total">Total: R${{pedido.total}}</span>
+
+                <span id="recibo">Ver Recibo</span>
+                <span id="details">Detalhes do pedido</span>
+            </div>
+        </div>
+    </div>
+</div>
