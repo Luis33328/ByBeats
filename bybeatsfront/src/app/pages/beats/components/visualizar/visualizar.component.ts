@@ -198,7 +198,6 @@ export class VisualizarBeatComponent implements OnInit {
     this.usuarioService.getByUsername().subscribe(data => {
       this.userLogged = data
       this.role = data.role;
-      console.log(data);
       this.getBeat();
       this.getFavorite();
       this.getLikes();

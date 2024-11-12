@@ -34,14 +34,14 @@ export class SellerDashboardComponent implements OnInit {
   avgPrecoUnlimited = 0;
   MediaPrecosPieChartData: number[] = [];
 
-  lineChartData: ChartDataSets[] = [{ data: [], label: 'Sales' }];
+  lineChartData: ChartDataSets[] = [{ data: [], label: 'Vendas' }];
   lineChartLabels: Label[] = [];
   lineChartOptions: ChartOptions = { responsive: true };
   lineChartColors: Color[] = [{ borderColor: 'blue' }];
   lineChartLegend = true;
   lineChartType: ChartType = 'line';
 
-  barChartData: ChartDataSets[] = [{ data: [], label: 'Revenue' }];
+  barChartData: ChartDataSets[] = [{ data: [], label: 'Receita' }];
   barChartLabels: Label[] = [];
   barChartOptions: ChartOptions = { responsive: true };
   barChartLegend = true;
